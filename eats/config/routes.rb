@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :rates
+  resources :categories
+  resources :orders
+  resources :dishes
+  resources :users
   get 'home/index'
   root 'home#index'
 

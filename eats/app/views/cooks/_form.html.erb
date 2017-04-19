@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fist_name %>
+    <%= f.label :fist_name, 'Nombre'%>
     <%= f.text_field :fist_name %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %>
+    <%= f.label :last_name, 'Apellido'%>
     <%= f.text_field :last_name %>
   </div>
 
@@ -27,33 +27,34 @@
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.label :email, 'Email'  %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :password, 'Contraseña' %><br>
+      <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :password_confirmation, 'Confirma tu contraseña' %><br>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
+    <%= f.label :address, 'Dirección' %>
     <%= f.text_field :address %>
   </div>
 
+
   <div class="field">
-    <%= f.label :score %>
-    <%= f.text_field :score %>
+    <%= f.label :phone, 'Teléfono' %>
+    <%= f.telephone_field :phone %>
   </div>
 
   <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
-  </div>
-
-  <div class="field">
-    <%= f.label :seal %>
-    <%= f.text_field :seal %>
+    <%= f.label :gender, 'Género' %>
+    <%= f.select :gender, options_for_select([['M', 'Male'], ['F', 'Female']]), :prompt => "Seleccionar", :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">

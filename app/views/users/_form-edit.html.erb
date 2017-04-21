@@ -22,11 +22,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
@@ -41,10 +36,6 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <!-- <div class="field">
-    <%= f.label :points %>
-    <%= f.number_field :points %>
-  </div> -->
 
   <div class="field">
     <%= f.label :phone %>
@@ -52,8 +43,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :gender, 'Género' %>
-    <%= f.select :gender, options_for_select([['M', 'Male'], ['F', 'Female']]), :prompt => "Seleccionar", :class => 'genForm_dropBox' %>
+    <%= f.label :gender %>
+    <%= f.select :gender, options_for_select([['M', 'Male'], ['F', 'Female']]), :prompt => "Select Gender", :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">

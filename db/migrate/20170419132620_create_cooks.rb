@@ -5,6 +5,8 @@ class CreateCooks < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.boolean :visible
       t.string :email
+      t.string :password
+      t.string :password_confirmation
       t.string :address
       t.float :score
       t.string :phone

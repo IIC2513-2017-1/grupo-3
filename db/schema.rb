@@ -26,14 +26,16 @@ ActiveRecord::Schema.define(version: 20170419181408) do
     t.string   "last_name"
     t.boolean  "visible"
     t.string   "email"
+    t.string   "password"
+    t.string   "password_confirmation"
     t.string   "address"
     t.float    "score"
     t.string   "phone"
     t.string   "gender"
     t.boolean  "seal"
     t.date     "birth_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "dishes", force: :cascade do |t|

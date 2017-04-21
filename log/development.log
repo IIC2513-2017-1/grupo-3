@@ -875,3 +875,350 @@ Processing by DishesController#create as HTML
 Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for ::1 at 2017-04-21 10:23:58 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 303ms (Views: 289.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 10:23:58 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2017-04-21 10:24:04 -0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 64ms (Views: 45.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/users/new" for ::1 at 2017-04-21 10:24:05 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (26.4ms)
+  Rendered users/new.html.erb within layouts/application (28.8ms)
+Completed 200 OK in 92ms (Views: 65.1ms | ActiveRecord: 14.9ms)
+
+
+Started POST "/users" for ::1 at 2017-04-21 10:24:20 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LbVdhXaCkKyR7PLcTMzz5KXLtSCJUQi9OhDSSKzb+2rOuGDFT2B8T4VDm25uldNV6PcV8ibTwfD5LqbfHEbj5w==", "user"=>{"fist_name"=>"", "last_name"=>"", "email"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"", "gender"=>"", "birth_date(1i)"=>"2017", "birth_date(2i)"=>"4", "birth_date(3i)"=>"21"}, "commit"=>"Create User"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `first_name' for #<User:0x007f8aaef32ec0>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+  
+app/controllers/users_controller.rb:30:in `block in create'
+app/controllers/users_controller.rb:29:in `create'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.3ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2382257861744083680);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2382257861744083680)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/users/" for ::1 at 2017-04-21 10:25:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 266ms (Views: 247.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/new" for ::1 at 2017-04-21 10:25:32 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (21.9ms)
+  Rendered users/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 82ms (Views: 63.0ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/users" for ::1 at 2017-04-21 10:25:35 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BbJCCA9sQuj8FXrCUwPw5/ZzFLuigZ2VQTnKefrlAkXmv39INo6uC+i6E3BxWtBWu0+0aQ0DVNiCB77uSngayA==", "user"=>{"fist_name"=>"", "last_name"=>"", "email"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"", "gender"=>"", "birth_date(1i)"=>"2017", "birth_date(2i)"=>"4", "birth_date(3i)"=>"21"}, "commit"=>"Create User"}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.8ms)
+
+
+  
+NoMethodError (undefined method `first_name' for #<User:0x007fc052e83770>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+  
+app/controllers/users_controller.rb:30:in `block in create'
+app/controllers/users_controller.rb:29:in `create'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.8ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.3ms)
+Started POST "/users" for ::1 at 2017-04-21 10:26:58 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R62KyKnvPeTh26RCdw4DsQTU5U4x4zMRnFos49Zo0hJTh52oaj7kuIZJz5gPxgu3nYLfek/L2q1uWujFIHYtxQ==", "user"=>{"fist_name"=>"", "last_name"=>"", "email"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"", "gender"=>"", "birth_date(1i)"=>"2017", "birth_date(2i)"=>"4", "birth_date(3i)"=>"21"}, "commit"=>"Create User"}
+Unpermitted parameter: fist_name
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 4.3ms)
+
+
+  
+NoMethodError (undefined method `first_name' for #<User:0x007fc056cbd310>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+  
+app/controllers/users_controller.rb:30:in `block in create'
+app/controllers/users_controller.rb:29:in `create'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (83.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2382257861744083680);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2382257861744083680)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/users" for ::1 at 2017-04-21 10:28:47 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 258ms (Views: 238.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/new" for ::1 at 2017-04-21 10:28:49 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (19.4ms)
+  Rendered users/new.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 79ms (Views: 60.5ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/users" for ::1 at 2017-04-21 10:28:50 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S162pdsG0gFm3FqXQmdauv2HbpBCiFX7n/HAOlEWGmyoU4vl4uQ+4nJzMyVgPnoLsLvOQu0KnLZcz7St4YsC4Q==", "user"=>{"fist_name"=>"", "last_name"=>"", "email"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"", "gender"=>"", "birth_date(1i)"=>"2017", "birth_date(2i)"=>"4", "birth_date(3i)"=>"21"}, "commit"=>"Create User"}
+Unpermitted parameter: fist_name
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `first_name' for #<User:0x007f8a455dd1e0>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+  
+app/controllers/users_controller.rb:30:in `block in create'
+app/controllers/users_controller.rb:29:in `create'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.9ms)
+Started GET "/users" for ::1 at 2017-04-21 10:30:42 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 275ms (Views: 256.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/new" for ::1 at 2017-04-21 10:30:44 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (21.1ms)
+  Rendered users/new.html.erb within layouts/application (22.9ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 5.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for #<User:0x007fa8cb6a1780>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :first_name %>
+    16:     <%= f.text_field :first_name %>
+    17:   </div>
+    18: 
+    19:   <div class="field">
+  
+app/views/users/_form.html.erb:16:in `block in _app_views_users__form_html_erb__1380916012142360588_70181504934540'
+app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb__1380916012142360588_70181504934540'
+app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__1596445980520972259_70181502724120'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2382257861744083680);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2382257861744083680)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-04-21 10:35:00 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 258ms (Views: 246.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/" for ::1 at 2017-04-21 10:35:02 -0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 56ms (Views: 42.7ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/users/new" for ::1 at 2017-04-21 10:35:04 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (22.2ms)
+  Rendered users/new.html.erb within layouts/application (24.4ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 8.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for #<User:0x007fdcbfb417e0>
+Did you mean?  fist_name
+               fist_name?
+               fist_name=):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :first_name %>
+    16:     <%= f.text_field :first_name %>
+    17:   </div>
+    18: 
+    19:   <div class="field">
+  
+app/views/users/_form.html.erb:16:in `block in _app_views_users__form_html_erb___1716951867007448074_70293054142700'
+app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1716951867007448074_70293054142700'
+app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___3450009211111732888_70293042503340'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.4ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (92.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (130.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats_development"[0m
+  [1m[35m (122.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats_test"[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2382257861744083680);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCooks (20170419132620)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "visible" boolean, "email" character varying, "address" character varying, "score" float, "phone" character varying, "gender" character varying, "seal" boolean, "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419132620"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20170419180615)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "address" character varying, "password" character varying, "password_confirmation" character varying, "points" integer, "phone" character varying, "gender" character varying, "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419180615"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDishes (20170419180811)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying, "price" integer, "description" character varying, "times_buyed" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419180811"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20170419181108)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419181108"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20170419181148)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419181148"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRates (20170419181259)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419181259"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20170419181408)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170419181408"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-21 13:35:54 UTC], ["updated_at", 2017-04-21 13:35:54 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2382257861744083680)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/users/new" for ::1 at 2017-04-21 10:36:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (24.5ms)
+  Rendered users/new.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 305ms (Views: 271.1ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/users" for ::1 at 2017-04-21 10:36:12 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6+pWWWop4i2YRBH11TDHN6RUgE9mtb0/JqyiL7OtJW//wEE5qfg7cf/Wei+t+M8xPQK6exidVIPUrGYJRbPauA==", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"", "gender"=>"", "birth_date(1i)"=>"2017", "birth_date(2i)"=>"4", "birth_date(3i)"=>"21"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (18.6ms)
+  Rendered users/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 69ms (Views: 48.9ms | ActiveRecord: 3.8ms)
+
+

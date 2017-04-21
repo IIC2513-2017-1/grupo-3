@@ -69,6 +69,6 @@ class CooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cook_params
-      params.require(:cook).permit(:fist_name, :last_name, :visible, :email, :address, :score, :phone, :gender, :seal, :birth_date)
+      params.require(:cook).permit(:first_name, :last_name, :visible, :email, :address, :score, :phone, :gender, :seal, :birth_date)
     end
 end

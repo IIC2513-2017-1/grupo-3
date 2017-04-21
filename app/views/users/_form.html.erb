@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fist_name %>
-    <%= f.text_field :fist_name %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -33,22 +33,22 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :points %>
     <%= f.number_field :points %>
-  </div>
+  </div> -->
 
   <div class="field">
     <%= f.label :phone %>
-    <%= f.text_field :phone %>
+    <%= f.telephone_field :phone %>
   </div>
 
   <div class="field">
@@ -58,7 +58,7 @@
 
   <div class="field">
     <%= f.label :birth_date %>
-    <%= f.date_select :birth_date %>
+    <%= f.date_select :birth_date, :start_year=>1910 %>
   </div>
 
   <div class="actions">

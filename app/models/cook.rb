@@ -13,6 +13,8 @@ class Cook < ApplicationRecord
   validates :terms_of_service, acceptance: true
 
   has_many :dishes
+  has_many :orders, through: :dishes  
+
   def downcase_email
     self.email = email.downcase
   end

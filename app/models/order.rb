@@ -4,6 +4,9 @@ class Order < ApplicationRecord
   validates :status, presence: true, inclusion: { in: %w(UNPAID PAID DELIVERED RECIEVED),
     message: "%{value} is not valid" }
 
+  belongs_to :dishes
+  belongs_to :users
+
   def paid_with_card?
     payment_type == "card"
   end

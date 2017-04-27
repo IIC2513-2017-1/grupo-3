@@ -4,6 +4,8 @@ class Dish < ApplicationRecord
   validates :description, presence: true, length: { maximum: 200 }
 
   has_many :categories
+  has_many :orders
+  belongs_to :cook
 
   def self.search(search)
   if search

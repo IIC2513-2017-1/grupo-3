@@ -1588,3 +1588,89 @@ Migrating to AddCardToOrders (20170421173259)
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2382257861744083680)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (13.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (25.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (22.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-04-27 13:17:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 306ms (Views: 293.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cooks" for ::1 at 2017-04-27 13:17:25 -0300
+Processing by CooksController#index as HTML
+  Rendering cooks/index.html.erb within layouts/application
+  [1m[36mCook Load (18.9ms)[0m  [1m[34mSELECT "cooks".* FROM "cooks"[0m
+  Rendered cooks/index.html.erb within layouts/application (38.1ms)
+Completed 200 OK in 77ms (Views: 43.3ms | ActiveRecord: 24.3ms)
+
+
+Started GET "/cooks/new" for ::1 at 2017-04-27 13:17:27 -0300
+Processing by CooksController#new as HTML
+  Rendering cooks/new.html.erb within layouts/application
+  Rendered cooks/_form-new.html.erb (2.3ms)
+  Rendered cooks/new.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/federico/Desktop/grupo-3/app/views/cooks/_form-new.html.erb:56: syntax error, unexpected ':', expecting ')'
+irth_date, :start_year=>1910 :end_year=>2017 );@output_buffe
+                              ^):
+  
+app/views/cooks/_form-new.html.erb:56: syntax error, unexpected ':', expecting ')'
+app/views/cooks/new.html.erb:3:in `_app_views_cooks_new_html_erb__2277385363455325964_70198490834240'
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.6ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.1ms)
+Started GET "/cooks" for ::1 at 2017-04-27 13:20:39 -0300
+Processing by CooksController#index as HTML
+  Rendering cooks/index.html.erb within layouts/application
+  [1m[36mCook Load (0.6ms)[0m  [1m[34mSELECT "cooks".* FROM "cooks"[0m
+  Rendered cooks/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 51ms (Views: 47.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cooks/new" for ::1 at 2017-04-27 13:20:42 -0300
+Processing by CooksController#new as HTML
+  Rendering cooks/new.html.erb within layouts/application
+  Rendered cooks/_form-new.html.erb (38.7ms)
+  Rendered cooks/new.html.erb within layouts/application (41.7ms)
+Completed 200 OK in 86ms (Views: 81.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cooks/new" for ::1 at 2017-04-27 13:26:10 -0300
+Processing by CooksController#new as HTML
+  Rendering cooks/new.html.erb within layouts/application
+  Rendered cooks/_form-new.html.erb (5.4ms)
+  Rendered cooks/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 42ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cooks/" for ::1 at 2017-04-27 13:26:31 -0300
+Processing by CooksController#index as HTML
+  Rendering cooks/index.html.erb within layouts/application
+  [1m[36mCook Load (0.5ms)[0m  [1m[34mSELECT "cooks".* FROM "cooks"[0m
+  Rendered cooks/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cooks/new" for ::1 at 2017-04-27 13:26:33 -0300
+Processing by CooksController#new as HTML
+  Rendering cooks/new.html.erb within layouts/application
+  Rendered cooks/_form-new.html.erb (9.7ms)
+  Rendered cooks/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 56ms (Views: 52.6ms | ActiveRecord: 0.0ms)
+
+

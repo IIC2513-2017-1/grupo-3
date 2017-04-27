@@ -5,6 +5,7 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @dishes = Dish.all
+    #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
   end
 
   # GET /dishes/1

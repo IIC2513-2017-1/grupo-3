@@ -23,7 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: eats_development
+  database: eats
+  user: eats
+  password: eats
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

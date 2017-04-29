@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421173259) do
+ActiveRecord::Schema.define(version: 20170429131110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,28 +24,34 @@ ActiveRecord::Schema.define(version: 20170421173259) do
   create_table "cooks", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "visible"
+    t.boolean  "visible",               default: false
     t.string   "email"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "address"
-    t.float    "score"
+    t.float    "score",                 default: 0.0
     t.string   "phone"
     t.string   "gender"
-    t.boolean  "seal"
+    t.boolean  "seal",                  default: false
     t.date     "birth_date"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.boolean  "terms_of_service"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "dishes", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
     t.string   "description"
-    t.integer  "times_buyed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "times_buyed", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "cook_id"
+    t.index ["cook_id"], name: "index_dishes_on_cook_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -58,6 +64,10 @@ ActiveRecord::Schema.define(version: 20170421173259) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "card_number"
+    t.integer  "dish_id"
+    t.integer  "user_id"
+    t.index ["dish_id"], name: "index_orders_on_dish_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "rates", force: :cascade do |t|
@@ -70,6 +80,10 @@ ActiveRecord::Schema.define(version: 20170421173259) do
     t.string   "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "dish_id"
+    t.index ["dish_id"], name: "index_reviews_on_dish_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,12 +93,21 @@ ActiveRecord::Schema.define(version: 20170421173259) do
     t.string   "address"
     t.string   "password"
     t.string   "password_confirmation"
-    t.integer  "points"
+    t.integer  "points",                default: 0
     t.string   "phone"
     t.string   "gender"
     t.date     "birth_date"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "dishes", "cooks"
+  add_foreign_key "orders", "dishes"
+  add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "dishes"
+  add_foreign_key "reviews", "users"
 end

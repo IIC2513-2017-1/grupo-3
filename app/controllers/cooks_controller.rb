@@ -10,6 +10,7 @@ class CooksController < ApplicationController
   # GET /cooks/1
   # GET /cooks/1.json
   def show
+    @cook = Cook.find(params[:id])
   end
 
   # GET /cooks/new
@@ -69,6 +70,6 @@ class CooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cook_params
-      params.require(:cook).permit(:first_name, :last_name, :visible, :email, :password, :password_confirmation, :address, :score, :phone, :gender, :seal, :birth_date)
+      params.require(:cook).permit(:first_name, :last_name, :visible, :email, :password, :password_confirmation, :address, :score, :phone, :gender, :seal, :birth_date, :avatar)
     end
 end

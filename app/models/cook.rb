@@ -13,7 +13,12 @@ class Cook < ApplicationRecord
   validates :terms_of_service, acceptance: true
 
   has_many :dishes
-  has_many :orders, through: :dishes  
+  has_many :orders, through: :dishes
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "default.jpg"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
+  validates :avatar, presence: true, on: :create
 
   def downcase_email
     self.email = email.downcase

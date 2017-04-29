@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 20170429131110) do
   end
 
   create_table "cooks", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",                            null: false
+    t.string   "last_name",                             null: false
     t.boolean  "visible",               default: false
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
+    t.string   "email",                                 null: false
+    t.string   "password",                              null: false
+    t.string   "password_confirmation",                 null: false
     t.string   "address"
     t.float    "score",                 default: 0.0
     t.string   "phone"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20170429131110) do
   end
 
   create_table "dishes", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "price"
+    t.string   "name",                    null: false
+    t.integer  "price",                   null: false
     t.string   "description"
     t.integer  "times_buyed", default: 0
     t.datetime "created_at",              null: false
@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(version: 20170429131110) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
+    t.string   "email",                             null: false
     t.string   "address"
-    t.string   "password"
-    t.string   "password_confirmation"
+    t.string   "password",                          null: false
+    t.string   "password_confirmation",             null: false
     t.integer  "points",                default: 0
     t.string   "phone"
     t.string   "gender"

@@ -2798,3 +2798,405 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (12.1ms)[0m  [1m[35mDROP TABLE "categories" CASCADE[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE "cooks" CASCADE[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "visible" boolean DEFAULT 'f', "email" character varying, "password" character varying, "password_confirmation" character varying, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mDROP TABLE "dishes" CASCADE[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying, "price" integer, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (5.0ms)[0m  [1m[35mDROP TABLE "orders" CASCADE[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE "rates" CASCADE[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mDROP TABLE "reviews" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mDROP TABLE "users" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "address" character varying, "password" character varying, "password_confirmation" character varying, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.6ms)[0m  [1m[35mDROP TABLE "categories" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mDROP TABLE "cooks" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "visible" boolean DEFAULT 'f', "email" character varying, "password" character varying, "password_confirmation" character varying, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mDROP TABLE "dishes" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying, "price" integer, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE "orders" CASCADE[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE "rates" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mDROP TABLE "reviews" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "users" CASCADE[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "address" character varying, "password" character varying, "password_confirmation" character varying, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (196.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats"[0m
+  [1m[35m (193.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats_test"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "visible" boolean DEFAULT 'f', "email" character varying, "password" character varying, "password_confirmation" character varying, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying, "price" integer, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "address" character varying, "password" character varying, "password_confirmation" character varying, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170429131110)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170419132620),
+(20170419180615),
+(20170419180811),
+(20170419181108),
+(20170419181148),
+(20170419181259),
+(20170419181408),
+(20170421172033),
+(20170421173259),
+(20170427214749),
+(20170427214829),
+(20170427214846),
+(20170427214904),
+(20170427214922),
+(20170429123133);
+
+[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-29 14:29:50 UTC], ["updated_at", 2017-04-29 14:29:50 UTC]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "visible" boolean DEFAULT 'f', "email" character varying, "password" character varying, "password_confirmation" character varying, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying, "price" integer, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "address" character varying, "password" character varying, "password_confirmation" character varying, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170429131110)[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170419132620),
+(20170419180615),
+(20170419180811),
+(20170419181108),
+(20170419181148),
+(20170419181259),
+(20170419181408),
+(20170421172033),
+(20170421173259),
+(20170427214749),
+(20170427214829),
+(20170427214846),
+(20170427214904),
+(20170427214922),
+(20170429123133);
+
+[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-29 14:29:50 UTC], ["updated_at", 2017-04-29 14:29:50 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (195.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats"[0m
+  [1m[35m (193.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "eats_test"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "visible" boolean DEFAULT 'f', "email" character varying NOT NULL, "password" character varying NOT NULL, "password_confirmation" character varying NOT NULL, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying NOT NULL, "price" integer NOT NULL, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying NOT NULL, "address" character varying, "password" character varying NOT NULL, "password_confirmation" character varying NOT NULL, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170429131110)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170419132620),
+(20170419180615),
+(20170419180811),
+(20170419181108),
+(20170419181148),
+(20170419181259),
+(20170419181408),
+(20170421172033),
+(20170421173259),
+(20170427214749),
+(20170427214829),
+(20170427214846),
+(20170427214904),
+(20170427214922),
+(20170429123133);
+
+[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-29 14:31:18 UTC], ["updated_at", 2017-04-29 14:31:18 UTC]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "cooks" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "visible" boolean DEFAULT 'f', "email" character varying NOT NULL, "password" character varying NOT NULL, "password_confirmation" character varying NOT NULL, "address" character varying, "score" float DEFAULT 0.0, "phone" character varying, "gender" character varying, "seal" boolean DEFAULT 'f', "birth_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "terms_of_service" boolean, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" serial primary key, "name" character varying NOT NULL, "price" integer NOT NULL, "description" character varying, "times_buyed" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cook_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_cook_id" ON "dishes" USING btree ("cook_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "final_price" integer, "status" character varying, "tipping" boolean, "tips" integer, "payment_method" character varying, "delivery_time" time, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "card_number" integer, "dish_id" integer, "user_id" integer)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders" USING btree ("dish_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "rates" ("id" serial primary key, "forks" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "review" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "dish_id" integer)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews" USING btree ("dish_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews" USING btree ("user_id")[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying NOT NULL, "address" character varying, "password" character varying NOT NULL, "password_confirmation" character varying NOT NULL, "points" integer DEFAULT 0, "phone" character varying, "gender" character varying, "birth_date" date, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_61565d819b"
+FOREIGN KEY ("cook_id")
+  REFERENCES "cooks" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170429131110)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170419132620),
+(20170419180615),
+(20170419180811),
+(20170419181108),
+(20170419181148),
+(20170419181259),
+(20170419181408),
+(20170421172033),
+(20170421173259),
+(20170427214749),
+(20170427214829),
+(20170427214846),
+(20170427214904),
+(20170427214922),
+(20170429123133);
+
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-29 14:31:19 UTC], ["updated_at", 2017-04-29 14:31:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7957045805328457110);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7957045805328457110)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

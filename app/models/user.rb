@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :rates
+  has_many :dishes
+  has_many :orders
 
   def downcase_email
     self.email = email.downcase

@@ -11,5 +11,4 @@ class Order < ApplicationRecord
     payment_type == "card"
   end
 
-
 end

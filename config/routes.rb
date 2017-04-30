@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tags
   resources :reviews
   resources :rates
   resources :categories

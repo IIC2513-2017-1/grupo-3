@@ -11,6 +11,7 @@ class DishesController < ApplicationController
   # GET /dishes/1
   # GET /dishes/1.json
   def show
+    @dih = Dish.find(params[:id])
   end
 
   # GET /dishes/new
@@ -70,6 +71,6 @@ class DishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit(:name, :price, :description, :times_buyed)
+      params.require(:dish).permit(:name, :price, :description, :times_buyed, :avatar)
     end
 end

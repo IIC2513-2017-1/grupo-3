@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430213336) do
+ActiveRecord::Schema.define(version: 20170501014913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 20170430213336) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "cook_id"
+    t.integer  "user_id"
     t.index ["cook_id"], name: "index_dishes_on_cook_id", using: :btree
+    t.index ["user_id"], name: "index_dishes_on_user_id", using: :btree
   end
 
   create_table "dishes_tags", id: false, force: :cascade do |t|
@@ -119,9 +121,11 @@ ActiveRecord::Schema.define(version: 20170430213336) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "role"
   end
 
   add_foreign_key "dishes", "cooks"
+  add_foreign_key "dishes", "users"
   add_foreign_key "orders", "dishes"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "dishes"

@@ -11,7 +11,8 @@ class DishesController < ApplicationController
   # GET /dishes/1
   # GET /dishes/1.json
   def show
-    @dih = Dish.find(params[:id])
+    @dish = Dish.find(params[:id])
+    @pictures = @dish.pictures
   end
 
   # GET /dishes/new
@@ -30,6 +31,11 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       if @dish.save
+        if params[:images]
+          params[:images].each { |image|
+            @dish.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
         format.json { render :show, status: :created, location: @dish }
       else
@@ -44,6 +50,11 @@ class DishesController < ApplicationController
   def update
     respond_to do |format|
       if @dish.update(dish_params)
+        if params[:images]
+          params[:images].each { |image|
+            @dish.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
         format.json { render :show, status: :ok, location: @dish }
       else
@@ -71,6 +82,6 @@ class DishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit(:name, :price, :description, :times_buyed, :avatar)
+      params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures)
     end
 end

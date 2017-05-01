@@ -23,6 +23,11 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
+  def cook?
+    return true if role == 'cook'
+    return false
+  end
+
   # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")

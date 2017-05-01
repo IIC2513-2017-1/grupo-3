@@ -27,20 +27,20 @@ ActiveRecord::Schema.define(version: 20170501014913) do
   end
 
   create_table "cooks", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "visible"
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
+    t.string   "first_name",                            null: false
+    t.string   "last_name",                             null: false
+    t.boolean  "visible",               default: false
+    t.string   "email",                                 null: false
+    t.string   "password",                              null: false
+    t.string   "password_confirmation",                 null: false
     t.string   "address"
-    t.float    "score"
+    t.float    "score",                 default: 0.0
     t.string   "phone"
     t.string   "gender"
-    t.boolean  "seal"
+    t.boolean  "seal",                  default: false
     t.date     "birth_date"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.boolean  "terms_of_service"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 20170501014913) do
   end
 
   create_table "dishes", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "price"
+    t.string   "name",                    null: false
+    t.integer  "price",                   null: false
     t.string   "description"
-    t.integer  "times_buyed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "times_buyed", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "cook_id"
     t.integer  "user_id"
     t.index ["cook_id"], name: "index_dishes_on_cook_id", using: :btree
@@ -107,20 +107,20 @@ ActiveRecord::Schema.define(version: 20170501014913) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
+    t.string   "email",                             null: false
     t.string   "address"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.integer  "points"
+    t.string   "password",                          null: false
+    t.string   "password_confirmation",             null: false
+    t.integer  "points",                default: 0
     t.string   "phone"
     t.string   "gender"
     t.date     "birth_date"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "role"
   end
 

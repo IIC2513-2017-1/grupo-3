@@ -31,8 +31,22 @@
 </p>
 
 <p>
+  <strong>Gender:</strong>
+  <%= @user.gender %>
+</p>
+
+<% if @user.is_cook? %>
+
+<% else %>
+<p>
   <strong>Points:</strong>
   <%= @user.points %>
+</p>
+<% end %>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
 </p>
 
 <p>

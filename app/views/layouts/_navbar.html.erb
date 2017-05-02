@@ -15,6 +15,9 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Profile", current_user %></li>
+                      <% if current_user.is_cook? %>
+                      <li><%= link_to "My Dishes", '#' %></li>
+                      <% end %>
                       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
 
                       <li>

@@ -14,18 +14,40 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 
+  with_options if: :is_cook? do |cook|
+      cook.validates :avatar, presence: true
+      cook.validates :address, presence: true
+  end
+
   has_many :reviews
   has_many :rates
   has_many :dishes
   has_many :orders
 
+  def role=(role_name)
+    @role = role_name
+    case role_name
+    when 'cook'
+      self.role = 'cook'
+    else
+      self.role = "user" if self.role.nil?
+    end
+  end
+
+  def role
+    @role
+  end
+
   def downcase_email
     self.email = email.downcase
   end
 
-  def cook?
-    return true if role == 'cook'
-    return false
+  def is_cook?
+    self.role == 'cook'
+  end
+
+  def is_admin?
+    self.role == 'admin'
   end
 
   def name

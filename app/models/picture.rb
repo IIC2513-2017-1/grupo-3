@@ -1,4 +1,5 @@
 class Picture < ApplicationRecord
+  # http://www.railscook.com/recipes/multiple-files-upload-with-nested-resource-using-paperclip-in-rails/
   belongs_to :dish
 
   has_attached_file :image,

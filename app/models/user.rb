@@ -28,6 +28,10 @@ class User < ApplicationRecord
     return false
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")

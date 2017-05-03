@@ -15,10 +15,10 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 
-  #with_options if: :is_cook? do |cook|
-      #cook.validates :avatar, presence: true
-      #cook.validates :address, presence: true
-  #end
+  # with_options if: :is_cook? do |cook|
+  #     cook.validates :avatar, presence: true
+  #     cook.validates :address, presence: true
+  # end
 
   has_many :reviews
   has_many :rates

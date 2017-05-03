@@ -20,7 +20,7 @@ module SessionsHelper
 
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
-    !current_user.nil?
+    redirect_to(root_path, notice: 'Unauthorized access!') unless current_user
   end
 
   # Logs out the current user.

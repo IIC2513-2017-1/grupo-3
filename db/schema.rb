@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502132324) do
+ActiveRecord::Schema.define(version: 20170502153654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20170502132324) do
     t.string   "last_name"
     t.string   "email",                             null: false
     t.string   "address"
-    t.string   "password",                          null: false
     t.string   "password_confirmation",             null: false
     t.integer  "points",                default: 0
     t.string   "phone"
@@ -121,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170502132324) do
     t.boolean  "visible"
     t.boolean  "terms"
     t.boolean  "seal"
+    t.string   "password_digest"
   end
 
   add_foreign_key "dishes", "users"

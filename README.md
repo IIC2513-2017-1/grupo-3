@@ -1,33 +1,13 @@
 # grupo-3
 
-TO DO:
-
-* Create tags model;
-* ...
-
-
 Steps necessary to get the application up and running:
 
-1. rails db:drop db:migrate
-2. ...
-
+1. bundle update (if neccesary)
+2. bundle install
+3. rails db:drop
+4. rails db:create_all
+5. rails db:migrate
 
 Things you may want to cover:
 
 * Ruby version: 2.4.0
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

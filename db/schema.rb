@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505030034) do
+ActiveRecord::Schema.define(version: 20170505031708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.integer "category_id", null: false
   end
 
+  create_table "cooks", force: :cascade do |t|
+    t.string   "first_name",                            null: false
+    t.string   "last_name",                             null: false
+    t.boolean  "visible",               default: false
+    t.string   "email",                                 null: false
+    t.string   "password",                              null: false
+    t.string   "password_confirmation",                 null: false
+    t.string   "address"
+    t.float    "score",                 default: 0.0
+    t.string   "phone"
+    t.string   "gender"
+    t.boolean  "seal",                  default: false
+    t.date     "birth_date"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.boolean  "terms_of_service"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.string   "name",                    null: false
     t.integer  "price",                   null: false
@@ -33,7 +55,9 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.integer  "times_buyed", default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "cook_id"
     t.integer  "user_id"
+    t.index ["cook_id"], name: "index_dishes_on_cook_id", using: :btree
     t.index ["user_id"], name: "index_dishes_on_user_id", using: :btree
   end
 
@@ -100,7 +124,7 @@ ActiveRecord::Schema.define(version: 20170505030034) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",                           null: false
+    t.string   "email",                               null: false
     t.string   "address"
     t.integer  "points",              default: 0
     t.string   "phone"
@@ -110,8 +134,8 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "role"
     t.boolean  "visible"
     t.boolean  "terms"
@@ -121,6 +145,9 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.datetime "oauth_expires_at"
     t.string   "uid"
     t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",           default: false
+    t.datetime "activated_at"
   end
 
   add_foreign_key "dishes", "users"

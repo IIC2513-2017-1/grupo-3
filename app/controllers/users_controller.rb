@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-
+  before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: [:edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
   # GET /users
   # GET /users.json
   def index
@@ -75,5 +76,20 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :address,
        :password, :password_confirmation, :points, :phone, :gender, :birth_date,
        :avatar, :role)
+    end
+
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

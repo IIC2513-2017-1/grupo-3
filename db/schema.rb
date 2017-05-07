@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170505030034) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20170505030034) do
   end
 
   create_table "dishes", force: :cascade do |t|
-    t.string   "name",                    null: false
-    t.integer  "price",                   null: false
+    t.string   "name",        null: false
+    t.integer  "price",       null: false
     t.string   "description"
-    t.integer  "times_buyed", default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "times_buyed"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_dishes_on_user_id", using: :btree
   end
@@ -106,20 +106,20 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.string   "phone"
     t.string   "gender"
     t.date     "birth_date"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
     t.string   "role"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "uid"
     t.boolean  "visible"
     t.boolean  "terms"
     t.boolean  "seal"
     t.string   "password_digest"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
-    t.string   "uid"
     t.string   "remember_digest"
   end
 

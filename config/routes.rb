@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :dishes
   resources :users
+  resources :account_activations, only: [:edit]
   resource :session, only: [:new, :create, :destroy]
   get 'home/index'
   get 'sessions/new'

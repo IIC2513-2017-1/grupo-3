@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.2'
 # For avatars
 gem 'paperclip'
 
+gem 'figaro'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 

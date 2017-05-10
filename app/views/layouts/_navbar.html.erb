@@ -32,8 +32,9 @@ Dropdown</button>
         <div class="dropdown-content">
           <%= link_to "Profile", current_user %>
           <% if current_user.is_cook? %>
-            <%= link_to "My Dishes", '#' %>
+            <%= link_to "My Dishes", new_dish_path %>
           <% end %>
+
           <%= link_to "Settings", edit_user_path(current_user) %>
           <%= link_to "Log out", logout_path, method: "delete" %>
         </div>

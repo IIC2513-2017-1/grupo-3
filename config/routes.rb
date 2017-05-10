@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :reviews
   resources :rates
   resources :categories
-  resources :orders
   resources :dishes
   resources :users
-  resource :session, only: [:new, :create, :destroy]
+  resource  :session, only: [:new, :create, :destroy]
+  resource  :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
   get 'home/index'
   get 'sessions/new'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505030034) do
+ActiveRecord::Schema.define(version: 20170510152513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(version: 20170505030034) do
   end
 
   create_table "dishes", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "price",       null: false
+    t.string   "name",                       null: false
+    t.integer  "price",                      null: false
     t.string   "description"
     t.integer  "times_buyed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.boolean  "active",      default: true
     t.index ["user_id"], name: "index_dishes_on_user_id", using: :btree
   end
 
@@ -47,15 +48,27 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.integer "tag_id",  null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "dish_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["dish_id"], name: "index_order_items_on_dish_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.integer  "final_price"
+    t.decimal  "final_price",    precision: 12, scale: 3
     t.string   "status"
     t.boolean  "tipping"
-    t.integer  "tips"
+    t.decimal  "tips",           precision: 12, scale: 3
     t.string   "payment_method"
     t.time     "delivery_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "card_number"
     t.integer  "dish_id"
     t.integer  "user_id"
@@ -67,12 +80,13 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.string   "description"
     t.string   "image"
     t.integer  "dish_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "main_image",         default: false
   end
 
   create_table "rates", force: :cascade do |t|
@@ -100,14 +114,14 @@ ActiveRecord::Schema.define(version: 20170505030034) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",                           null: false
+    t.string   "email",                               null: false
     t.string   "address"
     t.integer  "points",              default: 0
     t.string   "phone"
     t.string   "gender"
     t.date     "birth_date"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -121,9 +135,14 @@ ActiveRecord::Schema.define(version: 20170505030034) do
     t.boolean  "seal"
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",           default: false
+    t.datetime "activated_at"
   end
 
   add_foreign_key "dishes", "users"
+  add_foreign_key "order_items", "dishes"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "dishes"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "dishes"

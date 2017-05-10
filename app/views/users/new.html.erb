@@ -1,5 +1,10 @@
-<h1>New User</h1>
+<body>
+  <%= render 'layouts/header'%>
+  <%= link_to 'Back', users_path %>
+  <div class="new-user-form">
 
-<%= render 'form-new', user: @user %>
+    <h1 align="center">Sign In</h1>
+    <%= render 'form-new', user: @user %>
 
-<%= link_to 'Back', users_path %>
+  </div>
+<body>

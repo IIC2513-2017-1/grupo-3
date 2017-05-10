@@ -11,39 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-  <%= f.label :avatar, 'Profile picture' %>
-  <%= f.file_field :avatar %>
-  </div>
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+  <%= f.text_field :first_name, :placeholder => '  First Name', :class => 'field' %>
+  </br>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
+  <%= f.text_field :last_name, :placeholder => '  Last Name', :class => 'field' %>
+  </br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+  <%= f.email_field :email, :placeholder => '  Email Address', :class => 'field' %>
+  </br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password,:placeholder => '  Password' , :class => 'field' %>
+  </br>
+
+  <%= f.password_field :password_confirmation, :placeholder => '  Password Confirmation', :class => 'field' %>
+  </br>
+
+  <div class='photo'>
+    <%= f.label :avatar, 'Profile Picture' %>
+    <%= f.file_field :avatar %>
   </div>
+  </br>
 
   <%= f.hidden_field :role, :value => params[:role] %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Sign In', :class => 'button'%>
   </div>
 <% end %>

@@ -5,7 +5,8 @@ class Dish < ApplicationRecord
 
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
-  has_many :order_items
+  has_many :cart_items
+  has_many :carts, :through => :cart_items
   # belongs_to :user
   has_many :pictures, :dependent => :destroy
 

@@ -12,11 +12,35 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # private
-  #   def set_cart
-  #     @cart = Cart.find(session[:cart_id])
-  #   rescue ActiveRecord::RecordNotFound
-  #     @cart = Cart.create
-  #     session[:cart_id] = @cart.id
-  #   end
+  private
+    # def set_cart
+    #   if session[:cart_id]
+    #     @cart = Cart.find(session[:cart_id])
+    #   else
+    #     @cart = Cart.create
+    #     session[:cart_id] = @cart.id
+    #   end
+    # end
+    #
+    # def session_cart
+    #   return @session_cart if defined?(@session_cart)
+    #   session_cart!
+    # end
+    # # use this method if you want to force a SQL query to get the cart.
+    # def session_cart!
+    #   if cookies[:cart_id]
+    #     @session_cart = Cart.includes(:shopping_cart_items).find_by_id(cookies[:cart_id])
+    #     unless @session_cart
+    #       @session_cart = Cart.create(:user_id => current_user_id)
+    #       cookies[:cart_id] = @session_cart.id
+    #     end
+    #   elsif current_user && current_user.current_cart
+    #     @session_cart = current_user.current_cart
+    #     cookies[:cart_id] = @session_cart.id
+    #   else
+    #     @session_cart = Cart.create
+    #     cookies[:cart_id] = @session_cart.id
+    #   end
+    #   @session_cart
+    # end
 end

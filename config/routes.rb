@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   resources :tags
   resources :reviews
   resources :rates
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resource :session, only: [:new, :create, :destroy]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   get 'home/index'
   get 'sessions/new'
 

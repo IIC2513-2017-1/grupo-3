@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-div.new-user-form {
+div.new-user-form, div.login-form {
 
   margin: auto;
   width: 50%;
@@ -32,8 +32,4 @@ div.new-user-form {
     width: 50%;
   }
 
-}
-
-div.log-in {
-  
 }

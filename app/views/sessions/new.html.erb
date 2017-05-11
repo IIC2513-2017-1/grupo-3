@@ -1,14 +1,10 @@
-<h1>Login to Eats</h1>
-<div id="login-form">
+<%= render 'layouts/header'%>
+<div class="login-form">
+  <h1>Login</h1>
   <%= form_for :session, url: session_path do |f| %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
+      <%= f.text_field :email, class: "field", placeholder: "Email" %>
+    </br>
+      <%= f.password_field :password, class: "field", placeholder: "Password" %>
     <div class="field">
     <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
@@ -19,6 +15,6 @@
       <%= f.submit 'Login' %>
     </div>
   <% end %>
+  <p>New to Eats? <%= link_to "Sign up now", signup_path %></p>
+  <p>Sell your food! <a href="/users/new/cook">Sign up as a cook</a></p>
 </div>
-<p>New to Eats? <%= link_to "Sign up now", signup_path %></p>
-<p>Sell your food! <a href="/users/new/cook">Sign up as a cook</a></p>

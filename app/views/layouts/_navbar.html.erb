@@ -26,7 +26,6 @@ Dropdown</button>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
     <% if logged_in? %>
 
-    <li><p class="cart-text"><%= link_to "#{current_order.order_items.size} Dishes in Cart ( #{number_to_currency current_order.total_price} )", cart_path, class: "btn btn-link" %></p></li>
       <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">
           <%= current_user.name %> <b class="caret"></b>

@@ -1,14 +1,14 @@
-<%= render 'layouts/navbar' %>
-<p id="notice"><%= notice %></p>
-
-<h1>Dishes</h1>
-
-<div class="page">
+<div class="container">
   <div class="row">
+    <h1>Dishes</h1>
+  </div>
+  <div class="row">
+    <% @dishes.each do |dish| %>
     <div class="cols">
-      <% @dishes.each do |dish| %>
-        <%= render "dishes/dish_row", dish: dish, order_item: @order_item %>
-      <% end %>
+      <h4><%= dish.name %></h5>
+      <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id)%>
     </div>
+    <% end %>
   </div>
 </div>

@@ -1,27 +1,25 @@
-<%= render 'layouts/navbar' %>
-<p id="notice"><%= notice %></p>
+<h4><% @dish.name %></h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dish.name %>
-</p>
+<%= simple_format h(@dish.description) %>
 
 <p>
   <strong>Price:</strong>
-  <%= @dish.price %>
+  <%= number_to_currency @dish.price %>
 </p>
+
+<% form_for @dish.cart_items.build do |f| %>
+  <%= f.hidden_field :dish_id %>
+  <%= f.submit "Add to Cart" %>
+<% end %>
+
+<% unless @dish.category.nil? %>
+<p>
+  <strong>Category:</strong>
+  <%= link_to h(@dish.category.name), @dish.category %>
+</p>
+<% end %>
+
 
 <p>
-  <strong>Description:</strong>
-  <%= @dish.description %>
+  <%= link_to "Back to Dishes", dishes_path %>
 </p>
-
-<p>
-  <strong>Times buyed:</strong>
-  <%= @dish.times_buyed %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>

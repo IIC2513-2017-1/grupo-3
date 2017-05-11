@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   resources :users
   resource  :session, only: [:new, :create, :destroy]
   resource  :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy]
+  # resources :cart_items, only: [:create]
   get 'home/index'
   get 'sessions/new'
+  post '/cart_items' => 'cart_items#create'
 
   get '/signup' => 'users#new'
 

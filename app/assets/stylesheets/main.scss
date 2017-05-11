@@ -98,6 +98,20 @@ ul.navbar {
 
 li#navbar {
     float: left;
+
+    input.field {
+      border-radius: 5px;
+      margin: 7px 8px;
+      height: 20px;
+    }
+
+    input.button {
+      border-radius: 5px;
+      margin: 10px;
+      height: 30px;
+    }
+
+
 }
 
 li#navbar-right {

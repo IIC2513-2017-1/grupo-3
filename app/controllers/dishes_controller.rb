@@ -6,6 +6,11 @@ class DishesController < ApplicationController
   def index
     @dishes = Dish.all
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
+    if params[:search]
+    @dishes = Dish.search(params[:search]).order("created_at DESC")
+      else
+    @dishes = Dish.all.order("created_at DESC")
+      end
   end
 
   # GET /dishes/1

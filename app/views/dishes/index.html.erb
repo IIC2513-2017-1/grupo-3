@@ -1,34 +1,55 @@
 <%= render 'layouts/navbar' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Dishes</h1>
+<% if current_user && current_user.is_admin? %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Times buyed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dishes.each do |dish| %>
+  <h3>Exclusive view of database to admin user</h3>
+  <table>
+    <thead>
       <tr>
-        <td><%= dish.name %></td>
-        <td><%= dish.price %></td>
-        <td><%= dish.description %></td>
-        <td><%= dish.times_buyed %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Times buyed</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @dishes.each do |dish| %>
+        <tr>
+          <td><%= dish.name %></td>
+          <td><%= dish.price %></td>
+          <td><%= dish.description %></td>
+          <td><%= dish.times_buyed %></td>
+          <td><%= link_to 'Show', dish %></td>
+          <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+          <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>
+
+<h1>Dishes</h1>
+
+<% if @recipes.blank? %>
+  <h4>There are no dishes containing the term <%= params[:search] %>.</h4>
+<% else%>
+  <% @dishes.each do |dish| %>
+    <%= image_tag dish.photo.url %>
+    <h4><%= dish.name %></h4>
+    <h4><%= dish.price %></h4>
+    <p><%= dish.description %></p>
+  <% end %>
+<% end %>
+
+<ul class="dishes">
+
+
+
+</ul>
 
 <%= link_to 'New Dish', new_dish_path %>

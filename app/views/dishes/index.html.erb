@@ -1,8 +1,8 @@
 <%= render 'layouts/navbar' %>
 <p id="notice"><%= notice %></p>
 
-<% if current_user && current_user.is_admin? %>
 
+<% if current_user && current_user.is_admin? %>
   <h3>Exclusive view of database to admin user</h3>
   <table>
     <thead>

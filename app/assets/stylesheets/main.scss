@@ -101,13 +101,13 @@ li#navbar {
 
     input.field {
       border-radius: 5px;
-      margin: 7px 8px;
+      margin: 7px 7px;
       height: 20px;
     }
 
     input.button {
       border-radius: 5px;
-      margin: 10px;
+      margin: 8px;
       height: 30px;
     }
 
@@ -140,6 +140,10 @@ li#navbar {
 }
 
 li#navbar:last-child {
+    border-right: none;
+}
+
+li#navbar:nth-last-child(2) {
     border-right: none;
 }
 

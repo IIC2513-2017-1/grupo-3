@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor   :new_password, :new_password_confirmation
   has_secure_password
   before_save :downcase_email
   before_create :create_activation_digest
@@ -9,18 +10,21 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                           format: { with: VALID_EMAIL_REGEX },
                           uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  validates :password,
+            presence: true,
+            length: { minimum: 6 },
+            confirmation: true,
+            :if => :password_changed?
 
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "default.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 
-  # with_options if: :is_cook? do |cook|
-  #     cook.validates :avatar, presence: true
-  #     cook.validates :address, presence: true
-  # end
+  with_options if: :is_cook? do |cook|
+      cook.validates :avatar, presence: true, on: :update
+      cook.validates :address, presence: true, length: { minimum: 5 }, on: :update
+  end
 
   has_many :reviews
   has_many :rates
@@ -29,6 +33,10 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def password_changed?
+    @new_password.present? || !@new_password.nil? || @new_password_confirmation.present? || !@new_password_confirmation.nil?
   end
 
   def is_cook?

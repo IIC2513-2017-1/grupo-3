@@ -7,6 +7,7 @@
     <div class="cols">
       <h4><%= dish.name %></h5>
       <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <%= button_to 'Show', dish_path(dish) %>
       <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id)%>
     </div>
     <% end %>

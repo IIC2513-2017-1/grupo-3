@@ -1,10 +1,26 @@
+<% final_price = 0 %>
+
 <table>
-  <th>Dish Name</th>
+  <th>Dish</th>
   <th>Quantity</th>
+  <th>Unit Price</th>
+  <th>Total Price</th>
   <% @cart_items.each do |cart_item| %>
   <tr>
     <td class="dish-name"><%= cart_item.name %></td>
     <td class="quantity"><%= cart_item.quantity %></td>
+    <td class="price"><%= number_to_currency cart_item.unit_price %></td>
+    <td class="price"><%= number_to_currency cart_item.total_price %></td>
+    <td><%= link_to 'Remove', cart_path , method: :delete %></td>
   </tr>
+  <%final_price += cart_item.total_price %>
   <% end %>
 </table>
+
+
+<p id="cart_total"><strong>Total: <%= number_to_currency final_price %></strong></p>
+
+<p>
+  <%= button_to 'Empty cart', current_cart , :method => :delete,
+    :confirm => 'Are you sure?' %>
+</p>

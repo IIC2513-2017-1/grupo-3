@@ -2,21 +2,33 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   before_action :set_cart
-  # helper_method :cart
 
-
-  # def current_order
-  #   if !session[:order_id].nil?
-  #     Order.find(session[:order_id])
-  #   else
-  #     Order.new
-  #   end
+  # def clear_cart_link(text = 'Empty Cart')
+  #   link_to_remote text,
+  #     {:url => { :controller => "cart",
+  #               :action => "clear" }},
+  #     {:href => url_for(:controller => "cart",
+  #                       :action => "clear")}
   # end
-
+  #
+  # def remove_dish_link(text, dish)
+  #   link_to_remote text, {:url => {:controller => "cart",
+  #     :action => "remove",
+  #     :id => dish}},
+  #     {:title => "Remove",
+  #       :href => url_for( :controller => "cart",
+  #       :action => "remove", :id => dish)}
+  # end
 
   def set_cart
     @cart ||= Cart.new(session[:cart])
   end
+
+  # def destroy_cart
+  #
+  #   session[:cart] = nil
+  #
+  # end
 
   # private
 

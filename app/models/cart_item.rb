@@ -19,11 +19,7 @@ class CartItem < ApplicationRecord
   end
 
   def unit_price
-    if persisted?
-      self[:unit_price]
-    else
-      dish.price
-    end
+    @item.price
   end
 
   def total_price

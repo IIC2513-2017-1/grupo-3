@@ -34,18 +34,19 @@
 
 <h1>Dishes</h1>
 
-<% if @recipes.blank? %>
-  <% if !params[:search].blank? %>
+<% if @recipes.blank? && @dishes.size <= 0 %>
+
     <h4>There are no dishes containing the term '<%= params[:search] %>'.</h4>
-    <% else%>
-    <h4>There are no dishes avaliable at this moment.</h4>
-    <% end %>
+
+    <!-- <h4>There are no dishes avaliable at this moment.</h4> -->
+
 <% else%>
   <% @dishes.each do |dish| %>
-    <%= image_tag dish.photo.url %>
+
     <h4><%= dish.name %></h4>
     <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
     <p><%= dish.description %></p>
+
     <%= button_to 'Show', dish_path(dish) %>
     <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id)%>
   <% end %>

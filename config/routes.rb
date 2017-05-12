@@ -7,9 +7,21 @@ Rails.application.routes.draw do
   resources :tags
   resources :reviews
   resources :rates
-  resources :categories
-  resources :dishes
-  resources :users
+
+  resources :dishes, swallow: true do
+    resources :reviews
+    resources :rates
+    resources :tags
+    resources :pictures, only: [:index]
+  end
+
+  resources :categories do
+    resources :dishes, only: [:index, :show]
+  end
+
+  resources :users do
+    resources :dishes, controller: 'users/dishes'
+  end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]
   resource :session, only: [:new, :create, :destroy]
@@ -21,6 +33,8 @@ Rails.application.routes.draw do
   get '/cart' => 'cart_items#index'
   delete '/cart' => 'carts#destroy'
   delete '/cart_items' => 'cart_items#destroy'
+
+  get 'users/:id/dishes' => 'dishes#index', :as => :user_dishes_path
 
   get '/signup' => 'users#new'
 

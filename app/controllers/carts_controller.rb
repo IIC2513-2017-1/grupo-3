@@ -8,15 +8,10 @@ class CartsController < ApplicationController
 
 
   def destroy
-    @cart = Cart.find(params[:id])
+    @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
-
-    respond_to do |format|
-      format.html { redirect_to(store_url,
-        :notice => 'Your cart is currently empty') }
-      format.xml  { head :ok }
-    end
+    redirect_to cart_path, notice: 'Your cart is now empty'
   end
 
   # def remove

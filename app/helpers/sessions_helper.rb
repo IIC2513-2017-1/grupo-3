@@ -20,13 +20,13 @@ module SessionsHelper
 
   # Returns the current cart.
   def current_cart
-    if (cart_id = session[:cart_id])
-      Cart.find(cart_id)
+    if !session[:cart_id].nil?
+      cart = Cart.find_by_id(session[:cart_id]) || cart = Cart.create(cart: params[:id])
     else
       cart = Cart.create
       session[:cart_id] = cart.id
-      cart
     end
+    cart
   end
 
   # Remembers a user in a persistent session.

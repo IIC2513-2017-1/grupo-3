@@ -24,12 +24,6 @@ class ApplicationController < ActionController::Base
     @cart ||= Cart.new(session[:cart])
   end
 
-  # def destroy_cart
-  #
-  #   session[:cart] = nil
-  #
-  # end
-
   # private
 
     # def session_cart

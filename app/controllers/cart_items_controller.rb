@@ -19,10 +19,11 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = @cart.items.find(params[:id])
     if !@cart_item.nil? && @cart_item.quantity > 1
       @cart_item.quantity -= 1
     else
+      @cart.data.delete(@cart_item.id.to_s)
       @cart_item.destroy
     end
     @cart_item

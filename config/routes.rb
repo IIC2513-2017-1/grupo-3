@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :dishes
   resources :users
+  # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]
   resource :session, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   post '/cart_items' => 'cart_items#create'
   get '/cart' => 'cart_items#index'
-  delete '/cart' => 'cart#destroy'
+  delete '/cart' => 'carts#destroy'
   delete '/cart_items' => 'cart_items#destroy'
 
   get '/signup' => 'users#new'

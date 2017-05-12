@@ -26,7 +26,7 @@ class Cart < ApplicationRecord
   #   @data.inject(0) {|sum, item| CartItem.find(item[0].to_i).unit_price * item.quantity + sum}
   # end
 
-  def Cart.remove(item)
+  def remove(item)
     if item.quantity > 1
       item.update_attribute(:quantity, item.quantity - 1)
     else
@@ -34,5 +34,15 @@ class Cart < ApplicationRecord
     end
     item
   end
+
+  # def destroy
+  #   @cart = Cart.find(1)
+  #   Cart.delete(@cart.id)
+  #   session[:cart_id] = nil
+  #   respond_to do |format|
+  #     format.html { redirect_to store_url, notice: "Now your cart is empty." }
+  #     format.json { head :ok }
+  #   end
+  # end
 
 end

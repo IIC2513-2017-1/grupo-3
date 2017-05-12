@@ -18,6 +18,17 @@ module SessionsHelper
     end
   end
 
+  # Returns the current cart.
+  def current_cart
+    if (cart_id = session[:cart_id])
+      Cart.find(cart_id)
+    else
+      cart = Cart.create
+      session[:cart_id] = cart.id
+      cart
+    end
+  end
+
   # Remembers a user in a persistent session.
   def remember(user)
     user.remember

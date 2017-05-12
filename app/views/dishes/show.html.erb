@@ -1,25 +1,23 @@
-<%= render 'layouts/navbar' %>
-<p id="notice"><%= notice %></p>
+<div>
+  <div>
+    <div>
+      <h4><% @dish.name %></h4>
+      <p>
+        <strong>Description:</strong>
+        <%=@dish.description %>
+      </p>
+      <p>
+        <strong>Price:</strong>
+        <%= number_to_currency @dish.price %>
+      </p>
+      <p>
+        <strong>Times buyed:</strong>
+        <%= @dish.times_buyed %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dish.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @dish.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @dish.description %>
-</p>
-
-<p>
-  <strong>Times buyed:</strong>
-  <%= @dish.times_buyed %>
-</p>
-
-<%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>
+      <%= button_to 'Add to Cart', cart_items_path(dish_id: @dish.id)%>
+      <p><%= link_to "Back to Dishes", dishes_path %></p>
+    </div>
+  </div>
+</div>
+>>>>>>> cart

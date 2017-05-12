@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Eats</title>
     <meta name="author" content="Gustavo Antunes and Federico Kunze">
+    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,12 +17,11 @@
   </head>
 
   <body>
-    <main>
-      <% flash.each do |message_type, message| %>
-  					<div class="alert alert-<%= message_type %>"><%= message %></div>
-  				<% end %>
-      <%= yield %>
-    </main>
+    <%= render 'layouts/navbar' %>
+    <% flash.each do |message_type, message| %>
+		  <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

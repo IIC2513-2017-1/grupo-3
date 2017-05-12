@@ -5,13 +5,13 @@ class Dish < ApplicationRecord
 
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
-  has_many :orders
-  belongs_to :user
+  has_many :cart_items
+  has_many :carts, :through => :cart_items
+  # belongs_to :user
   has_many :pictures, :dependent => :destroy
 
-  # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
-  # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  #   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
+  # default_scope { where(active: true) }
+
 
   def self.search(search)
   if search

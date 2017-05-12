@@ -5,14 +5,19 @@ class Cart < ApplicationRecord
   has_many :dishes, :through => :cart_items
 
 
-  def initialize(cart_data)
-    @data = cart_data || {}
+  def initialize(cart_data = {})
+    @data = cart_data || Hash.new
   end
 
-  def add_dish(dish_id)
-    @data[dish_id] ||= 0
-    @data[dish_id] += 1
+  def add_dish(dish)
+    @data[dish.id.to_s] ||= 0
+    @data[dish.id.to_s] += 1
   end
 
+  def items
+    @data.map do |dish_id, quantity|
+      dish = Dish.find(dish_id)
+      CartItem.new(dish, quantity)
+    end
+  end
 end
-#

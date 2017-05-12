@@ -31,12 +31,16 @@ Dropdown</button>
           <%= current_user.name %> <b class="caret"></b>
         </a>
         <div class="dropdown-content">
-          <%= link_to "Profile", current_user %>
-          <% if current_user.is_cook? %>
-            <%= link_to "My Dishes", new_dish_path %>
-          <% end %>
-          <%= link_to "Settings", edit_user_path(current_user) %>
-          <%= link_to "Log out", logout_path, method: "delete" %>
+          <ul>
+            <li><%= link_to "Profile", current_user %></li>
+            <% if current_user.is_cook? %>
+              <li><%= link_to "My Dishes", new_dish_path %></li>
+            <% end %>
+            <li><%= link_to "Cart", cart_path %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+          </ul>
+
         </div>
       </li>
     <% else %>

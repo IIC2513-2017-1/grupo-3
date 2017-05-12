@@ -1,25 +1,22 @@
-<h4><% @dish.name %></h4>
+<div>
+  <div>
+    <div>
+      <h4><% @dish.name %></h4>
+      <p>
+        <strong>Description:</strong>
+        <%=@dish.description %>
+      </p>
+      <p>
+        <strong>Price:</strong>
+        <%= number_to_currency @dish.price %>
+      </p>
 
-<%= simple_format h(@dish.description) %>
-
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency @dish.price %>
-</p>
-
-<% form_for @dish.cart_items.build do |f| %>
-  <%= f.hidden_field :dish_id %>
-  <%= f.submit "Add to Cart" %>
-<% end %>
-
-<% unless @dish.category.nil? %>
-<p>
-  <strong>Category:</strong>
-  <%= link_to h(@dish.category.name), @dish.category %>
-</p>
-<% end %>
+      <%= button_to 'Add to Cart', cart_items_path(dish_id: @dish.id)%>
 
 
-<p>
-  <%= link_to "Back to Dishes", dishes_path %>
-</p>
+      <p>
+        <%= link_to "Back to Dishes", dishes_path %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   before_action :set_cart
-  helper_method :cart
+  # helper_method :cart
+
 
   # def current_order
   #   if !session[:order_id].nil?
@@ -12,15 +13,13 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-  def cart
-    @cart
+
+  def set_cart
+    @cart ||= Cart.new(session[:cart])
   end
 
-  private
-    def set_cart
-      @cart ||= session[:cart]
-    end
-    #
+  # private
+
     # def session_cart
     #   return @session_cart if defined?(@session_cart)
     #   session_cart!

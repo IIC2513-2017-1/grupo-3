@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :dishes
   resources :users
   resource  :session, only: [:new, :create, :destroy]
-  resource  :cart, only: [:show]
-  # resources :cart_items, only: [:create]
+  # resource  :cart, only: [:show]
+
   get 'home/index'
   get 'sessions/new'
   post '/cart_items' => 'cart_items#create'
+  get '/cart' => 'cart_items#index'
 
   get '/signup' => 'users#new'
 

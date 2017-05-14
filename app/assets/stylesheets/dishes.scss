@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul.dishes li {
-  width: 200px;
-  display: inline-block;
-  vertical-align: top;
-  *display: inline;
-  *zoom: 1;
+div.dish-display {
+ border: 1px solid #d3d3d3;
+ width: 200px;
+ display: inline-block;
+ vertical-align: top;
+ *display: inline;
+ *zoom: 1;
 }
 
 div.new-dish-form {
@@ -35,4 +36,43 @@ div.new-dish-form {
     width: 50%;
   }
 
+}
+
+div.dishes-table {
+  overflow-x:auto;
+}
+
+table.dishes-table  {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.dishes-table {
+  height: 25px;
+
+}
+
+td.dishes-table {
+  text-align: center;
+  padding: 10px;
+}
+
+tr.dishes-table:hover {
+  background-color: #f5f5f5;
+}
+
+table.dishes-table, td.dishes-table, th.dishes-table {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+div.dish-buttons {
+  display:inline-block;
+}
+
+#dish-button {
+  margin: 2px;
+}
+
+#new-dishes-button {
+  margin: 15px;
 }

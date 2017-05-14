@@ -1,43 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>Users Database Info</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fist name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Points</th>
-      <th>Role</th>
-      <th>Phone</th>
-      <th>Gender</th>
-      <th>Birth date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.address %></td>
-        <td><%= user.points %></td>
-        <td><%= user.role %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.birth_date %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="users-table">
+  <table class="users-table">
+    <thead>
+      <tr class="users-table">
+        <th class="users-table">User ID</th>
+        <th class="users-table">Fist name</th>
+        <th class="users-table">Last name</th>
+        <th class="users-table">Email</th>
+        <th class="users-table">Address</th>
+        <th class="users-table">Points</th>
+        <th class="users-table">Role</th>
+        <th class="users-table">Phone</th>
+        <th class="users-table">Gender</th>
+        <th class="users-table">Birth date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr class="users-table">
+          <td class="users-table"><%= user.id %></td>
+          <td class="users-table"><%= user.first_name %></td>
+          <td class="users-table"><%= user.last_name %></td>
+          <td class="users-table"><%= user.email %></td>
+          <td class="users-table"><%= user.address %></td>
+          <td class="users-table"><%= user.points %></td>
+          <td class="users-table"><%= user.role %></td>
+          <td class="users-table"><%= user.phone %></td>
+          <td class="users-table"><%= user.gender %></td>
+          <td class="users-table"><%= user.birth_date %></td>
+          <td ><%= link_to 'Show', user %></td>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= button_to 'New User', new_user_path, :id => "new-user-button" %>

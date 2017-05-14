@@ -33,3 +33,35 @@ div.new-user-form, div.login-form {
   }
 
 }
+
+div.users-table {
+  overflow-x:auto;
+}
+
+table.users-table  {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.users-table {
+  height: 25px;
+  
+}
+
+td.users-table {
+  text-align: center;
+  padding: 10px;
+}
+
+tr.users-table:hover {
+  background-color: #f5f5f5;
+}
+
+table.users-table, td.users-table, th.users-table {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+#new-users-button {
+  margin-left:auto;
+  margin-right:auto;
+}

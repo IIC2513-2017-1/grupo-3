@@ -1,5 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<div id="profile">
+  <% if current_user %>
+    <h2>PROFILE ID <%= current_user.id %></h2>
+    <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+    <p>Email: <%= current_user.email %></p>
+    <p>Address: <%= current_user.address %></p>
+    <p>Points: <%= current_user.points %></p>
+    <p>Role: <%= current_user.role %></p>
+    <p>Phone: <%= current_user.phone %></p>
+    <p>Gender: <%= current_user.gender %></p>
+    <p>Birth Date: <%= current_user.birth_date %></p>
+
+  <% end %>
+</div>
+
+
 <h1>Users Database Info</h1>
 
 <div class="users-table">

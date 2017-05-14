@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.dish-display {
- width: 200px;
+ width: 250px;
  display: inline-block;
  vertical-align: top;
  *display: inline;
@@ -75,8 +75,15 @@ div.dish-buttons {
   margin: 2px;
 }
 
-#new-dishes-button {
-  margin: 15px;
+div.new-dishes-button {
+  margin: auto;
+  width: 24%;
+  padding: 15px;
+
+  #button {
+    width: 250px;
+    height: 25px;
+  }
 }
 
 #tag_cloud {

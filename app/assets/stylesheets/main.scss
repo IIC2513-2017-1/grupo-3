@@ -96,6 +96,7 @@ ul.navbar {
     overflow: hidden;
     background-color: #fff;
     border-radius: 10px 10px 0px 0px;
+    width: 95%;
 }
 
 li#navbar {
@@ -149,27 +150,28 @@ li#navbar:nth-last-child(2) {
 }
 
 ul.dropdown {
-  style: none;
+  float: left;
 }
 
 li.dropdown {
     display: inline-block;
     float: right;
-
 }
 
 .dropdown-content {
+    text-decoration: none;
+    list-style-type: none;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 100px;
+    min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 6px 8px;
     text-decoration: none;
     display: block;
     text-align: left;

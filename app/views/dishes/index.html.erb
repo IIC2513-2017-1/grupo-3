@@ -33,6 +33,12 @@
 
 <h1>Dishes</h1>
 
+<div id="tag_cloud">
+  <% tag_cloud Dish.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
 <% if @recipes.blank? && @dishes.size <= 0 %>
 
     <h4>There are no dishes avaliable at this moment.</h4>
@@ -43,6 +49,9 @@
       <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
       <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
       <p><%= dish.description %></p>
+      <p>
+      Tags: <%= raw dish.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+      </p>
 
       <div class="dish-buttons">
         <%= button_to 'Show', dish_path(dish), :id => "dish-button" %>

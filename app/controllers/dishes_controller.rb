@@ -4,7 +4,11 @@ class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
   def index
-    @dishes = Dish.all
+    @dishes = if params[:tag]
+      Dish.tagged_with(params[:tag])
+    else
+      Dish.all
+    end
     # @order_item = current_order.order_items.new
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
     if params[:search]
@@ -89,6 +93,6 @@ class DishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures, @user)
+      params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures, :tag_list, @user)
     end
 end

@@ -1,6 +1,7 @@
 class Tag < ApplicationRecord
   validates :name, presence: true, length: { maximum: 25 }
 
-  has_and_belongs_to_many :dishes
+  has_many :taggings
+  has_many :dishes, through: :taggings
 
 end

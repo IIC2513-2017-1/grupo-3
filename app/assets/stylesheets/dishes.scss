@@ -9,3 +9,30 @@ ul.dishes li {
   *display: inline;
   *zoom: 1;
 }
+
+div.new-dish-form {
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  width: 320px;
+
+  input.field {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 15px;
+  }
+
+  .button {
+    width: 160px;
+    height: 30px;
+  }
+
+  .actions {
+    margin: 10px;
+    width: 50%;
+  }
+
+}

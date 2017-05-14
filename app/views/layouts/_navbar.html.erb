@@ -40,7 +40,7 @@ Dropdown</button>
           <%= current_user.name %> <b class="caret"></b>
         </a>
         <div class="dropdown-content">
-          <ul>
+          <ul class="dropdown">
             <li><%= link_to "Profile", current_user %></li>
             <% if current_user.is_cook? %>
               <li><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>

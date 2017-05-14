@@ -148,9 +148,14 @@ li#navbar:nth-last-child(2) {
     border-right: none;
 }
 
+ul.dropdown {
+  style: none;
+}
+
 li.dropdown {
     display: inline-block;
     float: right;
+
 }
 
 .dropdown-content {

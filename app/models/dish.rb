@@ -12,12 +12,12 @@ class Dish < ApplicationRecord
 
   # default_scope { where(active: true) }
 
-
   def self.search(search)
-  if search
-    self.where("(name like ? OR name like ?) OR (cook like ? OR cook like ?) OR (category like ? OR category like ?)", "#{search}%", "% #{search}%", "#{search}%", "% #{search}%", "#{search}%", "% #{search}%")
-  else
-    self.all
+    if search
+      self.where("(user_id like ? OR user_id like ?) OR (category like ? OR category like ?)", "#{search}%", "% #{search}%", "#{search}%", "% #{search}%")
+    else
+      self.all
+    end
   end
-  end
+
 end

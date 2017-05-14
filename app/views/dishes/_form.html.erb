@@ -11,29 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <div class="new-dish-form">
+    <%= f.text_field :name, class: "field", placeholder: "  Name" %>
+    <%= f.number_field :price, class: "field", placeholder: "  Price" %>
+    <%= f.text_field :description, class: "field", placeholder: "  Description" %>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :pictures, :class => 'control-label' %>
-    <div class="controls">
-      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    <div class="photo">
+      <%= f.label :pictures, :class => "control-label" %>
+      <div class="controls">
+        <%= file_field_tag "images[]", type: :file, multiple: true  %>
+      </div>
     </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+    
+    <div class="actions">
+      <%= f.submit "Submit", :class => "button" %>
+    </div>
   </div>
 <% end %>

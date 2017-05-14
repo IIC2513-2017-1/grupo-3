@@ -1,5 +1,12 @@
 <div id="sidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a id="navbar-item" href="#">Link1</a>
-  <a id="navbar-item" href="#">Link2</a>
+  <% if current_user.is_cook? %>
+    <a id="navbar-item" href="#">Your Locations</a>
+    <a id="navbar-item" href="#">New Promotion</a>
+  <% else %>
+    <a id="navbar-item" href="#">Promotions</a>
+    <a id="navbar-item" href="#">Popular Cooks</a>
+    <a id="navbar-item" href="#">Popular Dishes</a>
+
+  <% end %>
 </div>

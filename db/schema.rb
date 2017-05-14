@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170511153238) do
-=======
 ActiveRecord::Schema.define(version: 20170512051535) do
->>>>>>> cart
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +20,6 @@ ActiveRecord::Schema.define(version: 20170512051535) do
     t.integer  "cart_id"
     t.decimal  "price",      precision: 12, scale: 3
     t.integer  "amount"
-<<<<<<< HEAD
-    t.datetime "created_at"
-=======
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
@@ -34,7 +27,6 @@ ActiveRecord::Schema.define(version: 20170512051535) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> cart
   end
 
   create_table "categories", force: :cascade do |t|

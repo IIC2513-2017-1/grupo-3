@@ -1,10 +1,6 @@
-<body>
-  <%= render 'layouts/header'%>
-  <%= link_to 'Back', users_path %>
-  <div class="new-user-form">
-
+<%= render 'layouts/header'%>
+<%= link_to 'Back', users_path %>
+<div class="new-user-form">
     <h1 align="center">Sign In</h1>
     <%= render 'form-new', user: @user %>
-
-  </div>
-<body>
+</div>

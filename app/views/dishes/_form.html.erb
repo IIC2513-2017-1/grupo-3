@@ -22,9 +22,10 @@
         <%= file_field_tag "images[]", type: :file, multiple: true  %>
       </div>
     </div>
-    
+
     <div class="actions">
       <%= f.submit "Submit", :class => "button" %>
+      <%= button_to 'Back', dishes_path, :method => :get, :class => "button" %>
     </div>
   </div>
 <% end %>

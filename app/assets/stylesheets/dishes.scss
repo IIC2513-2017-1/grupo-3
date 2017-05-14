@@ -26,14 +26,17 @@ div.new-dish-form {
     font-size: 15px;
   }
 
-  .button {
-    width: 160px;
-    height: 30px;
-  }
-
   .actions {
     margin: 10px;
     width: 50%;
+    display: inline-block;
+
+    .button {
+      width: 100px;
+      height: 30px;
+      margin: 2px;
+      display: inline-block;
+    }
   }
 
 }

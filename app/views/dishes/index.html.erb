@@ -36,15 +36,12 @@
 
 <% if @recipes.blank? && @dishes.size <= 0 %>
 
-    <h4>There are no dishes containing the term '<%= params[:search] %>'.</h4>
-
-    <!-- <h4>There are no dishes avaliable at this moment.</h4> -->
+    <h4>There are no dishes avaliable at this moment.</h4>
 
 <% else%>
   <% @dishes.each do |dish| %>
 
-    <h4><%= dish.name %></h4>
-    <p>by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+    <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
     <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
     <p><%= dish.description %></p>
 

@@ -1,6 +1,7 @@
 <div id="sidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <% if current_user && current_user.is_cook? %>
+    <a id="navbar-item" href="#">Partners</a>
     <a id="navbar-item" href="#">Your Locations</a>
     <a id="navbar-item" href="#">New Promotion</a>
   <% else %>

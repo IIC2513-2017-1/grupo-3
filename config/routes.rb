@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'tags/:tag', to: 'dishes#index'
+  get 'tags/:tag', to: 'dishes#index', :constraints  => { :tag => /[^\/]+/ }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

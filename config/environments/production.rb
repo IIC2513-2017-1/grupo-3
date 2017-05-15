@@ -73,8 +73,8 @@ Rails.application.configure do
 
 # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.sendgrid.net",
-   :domain               => eats-cl.herokuapp.com,
+   :address              => 'smtp.sendgrid.net',
+   :domain               => 'eats-cl.herokuapp.com',
    :port                 => 587,
    :user_name            => Rails.application.secrets.sendgrid_username,
    :password             => Rails.application.secrets.sendgrid_password,

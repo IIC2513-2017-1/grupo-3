@@ -16,6 +16,7 @@
     <%= f.number_field :price, class: "field", placeholder: "  Price" %>
     <%= f.text_field :description, class: "field", placeholder: "  Description" %>
     <%= f.text_field :tag_list, class: "field", placeholder: "  Tags (separated by commas)" %>
+  </div>
 
     <div class="photo">
       <%= f.label :pictures, :class => "control-label" %>
@@ -23,6 +24,8 @@
         <%= file_field_tag "images[]", type: :file, multiple: true  %>
       </div>
     </div>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <div class="actions">
       <%= f.submit "Submit", :class => "button" %>

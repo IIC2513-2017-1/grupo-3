@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     resources :dishes, only: [:index, :show]
   end
 
-  resources :users do
+  resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'
+    resources :carts, only: [:show]
   end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]

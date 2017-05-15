@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     @cart ||= Cart.new(session[:cart])
   end
 
+  def current_cart
+    current_user.current_cart if current_user.present?
+  end
+
   # private
 
     # def session_cart

@@ -49,6 +49,9 @@
   <% @dishes.each do |dish| %>
     <div class="dish-display" >
       <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+      <% if dish.pictures.first %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar" %>
+      <% end %>
       <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
       <p><%= dish.description %></p>
       <p>
@@ -56,8 +59,8 @@
       </p>
 
       <div class="dish-buttons">
-        <%= button_to 'Show', dish_path(dish), :id => "dish-button" %>
-        <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :id => "dish-button"%>
+        <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
+        <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :method => :get, :id => "dish-button"%>
       </div>
     </div>
   <% end %>

@@ -21,7 +21,7 @@
           <td class="dishes-table"><%= dish.price %></td>
           <td class="dishes-table"><%= dish.user.first_name %> <%= dish.user.last_name %></td>
           <td class="dishes-table"><%= dish.times_buyed %></td>
-          <td><%= link_to 'Show', dish %></td>
+          <td><%= link_to 'Show', dish, remote: true %></td>
           <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
           <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -56,7 +56,7 @@
       </p>
 
       <div class="dish-buttons">
-        <%= button_to 'Show', dish_path(dish), :id => "dish-button" %>
+        <%= button_to 'Show', dish, :id => "dish-button", remote: true %>
         <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :id => "dish-button"%>
       </div>
     </div>
@@ -65,3 +65,5 @@
 <div class="new-dishes-button">
   <%= button_to 'New Dish', new_dish_path, :method => :get, :id => "button" %>
 </div>
+
+<%= render "layouts/modal" %>

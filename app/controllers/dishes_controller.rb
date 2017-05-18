@@ -23,6 +23,11 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @pictures = @dish.pictures
+    respond_to do |format|
+        format.html # show.html.erb
+        format.js # show.js.erb
+        format.json { render json: @book }
+    end
   end
 
   # GET /dishes/new

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Started GET "/users/2" for 127.0.0.1 at 2017-05-18 20:04:34 -0400
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 Processing by UsersController#show as HTML
@@ -208,11 +209,33 @@ app/views/users/show.html.erb:7:in `_app_views_users_show_html_erb___44707497196
   Rendered /home/guto/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
   Rendered /home/guto/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.4ms)
 Started GET "/users/2" for 127.0.0.1 at 2017-05-18 20:36:35 -0400
+=======
+Started GET "/dishes" for ::1 at 2017-05-18 22:19:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DishesController#index as HTML
+  Parameters: {"swallow"=>true}
+  Rendering dishes/index.html.erb within layouts/application
+  [1m[36mDish Load (1.4ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (1.6ms)[0m  [1m[34mSELECT tags.id, tags.name,count(taggings.tag_id) as count FROM "tags" INNER JOIN "taggings" ON "taggings"."tag_id" = "tags"."id" GROUP BY taggings.tag_id, tags.id, tags.name[0m
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 7]]
+  Rendered dishes/index.html.erb within layouts/application (143.1ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendered layouts/_sidebar.html.erb (3.5ms)
+  Rendered layouts/_navbar.html.erb (11.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 624ms (Views: 554.1ms | ActiveRecord: 29.8ms)
+
+
+Started GET "/users/21" for ::1 at 2017-05-18 22:19:48 -0400
+>>>>>>> upload image preview
 Processing by UsersController#show as HTML
-  Parameters: {"swallow"=>true, "id"=>"2"}
-  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"swallow"=>true, "id"=>"21"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
   Rendering users/show.html.erb within layouts/application
+<<<<<<< HEAD
   Rendered users/show.html.erb within layouts/application (18.5ms)
 Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.2ms)
 
@@ -1310,5 +1333,43 @@ Processing by UsersController#show as HTML
   Rendered layouts/_navbar.html.erb (67.5ms)
   Rendered layouts/_footer.html.erb (0.3ms)
 Completed 200 OK in 134ms (Views: 129.0ms | ActiveRecord: 1.4ms)
+=======
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendered layouts/_sidebar.html.erb (2.4ms)
+  Rendered layouts/_navbar.html.erb (8.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 68ms (Views: 59.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/dishes" for ::1 at 2017-05-18 22:19:49 -0400
+Processing by DishesController#index as HTML
+  Parameters: {"swallow"=>true}
+  Rendering dishes/index.html.erb within layouts/application
+  [1m[36mDish Load (12.2ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (2.7ms)[0m  [1m[34mSELECT tags.id, tags.name,count(taggings.tag_id) as count FROM "tags" INNER JOIN "taggings" ON "taggings"."tag_id" = "tags"."id" GROUP BY taggings.tag_id, tags.id, tags.name[0m
+  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 7]]
+  Rendered dishes/index.html.erb within layouts/application (38.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendered layouts/_sidebar.html.erb (1.4ms)
+  Rendered layouts/_navbar.html.erb (6.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 105ms (Views: 81.9ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/users" for ::1 at 2017-05-18 22:20:07 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"swallow"=>true}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_sidebar.html.erb (0.7ms)
+  Rendered layouts/_navbar.html.erb (7.2ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 82ms (Views: 77.9ms | ActiveRecord: 1.2ms)
+>>>>>>> upload image preview
 
 

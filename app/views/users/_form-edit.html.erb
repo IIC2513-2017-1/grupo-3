@@ -13,9 +13,11 @@
 
   <div class="field">
   <%= f.label :avatar, 'Profile picture' %>
-  <%= f.file_field :avatar %>
+  <%= f.file_field :avatar, :class => 'upload-avatar', :onchange => 'readURL(this);'%>
   </div>
 
+  <div class="upload-preview">
+    <img id="avatar-upload" src="#" />
   </div>
 
   <div class="field">

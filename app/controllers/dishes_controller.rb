@@ -1,5 +1,6 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_action :dish_owner, only: [:edit, :update, :destroy]
 
   # GET /dishes
   # GET /dishes.json
@@ -90,6 +91,13 @@ class DishesController < ApplicationController
     def set_dish
       @dish = Dish.find(params[:id])
     end
+
+    # Confirms the correct user.
+    def dish_owner
+      user = Dish.find(params[:id]).user if params[:id]
+      redirect_to(dishes_path) unless (current_user?(user) or current_user.role == 'admin')
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params

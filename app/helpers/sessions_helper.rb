@@ -46,6 +46,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def admin?
+    current_user.role == 'admin'
+  end
+
   # Forgets a persistent session.
   def forget(user)
     user.forget

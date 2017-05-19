@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :is_admin, only: [:index]
   # GET /users
   # GET /users.json
   def index
@@ -74,6 +75,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :address,
        :password, :password_confirmation, :points, :phone, :gender, :birth_date,
        :avatar, :role)
+    end
+
+    def is_admin
+      redirect_to(root_url) unless admin?
     end
 
     # Confirms a logged-in user.

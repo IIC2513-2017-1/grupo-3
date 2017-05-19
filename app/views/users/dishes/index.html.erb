@@ -2,30 +2,26 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Times buyed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
+
     <% current_user.dishes.each do |dish| %>
-      <tr>
-        <td><%= dish.name %></td>
-        <td><%= dish.price %></td>
-        <td><%= dish.description %></td>
-        <td><%= dish.times_buyed %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+      <% if dish.pictures.first %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar" %>
+      <% end %>
+      <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <p><%= dish.description %></p>
+      <p>
+      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+      </p>
+
+      <div class="dish-buttons">
+        <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
+        <%= link_to 'Edit', edit_dish_path(dish) %>
+        <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+
+
 
 
 <br>

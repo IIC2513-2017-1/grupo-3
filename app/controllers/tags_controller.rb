@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin, only: [:edit, :update, :destroy]
 
   # GET /tags
   # GET /tags.json
@@ -65,6 +66,10 @@ class TagsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
       @tag = Tag.find(params[:id])
+    end
+
+    def is_admin
+      redirect_to(dishes_path) unless admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

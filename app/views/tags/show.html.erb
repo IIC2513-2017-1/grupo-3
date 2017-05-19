@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
+<h1>Tags</h1>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+    <% @tag.dishes.each do |dish| %>
+    <div class="dish-display" >
+      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+      <% if dish.pictures.first %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar" %>
+      <% end %>
+      <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <p><%= dish.description %></p>
+      <p>
+      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+      </p>
+      <div class="dish-buttons">
+        <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
+        <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :method => :get, :id => "dish-button"%>
+      </div>
+    </div>
+    <% end %>
+<br>
+
+<%= link_to 'Back', dishes_path %>

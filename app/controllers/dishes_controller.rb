@@ -87,20 +87,21 @@ class DishesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dish
-      @dish = Dish.find(params[:id])
-    end
 
-    # Confirms the correct user.
-    def dish_owner
-      user = Dish.find(params[:id]).user if params[:id]
-      redirect_to(dishes_path) unless (current_user?(user) or current_user.role == 'admin')
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dish
+    @dish = Dish.find(params[:id])
+  end
+
+  # Confirms the correct user.
+  def dish_owner
+    user = Dish.find(params[:id]).user if params[:id]
+    redirect_to(dishes_path) unless current_user?(user) or current_user.role == 'admin'
+  end
 
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def dish_params
-      params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures, :user_id, :tag_list, @user)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def dish_params
+    params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures, :user_id, :tag_list, @user)
+  end
 end

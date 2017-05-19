@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   get 'users/:id/dishes' => 'dishes#index', :as => :user_dishes_path
 
+  # get 'dishes/:id/reviews/new' => 'reviews#new', :as => :new_dish_review_path
+
   get '/signup' => 'users#new'
 
   get    'login'   => 'sessions#new'

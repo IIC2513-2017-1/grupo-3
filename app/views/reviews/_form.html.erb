@@ -12,9 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :review %>
-    <%= f.text_field :review %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :dish_id, :value => current_dish.id %>
 
   <div class="actions">
     <%= f.submit %>

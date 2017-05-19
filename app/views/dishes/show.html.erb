@@ -1,8 +1,9 @@
 <div>
   <div>
     <div>
+      <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
       <h4><% @dish.name %></h4>
-      <p>
+
         <strong>Description:</strong>
         <%=@dish.description %>
       </p>
@@ -17,6 +18,7 @@
 
       <%= button_to 'Add to Cart', cart_items_path(dish_id: @dish.id)%>
       <p><%= link_to "Back to Dishes", dishes_path %></p>
+      <%= link_to 'Add Review', new_dish_review_path(@dish) %>
     </div>
   </div>
 </div>

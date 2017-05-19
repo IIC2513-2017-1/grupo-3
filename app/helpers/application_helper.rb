@@ -7,3 +7,7 @@ module ApplicationHelper
     end
   end
 end
+
+def current_dish
+  @current_dish ||= Dish.find_by(params[:id])
+end

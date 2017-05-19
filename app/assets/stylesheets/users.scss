@@ -45,7 +45,7 @@ table.users-table  {
 
 th.users-table {
   height: 25px;
-  
+
 }
 
 td.users-table {
@@ -64,4 +64,54 @@ table.users-table, td.users-table, th.users-table {
 #new-users-button {
   margin-left:auto;
   margin-right:auto;
+}
+
+div.profile-container {
+
+  margin: 25px;
+  padding: 25px;
+  font-size: 16px;
+
+  h4 {
+    text-transform: uppercase;
+  }
+
+  p {
+    padding-top: 4px;
+    padding-bottom: 1px;
+
+    span {
+      height: 50%;
+    }
+
+  }
+
+  div.info {
+    border-bottom: 1px solid #d3d3d3;
+  }
+
+  div.profile {
+    display: flex;
+
+    .profile-pic {
+      float: left;
+      width: 200px;
+      margin: 15px;
+      border: 1px solid #d3d3d3;
+    }
+
+    .profile-1 {
+      float: left;
+      width: 300px;
+      margin: 15px;
+    }
+
+    .profile-2 {
+      float: left;
+      width: 300px;
+      margin: 15px;
+    }
+
+  }
+
 }

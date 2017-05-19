@@ -1,69 +1,67 @@
-<p id="notice"><%= notice %></p>
+<div class="profile-container">
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <h2>
+    <%= @user.first_name %> <%= @user.last_name %>
+  </h2>
+  <h4><%= @user.role %></h4>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <div class="profile">
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <div class="profile-pic">
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+      Profile pic
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+    </div>
 
-<p>
-  <strong>Password confirmation:</strong>
-  <%= @user.password_confirmation %>
-</p>
+    <div class="profile-1">
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
+      <div class="info">
+        <p>
+          <%= image_tag "email_icon.png", size: "30x30", id: "icon" %>
+          <%= @user.email %>
+        </p>
+      </div>
 
-<% if @user.is_cook? %>
+      <div class="info">
+        <p>
+          <%= image_tag "number_icon.png", size: "30x30", id: "icon" %>
+          <%= @user.phone %>
+        </p>
+      </div>
+
+      <div class="info">
+        <p>
+          <%= image_tag "address_icon.png", size: "30x30", id: "icon" %>
+          <%= @user.address %>
+        </p>
+      </div>
+
+      <% if @user.is_cook? %>
+        <div class="info">
+          <p>
+            <%= image_tag "points_icon.png", size: "30x30", id: "icon" %>
+            <%= @user.points %>
+          </p>
+        </div>
+      <% end %>
+
+      <div class="info">
+        <p>
+          <%= image_tag "birth_date_icon.png", size: "30x30", id: "icon" %>
+          <%= @user.birth_date %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="profile-2">
 
 
-<% else %>
-<p>
-  <strong>Points:</strong>
-  <%= @user.points %>
-</p>
-<% end %>
+    </div>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  </div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
-  <%= @user.birth_date %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

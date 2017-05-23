@@ -49,5 +49,7 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'dishes#index', :constraints  => { :tag => /[^\/]+/ }
 
+  get '/admin_help' => 'static_pages#admin_help'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

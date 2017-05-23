@@ -1,67 +1,36 @@
-<div class="profile-container">
-
-  <h2>
-    <%= @user.first_name %> <%= @user.last_name %>
-  </h2>
-  <h4><%= @user.role %></h4>
-
-  <div class="profile">
-
-    <div class="profile-pic">
-
-      Profile pic
-
+<div class="profile">
+  <h1 class="title"><span>Eats</span> User Profile</h1>
+  <div class="user-profile">
+  	<img class="avatar" src="http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png" alt="Ash" />
+      <div class="username"><%= @user.first_name %> <%= @user.last_name %></div>
+    <div class="bio">
+    	<%= @user.role %>
     </div>
-
-    <div class="profile-1">
-
-      <div class="info">
-        <p>
-          <%= image_tag "email_icon.png", size: "30x30", id: "icon" %>
-          <%= @user.email %>
-        </p>
+      <div class="points">
+        <%= @user.points %> POINTS
       </div>
-
-      <div class="info">
-        <p>
-          <%= image_tag "number_icon.png", size: "30x30", id: "icon" %>
-          <%= @user.phone %>
-        </p>
-      </div>
-
-      <div class="info">
-        <p>
-          <%= image_tag "address_icon.png", size: "30x30", id: "icon" %>
-          <%= @user.address %>
-        </p>
-      </div>
-
-      <% if @user.is_cook? %>
-        <div class="info">
-          <p>
-            <%= image_tag "points_icon.png", size: "30x30", id: "icon" %>
-            <%= @user.points %>
-          </p>
-        </div>
-      <% end %>
-
-      <div class="info">
-        <p>
-          <%= image_tag "birth_date_icon.png", size: "30x30", id: "icon" %>
-          <%= @user.birth_date %>
-        </p>
-      </div>
-
-    </div>
-
-    <div class="profile-2">
-
-
-    </div>
-
+    <ul class="data">
+      <li>
+        <span class="entypo-paper-plane"> <%= @user.email %></span>
+      </li>
+      <li>
+        <span class="entypo-phone"> <%= @user.phone %></span>
+      </li>
+      <li>
+        <span class="entypo-address"> <%= @user.address %></span>
+      </li>
+   </ul>
   </div>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <div class="links">
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+  </div>
+</div>
+<div class="fav">
+  <h1 class="profile-title">Favorite Cooks</h2>
+</div>
 
+<div class="fav">
+  <h1 class="profile-title">Favorite Dishes</h2>
 </div>

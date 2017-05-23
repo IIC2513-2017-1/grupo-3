@@ -34,14 +34,6 @@
 
 <h1>Dishes</h1>
 
-<!--
-<div id="tag_cloud">
-  <% tag_cloud Dish.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
--->
-
 <% if @recipes.blank? && @dishes.size <= 0 %>
 
     <h4>There are no dishes avaliable at this moment.</h4>

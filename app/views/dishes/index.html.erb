@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%if admin?%>
+<%if current_user && admin?%>
   <h1>Dishes Database Info</h1>
   <table class="dishes-table">
     <thead>
@@ -53,7 +53,9 @@
 
       <div class="dish-buttons">
         <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
-        <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :method => :get, :id => "dish-button"%>
+        <%if current_user && admin?%>
+          <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :method => :get, :id => "dish-button"%>
+        <% end %>
       </div>
     </div>
   <% end %>

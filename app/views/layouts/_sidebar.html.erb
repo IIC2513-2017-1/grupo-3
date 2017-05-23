@@ -5,7 +5,7 @@
     <a id="navbar-item" href="#">Your Locations</a>
     <a id="navbar-item" href="#">New Promotion</a>
   <% elsif current_user && current_user.is_admin? %>
-    <%= link_to 'App Database', admin_help_path %>
+    <%= link_to 'Database', admin_help_path, {style: "font-size: 16px;"} %>
   <% else %>
     <a id="navbar-item" href="#">Promotions</a>
     <a id="navbar-item" href="#">Popular Cooks</a>

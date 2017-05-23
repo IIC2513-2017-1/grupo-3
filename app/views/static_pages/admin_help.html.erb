@@ -1,6 +1,6 @@
 <%if current_user && admin?%>
 
-  <h1>Users Database Info</h1>
+  <h2>Users Database Info</h2>
 
   <div class="users-table">
     <table class="users-table">
@@ -46,11 +46,12 @@
   <br>
   <br>
 
-  <h1>Dishes Database Info</h1>
+  <h2>Dishes Database Info</h2>
 
   <table class="dishes-table">
     <thead>
       <tr class="dishes-table">
+        <th class="dishes-table">Dish ID</th>
         <th class="dishes-table">Name</th>
         <th class="dishes-table">Price</th>
         <th class="dishes-table">Cook</th>
@@ -62,6 +63,7 @@
     <tbody>
       <% @dishes.each do |dish| %>
         <tr class="dishes-table">
+          <td class="dishes-table"><%= dish.id %></td>
           <td class="dishes-table"><%= dish.name %></td>
           <td class="dishes-table"><%= dish.price %></td>
           <td class="dishes-table"><%= dish.user.first_name %> <%= dish.user.last_name %></td>
@@ -69,6 +71,62 @@
           <td><%= link_to 'Show', dish %></td>
           <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
           <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+
+  <h2>Tags Database Info</h2>
+
+  <table class="tags-table">
+    <thead>
+      <tr class="tags-table">
+        <th class="tags-table">Tag ID</th>
+        <th class="tags-table">Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr class="tags-table">
+          <td class="tags-table"><%= tag.id %></td>
+          <td class="tags-table"><%= tag.name %></td>
+          <td><%= link_to 'Show', tag %></td>
+          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+
+  <h2>Categories Database Info</h2>
+
+  <table class="categories-table">
+    <thead>
+      <tr class="categories-table">
+        <th class="categories-table">Category ID</th>
+        <th class="categories-table">Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr class="categories-table">
+          <td class="categories-table"><%= category.id %></td>
+          <td class="categories-table"><%= category.name %></td>
+          <td><%= link_to 'Show', category %></td>
+          <td><%= link_to 'Edit', edit_category_path(category) %></td>
+          <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

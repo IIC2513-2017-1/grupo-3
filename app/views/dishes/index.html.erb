@@ -1,38 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
-<%if current_user && admin?%>
-  <h1>Dishes Database Info</h1>
-  <table class="dishes-table">
-    <thead>
-      <tr class="dishes-table">
-        <th class="dishes-table">Name</th>
-        <th class="dishes-table">Price</th>
-        <th class="dishes-table">Cook</th>
-        <th class="dishes-table">Times buyed</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @dishes.each do |dish| %>
-        <tr class="dishes-table">
-          <td class="dishes-table"><%= dish.name %></td>
-          <td class="dishes-table"><%= dish.price %></td>
-          <td class="dishes-table"><%= dish.user.first_name %> <%= dish.user.last_name %></td>
-          <td class="dishes-table"><%= dish.times_buyed %></td>
-          <td><%= link_to 'Show', dish %></td>
-          <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-          <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<br>
-<% end %>
-
-<h1>Dishes</h1>
+<h1>Menu</h1>
 
 <% if @recipes.blank? && @dishes.size <= 0 %>
 
@@ -52,9 +20,9 @@
       </p>
 
       <div class="dish-buttons">
-        <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
-        <%if current_user && admin?%>
-          <%= button_to 'Add to Cart', cart_items_path(dish_id: dish.id), :method => :get, :id => "dish-button"%>
+        <%= link_to 'Show', dish %> |
+        <%if current_user %>
+          <%= link_to 'Add to Cart', cart_items_path(dish_id: dish.id) %>
         <% end %>
       </div>
     </div>

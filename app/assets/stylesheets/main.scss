@@ -90,6 +90,11 @@ label {
   display: block;
 }
 
+.index-main {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
 ul.navbar {
     list-style-type: none;
     padding: 0;
@@ -97,6 +102,7 @@ ul.navbar {
     background-color: #fff;
     border-radius: 10px 10px 0px 0px;
     width: 95%;
+    border-bottom: 1px solid #d3d3d3;
 }
 
 li#navbar {

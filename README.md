@@ -1,6 +1,6 @@
-# grupo-3
+# GRUPO 3 - Gustavo Antunes | Federico Kunze
 
-[Visit our website](http://eats-cl.herokuapp.com/)
+Visit our website [Eats!](http://eats-cl.herokuapp.com/)
 
 Steps necessary to get the application up and running:
 

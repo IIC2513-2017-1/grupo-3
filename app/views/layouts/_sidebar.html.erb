@@ -4,6 +4,8 @@
     <a id="navbar-item" href="#">Partners</a>
     <a id="navbar-item" href="#">Your Locations</a>
     <a id="navbar-item" href="#">New Promotion</a>
+  <% elsif current_user && current_user.is_admin? %>
+    <a id="navbar-item" href="#">App Info</a>
   <% else %>
     <a id="navbar-item" href="#">Promotions</a>
     <a id="navbar-item" href="#">Popular Cooks</a>

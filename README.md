@@ -1,5 +1,7 @@
 # grupo-3
 
+[Visit our website](http://eats-cl.herokuapp.com/)
+
 Steps necessary to get the application up and running:
 
 1. bundle update (if neccesary)

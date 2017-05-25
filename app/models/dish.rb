@@ -36,11 +36,7 @@ class Dish < ApplicationRecord
   end
 
   def avg_forks
-    count = 0
-    reviews.each do |review|
-      count += 0 unless review.rate.forks
-    end
-    count / rates.size
+    reviews.sum(:forks).to_f / reviews.size
   end
 
   def tag_list=(names)

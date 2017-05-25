@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   resources :tags
+  resources :reviews
 
   resources :dishes, swallow: true do
     resources :reviews
-    resources :rates
     resources :tags
     resources :pictures, only: [:index]
   end

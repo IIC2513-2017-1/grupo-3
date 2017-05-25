@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def avg_stars
-    count = 0
+    count = 0.0
     dishes.each do |dish|
       count += dish.avg_forks
     end

@@ -1,11 +1,9 @@
 class Review < ApplicationRecord
 
-  validates :body, presence: true, length: { maximum: 500 }
-  validates :title, presence: true, length: { maximum: 45 }
-
+  validates :body, length: { maximum: 500 }
+  validates :title, length: { maximum: 45 }
+  validates :forks, presence: true, allow_blank: true, :inclusion => { :in => [0,5] }
   belongs_to :user
   belongs_to :dish
-  has_one :rate, dependent: :destroy
-  accepts_nested_attributes_for :rate
 
 end

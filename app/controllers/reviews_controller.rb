@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :reviewer?, only: [:edit, :update, :destroy]
   before_action :is_admin, only: [:index]
+
   include ApplicationHelper
 
   # GET /reviews
@@ -18,7 +19,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    @review.rate.rate_form
   end
 
   # GET /reviews/1/edit

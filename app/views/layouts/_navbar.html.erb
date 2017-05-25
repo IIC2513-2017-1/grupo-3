@@ -40,13 +40,14 @@ Dropdown</button>
         </a>
         <div class="dropdown-content">
           <ul class="dropdown">
-            <li><%= link_to "Profile", current_user %></li>
+            <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
             <% if current_user.is_cook? %>
-              <li><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>
+              <li class="dropdown-item"><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>
             <% end %>
-            <li><%= link_to "Cart", cart_path %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <li class="dropdown-item"><%= link_to "Cart", cart_path %></li>
+            <li class="dropdown-item"><%= link_to "Shopping history", shopping_history_path %></li>
+            <li class="dropdown-item"><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li class="dropdown-item"><%= link_to "Log out", logout_path, method: "delete" %></li>
           </ul>
 
         </div>

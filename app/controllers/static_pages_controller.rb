@@ -7,4 +7,9 @@ class StaticPagesController < ApplicationController
     @categories = Category.all
   end
 
+  def shopping_history
+    @user = current_user
+    @orders = Order.select { |order| order.user_id == @user.id }
+  end
+
 end

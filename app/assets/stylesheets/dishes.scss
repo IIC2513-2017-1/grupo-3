@@ -4,7 +4,7 @@
 
 div.dish-display {
  width: 250px;
- margin-top: 35px; 
+ margin-top: 35px;
  display: inline-block;
  vertical-align: top;
  *display: inline;
@@ -74,6 +74,11 @@ div.dish-buttons {
 
 #dish-button {
   margin: 2px;
+}
+
+.dish-avatar {
+  width: 200px;
+  height: 200px;
 }
 
 div.new-dishes-button {

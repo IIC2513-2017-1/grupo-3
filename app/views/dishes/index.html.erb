@@ -11,7 +11,9 @@
     <div class="dish-display" >
       <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
       <% if dish.pictures.first %>
-       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar" %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+      <% else %>
+        <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
       <% end %>
       <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
       <p><%= dish.description %></p>

@@ -1,36 +1,35 @@
-<div class="profile">
-  <h1 class="title"><span>Eats</span> User Profile</h1>
-  <div class="user-profile">
-  	<img class="avatar" src="http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png" alt="Ash" />
-      <div class="username"><%= @user.first_name %> <%= @user.last_name %></div>
-    <div class="bio">
-    	<%= @user.role %>
-    </div>
-      <div class="points">
-        <%= @user.points %> POINTS
-      </div>
+
+<h1 class="title"><span>Eats</span> User Profile</h1>
+<div class="user-container">
+  <div class="user-card">
+    <img class="avatar" src="http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png" alt="User profile picture" />
+        <h1 class="profile-title"><%= @user.first_name %> <%= @user.last_name %></h2>
     <ul class="data">
-      <li>
+      <li class="data">
         <span class="entypo-paper-plane"> <%= @user.email %></span>
       </li>
-      <li>
+      <li class="data">
         <span class="entypo-phone"> <%= @user.phone %></span>
       </li>
-      <li>
+      <li class="data">
         <span class="entypo-address"> <%= @user.address %></span>
       </li>
    </ul>
   </div>
 
-  <div class="links">
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
+
+  <div class="user-info">
+    <div class="fav">
+      <h1 class="profile-title">Favorite Cooks</h2>
+    </div>
+
+    <div class="fav">
+      <h1 class="profile-title">Favorite Dishes</h2>
+    </div>
   </div>
 </div>
-<div class="fav">
-  <h1 class="profile-title">Favorite Cooks</h2>
-</div>
 
-<div class="fav">
-  <h1 class="profile-title">Favorite Dishes</h2>
+<div class="links">
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
 </div>

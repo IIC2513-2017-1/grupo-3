@@ -4,7 +4,11 @@
     <img class="avatar" src="http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png" alt="User profile picture" />
         <h1 class="profile-title"><%= @user.first_name %> <%= @user.last_name %></h2>
         <h2 class="role"><%= @user.role %></h2>
-        <h4><%= '%.2f' % @user.avg_stars %> Stars</h4>
+        <% if @user.dishes.size > 0%>
+          <h4><%= '%.2f' % @user.avg_stars %> Stars</h4>
+        <% else %>
+          <h4> 0 Stars</h4>
+        <% end %>
     <ul class="data">
       <li class="data">
         <span class="entypo-paper-plane"> <%= @user.email %></span>

@@ -16,9 +16,18 @@ class Dish < ApplicationRecord
 
   def self.search(search)
     if search
-      self.where("(user_id like ? OR user_id like ?) OR (category like ? OR category like ?)", "#{search}%", "% #{search}%", "#{search}%", "% #{search}%")
+      users_ids = User.where('(lower(first_name) LIKE ? OR lower(last_name) LIKE ?)',
+                "#{search}%".downcase, "#{search}%".downcase).ids
+      tags_ids = Tag.where('(lower(name) LIKE ? OR lower(name) LIKE ?)',
+                "#{search}%".downcase, "% #{search}%".downcase).ids
+      joins(:taggings).where('(lower(name) LIKE ? OR lower(name) LIKE ?)
+            OR (lower(description) LIKE ? OR lower(description) LIKE ?)
+            OR (user_id IN (?))
+            OR ((taggings.tag_id IN (?)) AND (taggings.dish_id IN (?)))',
+      "#{search}%".downcase, "% #{search}%".downcase, "#{search}%".downcase, "% #{search}%".downcase,
+      users_ids, tags_ids, ids).distinct
     else
-      self.all
+      all
     end
   end
 
@@ -27,8 +36,8 @@ class Dish < ApplicationRecord
   end
 
   def self.tag_counts
-    Tag.select("tags.id, tags.name,count(taggings.tag_id) as count").
-    joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
+    Tag.select('tags.id, tags.name,count(taggings.tag_id) as count').
+    joins(:taggings).group('taggings.tag_id, tags.id, tags.name')
   end
 
   def tag_list

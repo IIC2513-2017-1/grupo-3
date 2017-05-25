@@ -12,11 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.radio_button(:forks, 5) %> <%= f.label(:forks.to_s + "_5", "Awesome !") %>
-    <%= f.radio_button(:forks, 4) %> <%= f.label(:forks.to_s + "_4", "Pretty good") %>
-    <%= f.radio_button(:forks, 3) %> <%= f.label(:forks.to_s + "_3", "So so") %>
-    <%= f.radio_button(:forks, 2) %> <%= f.label(:forks.to_s + "_2", "Kinda bad") %>
-    <%= f.radio_button(:forks, 1) %> <%= f.label(:forks.to_s + "_1", "Very bad") %>
+    <% 1.upto(5) do |i| %>
+      <%= f.radio_button :forks, i %><%= f.label(:forks.to_s + "_" + i.to_s, i.to_s + " Forks") %>
+    <% end %>
   </div>
 
   <div class="field">

@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @review.rate.rate_form
   end
 
   # GET /reviews/1/edit
@@ -81,7 +82,8 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :body, :dish_id, :user_id, current_dish, current_user)
+      params.require(:review).permit(:title, :body, :forks, :dish_id, :user_id,
+      current_dish, current_user)
     end
 
     def new_release

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   resources :tags
-  resources :reviews
-  resources :rates
 
   resources :dishes, swallow: true do
     resources :reviews

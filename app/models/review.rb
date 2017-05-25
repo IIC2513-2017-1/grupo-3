@@ -5,6 +5,7 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :dish
-  has_one :rate
+  has_one :rate, dependent: :destroy
+  accepts_nested_attributes_for :rate
 
 end

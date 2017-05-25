@@ -2,8 +2,11 @@
   <div>
     <div>
       <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-      <h4><% @dish.name %></h4>
 
+      <h2><%= @dish.name %></h2>
+
+      <h4>Forks: </h4>
+      <p>
         <strong>Description:</strong>
         <%=@dish.description %>
       </p>
@@ -13,8 +16,17 @@
       </p>
       <p>
         <strong>Times buyed:</strong>
-        <%= @dish.times_buyed %>
+        <%= 0 unless @dish.times_buyed %>
       </p>
+
+      <div>
+        <% Review.where(dish_id: @dish.id).each do |review| %>
+          <div class="reviews-display" >
+            <h4><%= review.title %></h4><p>by <%= review.user.name %></p>
+            <p><%= review.body %></p>
+          </div>
+        <% end %>
+      </div>
 
       <%= button_to 'Add to Cart', cart_items_path(dish_id: @dish.id)%>
       <p><%= link_to "Back to Dishes", dishes_path %></p>

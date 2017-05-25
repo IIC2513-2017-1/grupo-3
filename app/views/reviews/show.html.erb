@@ -1,3 +1,16 @@
+<%@user = User.find(@review.user_id)%>
+
+
+
+<p>
+  <strong>Forks:</strong>
+  <%= 0 unless @review.forks%>
+</p>
+
+<p>
+  <%= @review.title %> by <%= @user.name %>
+</p>
+
 <p>
   <strong>Title:</strong>
   <%= @review.title %>

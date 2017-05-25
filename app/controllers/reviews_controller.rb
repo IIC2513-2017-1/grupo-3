@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :reviewer?, only: [:edit, :update, :destroy]
+  before_action :is_admin, only: [:index]
+
+  include ApplicationHelper
 
   # GET /reviews
   # GET /reviews.json
@@ -25,7 +29,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
+    @review.user_id = current_user.id
+    @review.dish_id = current_dish.id
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
@@ -67,8 +72,24 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
+    def is_admin
+      redirect_to(dishes_path) unless admin?
+    end
+
+    def reviewer?
+      redirect_to(dishes_path) unless current_user.id == @review.user_id
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:review)
+      params.require(:review).permit(:title, :body, :forks, :dish_id, :user_id,
+      current_dish, current_user)
+    end
+
+    def new_release
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 end

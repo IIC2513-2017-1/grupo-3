@@ -7,9 +7,10 @@ class Dish < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :cart_items
-  has_many :carts, :through => :cart_items
+  has_many :carts, through: :cart_items
   belongs_to :user
-  has_many :pictures, :dependent => :destroy
+  has_many :pictures, dependent: :destroy
+  has_many :reviews
 
   # default_scope { where(active: true) }
 
@@ -32,6 +33,10 @@ class Dish < ApplicationRecord
 
   def tag_list
     tags.map(&:name).join(', ')
+  end
+
+  def avg_forks
+    reviews.sum(:forks).to_f / reviews.size
   end
 
   def tag_list=(names)

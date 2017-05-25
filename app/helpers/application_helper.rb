@@ -7,3 +7,11 @@ module ApplicationHelper
     end
   end
 end
+
+def current_dish
+  @current_dish ||= Dish.find_by(params[:id])
+end
+
+def current_review
+  @current_review ||= Review.find_by(params[:id])
+end

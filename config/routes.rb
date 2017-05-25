@@ -6,11 +6,9 @@ Rails.application.routes.draw do
 
   resources :tags
   resources :reviews
-  resources :rates
 
   resources :dishes, swallow: true do
     resources :reviews
-    resources :rates
     resources :tags
     resources :pictures, only: [:index]
   end
@@ -36,6 +34,8 @@ Rails.application.routes.draw do
   delete '/cart_items' => 'cart_items#destroy'
 
   get 'users/:id/dishes' => 'dishes#index', :as => :user_dishes_path
+
+  # get 'dishes/:id/reviews/new' => 'reviews#new', :as => :new_dish_review_path
 
   get '/signup' => 'users#new'
 

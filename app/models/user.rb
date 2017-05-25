@@ -52,6 +52,14 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def avg_stars
+    count = 0.0
+    dishes.each do |dish|
+      count += dish.avg_forks
+    end
+    count / dishes.size
+  end
+
   # Activates an account.
   def activate
     update_attribute(:activated,    true)

@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 div.new-user-form, div.login-form {
 
   margin: auto;
@@ -131,6 +130,10 @@ div.profile-container {
   margin-bottom: 50px;
 }
 
+.title span {
+  color: #a50000;
+}
+
 .user-card {
   width: 20%;
   display: 1;
@@ -143,11 +146,13 @@ div.profile-container {
     border-radius: 500px;
   }
 
+  .role {
+    text-transform: uppercase;
+  }
+
   ul.data {
-  	margin: 6em auto;
-  	height: 3.70em;
-    text-align: center;
-    border-radius: 0 0 .3em .3em;
+    text-align: left;
+    font-size: 15px;
   }
 
   li.data {
@@ -161,67 +166,23 @@ div.profile-container {
   display: 1;
 }
 
+.fav {
+  margin-top: 10px;
+  margin-bottom: 90px;
+}
+
+
 // END
 
-/*
-CSS design by @jofpin
-source: http://codepen.io/jofpin/pen/svtHc
-*/
-@import url(http://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda);
-@import url(http://weloveiconfonts.com/api/?family=entypo);
+
 
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }
 
-.profile {
-  margin: 50px;
-}
 
-.title {
-  color: #333;
-  font-family: "Coda", sans-serif;
-  text-align: center;
-}
-.title span {
-  color: #a50000;
-}
 
-.user-profile {
-  margin: auto;
-	width: 60em;
-  height: 30em;
-  background: #fff;
-  border-radius: .3em;
-}
 
-.user-profile .username {
-  margin:15px;
-  margin-top: -160px;
-  margin-left: 220px;
-  color: #333;
-  font-size: 50px;
-  font-family: "Coda", sans-serif;
-  font-weight: bold;
-}
-.user-profile .bio {
-  margin: auto;
-  display: inline-block;
-  margin-left: 250px;
-  color: #e76043;
-  font-size: 15px;
-  font-family: "varela round", sans-serif;
-}
-.user-profile > .points {
-  margin: auto;
-  margin-top: 1.35em;
-  margin-right: 4.43em;
-  margin-bottom: 50px;
-  width: 44em;
-  color: #333;
-  font-size: .87em;
-  font-family: "varela round", sans-serif;
-}
 .user-profile > img.avatar {
 	padding: 10px;
   margin-left: .3em;
@@ -264,9 +225,4 @@ source: http://codepen.io/jofpin/pen/svtHc
 h1.profile-title {
   color: #5a0000;
   font-family: "Coda", sans-serif;
-}
-
-.fav {
-  margin-top: 10px;
-  margin-bottom: 90px;
 }

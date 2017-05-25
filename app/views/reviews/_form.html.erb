@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :forks %>
-    <%= f.select(:forks, [0, 1, 2, 3, 4 ,5], {}, { :prompt => "Select Forks", :class => 'forks_form' }) %>
+    <% 1.upto(5) do |i| %>
+      <%= f.radio_button :forks, i %><%= f.label(:forks.to_s + "_" + i.to_s, i.to_s + " Forks") %>
+    <% end %>
   </div>
 
   <div class="field">

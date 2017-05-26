@@ -3,7 +3,6 @@ class Dish < ApplicationRecord
   validates :name, presence: true, length: { maximum: 25 }
   validates :description, presence: true, length: { maximum: 200 }
 
-  has_and_belongs_to_many :categories
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :cart_items
@@ -11,6 +10,9 @@ class Dish < ApplicationRecord
   belongs_to :user
   has_many :pictures, dependent: :destroy
   has_many :reviews
+
+  has_many :categorizings
+  has_many :categories, through: :categorizings
 
   # default_scope { where(active: true) }
 
@@ -51,6 +53,25 @@ class Dish < ApplicationRecord
   def tag_list=(names)
     self.tags = names.split(',').map do |n|
       Tag.where(name: n.strip).first_or_create!
+    end
+  end
+
+
+  def self.categorized_with(name)
+    Category.find_by!(name: name).dishes
+  end
+
+  def self.category_counts
+    Category.select('categories.*, count(categorizings.tag_id) as count').joins(:categorizings).group('categorizings.category_id')
+  end
+
+  def category_list
+    categories.map(&:name).join(', ')
+  end
+
+  def category_list=(names)
+    self.categories = names.split(',').map do |n|
+      Category.where(name: n.strip).first_or_create!
     end
   end
 

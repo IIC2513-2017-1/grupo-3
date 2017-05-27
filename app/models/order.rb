@@ -1,18 +1,21 @@
 class Order < ApplicationRecord
+  #attr_protected :id, :customer_ip, :status, :error_message, :updated_at, :created_at
+  #attr_accessor :card_type, :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
   validates :card_number, presence: true, if: :paid_with_card?
+  validates_size_of :order_items, :minimum => 1
   validates :status, presence: true, inclusion: { in: %w(UNPAID PAID DELIVERED RECIEVED),
     message: "%{value} is not valid" }
 
-  has_many :dishes, through: :order_items
   belongs_to :user
-  belongs_to :cart
+  has_many :order_items
+  has_many :dishes, through: :order_items
 
   def total_price
-    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    order_items.map {|order_item| order_item.total_price}.sum
   end
 
   def paid_with_card?
-    payment_type == "card"
+    payment_method == "Credit Card"
   end
 
   def update_price

@@ -4,16 +4,45 @@
   Your order details
 </h1>
 
-<ul>
-  <% order.dishes.each do |item| %>
-    <li>
-      <b><%= item.name %></b>
-    </li>
-    <li>
-      <b><%= item.price %></b>
-    </li>
-    <li>
-      <b><%= item.user.name %></b>
-    </li>
+<p>
+  Status: <%= @order.status %>
+</p>
+
+<table id="order_items">
+  <tr>
+    <th>Dish</th>
+    <th>Cook</th>
+    <th>Quantity</th>
+    <th class="price">Unit Price</th>
+    <th class="price">Full Price</th>
+  </tr>
+  <% @order.order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.dish.name %></td>
+      <td><%= order_item.dish.user.name %></td>
+      <td class="qty"><%= order_item.quantity %></td>
+      <td class="price"><%= number_to_currency(order_item.unit_price) %></td>
+      <td class="price"><%= number_to_currency(order_item.total_price) %></td>
+    </tr>
   <% end %>
-</ul>
+  <tr>
+    <td class="taxes" colspan="5">
+      Taxes (19%): <%= number_to_currency(@order.total_price * 0.19) %>
+    </td>
+  </tr>
+  <tr>
+    <td class="total price" colspan="5">
+      Total: <%= number_to_currency(@order.total_price) %>
+    </td>
+  </tr>
+  <tr>
+    <td class="tips" colspan="5">
+      Tips: <%= number_to_currency(@order.total_price * 0.1) %>
+    </td>
+  </tr>
+  <tr>
+    <td class="tips" colspan="4">
+      Final Price: <%= number_to_currency(@order.total_price * 1.1) %>
+    </td>
+  </tr>
+</table>

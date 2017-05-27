@@ -94,27 +94,17 @@ ActiveRecord::Schema.define(version: 20170527200305) do
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
   end
 
-  create_table "order_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
-    t.decimal  "final_price",     precision: 12, scale: 3
+    t.decimal  "final_price",    precision: 12, scale: 3
     t.string   "status"
     t.boolean  "tipping"
-    t.decimal  "tips",            precision: 12, scale: 3
+    t.decimal  "tips",           precision: 12, scale: 3
     t.string   "payment_method"
     t.time     "delivery_time"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "card_number"
-    t.integer  "dish_id"
     t.integer  "user_id"
-    t.integer  "order_status_id"
-    t.index ["dish_id"], name: "index_orders_on_dish_id", using: :btree
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -195,8 +185,6 @@ ActiveRecord::Schema.define(version: 20170527200305) do
   add_foreign_key "favorites", "users"
   add_foreign_key "order_items", "dishes"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "order_statuses"
-  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "dishes"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "dishes"

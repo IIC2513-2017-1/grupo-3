@@ -3,6 +3,7 @@ class Cart < ApplicationRecord
   has_many :cart_items, :dependent => :destroy
   has_many :dishes, :through => :cart_items
   belongs_to :user, optional: true
+  has_many :orders
 
 
   def total_price

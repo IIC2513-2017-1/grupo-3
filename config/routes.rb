@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:show, :index] do
-    resources :dishes
+    member do
+      get :place_order
+    end
   end
 
   get "orders/order_completed/:id" => "orders#completed", as: "completed_order"
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
   resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'
     resources :carts
+    resources :orders, except: [:delete, :update]
   end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]

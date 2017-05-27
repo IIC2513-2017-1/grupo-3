@@ -13,9 +13,10 @@ class Cart < ApplicationRecord
   #   @data.inject(0) {|sum, item| CartItem.find(item[0].to_i).unit_price * item.quantity + sum}
   # end
 
-  def remove(item)
+  def remove_item(item_id)
+    item = cart_items.find(item_id)
     if item.amount > 1
-      item.update_attribute(:amount, item.amount - 1)
+      CartItem.update(item.id, amount: item.amount - 1)
     else
       CartItem.destroy(item.id)
     end

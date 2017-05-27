@@ -25,7 +25,7 @@ Dropdown</button>
 <nav>
   <ul class="navbar">
     <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "30x30", id: "menu-icon" %></span></li>
-    <li id="navbar"><a class="navbar-brand" href="./">Eats</a></li>
+    <li id="navbar"><a class="navbar-brand" href="/">Eats</a></li>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
     <li id="navbar">
     <%= form_tag(dishes_path, :method => "get", id: "search-form") do %>

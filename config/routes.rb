@@ -26,12 +26,16 @@ Rails.application.routes.draw do
     resources :dishes, only: [:index, :show]
   end
 
-  # post '/add_to_cart/:dish_id' => 'carts#add_to_cart', :as => 'add_to_cart'
-
-  resources :carts, only: [:show]
+  resources :carts do
+    member do
+      get :remove
+      get :delete
+    end
+  end
 
   resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'
+    resources :carts
   end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]

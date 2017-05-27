@@ -11,6 +11,17 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
   end
 
+  def remove
+    @item = @cart.remove_item(params[:id])
+    redirect_to cart_path(current_cart.id), notice: "Removed 1 #{@item.dish.name}"
+  end
+
+  def delete
+    @item = CartItem.find(params[:id])
+    @item.destroy
+    redirect_to cart_path(current_cart.id), notice: 'Cart item deleted'
+  end
+
   #
   #
   #
@@ -35,11 +46,7 @@ class CartsController < ApplicationController
   # end
 
 
-  # def remove
-  #   @dish = Dish.find(params[:id])
-  #   @item = @cart.remove_item(params[:id])
-  #   redirect_to dishes_path_url, notice: 'Removed 1 <em>#{item.name}</em>'
-    # flash[:notice] = 'Removed 1 <em>#{item.name}</em>'
+
 
   #   @cart.destroy if @cart == session[:cart]
   #   session[:cart] = nil

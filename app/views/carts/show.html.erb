@@ -3,10 +3,12 @@
 
   <table id="cart_items">
     <tr>
-      <th>Product</th>
-      <th>Qty</th>
+      <th>Dish</th>
+      <th>Quantity</th>
       <th class="price">Unit Price</th>
       <th class="price">Full Price</th>
+      <th> </th>
+      <th> </th>
     </tr>
     <% @cart.cart_items.each do |cart_item| %>
       <tr class="<%= cycle :odd, :even %>">
@@ -14,6 +16,8 @@
         <td class="qty"><%= cart_item.amount %></td>
         <td class="price"><%= number_to_currency(cart_item.unit_price) %></td>
         <td class="price"><%= number_to_currency(cart_item.total_price) %></td>
+        <td class="remove"> <%= link_to "Remove", remove_cart_path(cart_item.id) %></td>
+        <td class="delete"> <%= link_to "Remove All", delete_cart_path(cart_item.id) %></td>
       </tr>
     <% end %>
     <tr>

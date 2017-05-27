@@ -44,7 +44,8 @@ Dropdown</button>
             <% if current_user.is_cook? %>
               <li class="dropdown-item"><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>
             <% end %>
-            <li class="dropdown-item"><%= link_to "Cart", cart_path %></li>
+            <%@cart = current_cart %>
+            <li class="dropdown-item"><%= link_to "Cart", cart_path(current_cart) %></li>
             <li class="dropdown-item"><%= link_to "Shopping history", shopping_history_path %></li>
             <li class="dropdown-item"><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li class="dropdown-item"><%= link_to "Log out", logout_path, method: "delete" %></li>

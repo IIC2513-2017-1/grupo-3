@@ -12,7 +12,7 @@ class DishesController < ApplicationController
     end
     # @order_item = current_order.order_items.new
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
-    if params[:search]
+    if !params[:search].blank?
       @dishes = Dish.search(params[:search]).order("created_at DESC")
     else
       @dishes = Dish.all.order("created_at DESC")
@@ -24,6 +24,23 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @pictures = @dish.pictures
+  end
+
+  def add_to_cart
+    if session[:cart_id].blank?
+      cart = Cart.create(status: 'pending')
+      session[:cart_id] = cart.id
+    else
+      cart = Cart.find(session[:cart_id])
+    end
+      @dish = Dish.find(params[:id])
+      item = CartItem.where("dish_id = ?", @dish.id).first
+      if item.present?
+        CartItem.update(item.id, amount: item.amount + 1)
+      else
+        cart.cart_items.create(dish_id: @dish.id, amount: 1)
+      end
+      redirect_to cart, notice: "#{@dish.name} added to cart"
   end
 
   # GET /dishes/new

@@ -11,15 +11,27 @@ Rails.application.routes.draw do
     resources :reviews
     resources :tags
     resources :pictures, only: [:index]
+    member do
+      get :add_to_cart
+    end
   end
+
+  resources :orders, only: [:show, :index] do
+    resources :dishes
+  end
+
+  get "orders/order_completed/:id" => "orders#completed", as: "completed_order"
 
   resources :categories do
     resources :dishes, only: [:index, :show]
   end
 
+  # post '/add_to_cart/:dish_id' => 'carts#add_to_cart', :as => 'add_to_cart'
+
+  resources :carts, only: [:show]
+
   resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'
-    resources :carts, only: [:show]
   end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]
@@ -28,10 +40,10 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'sessions/new'
-  post '/cart_items' => 'cart_items#create'
-  get '/cart' => 'cart_items#index'
-  delete '/cart' => 'carts#destroy'
-  delete '/cart_items' => 'cart_items#destroy'
+  # post '/cart_items' => 'cart_items#create'
+  # get '/user/:id/cart' => 'carts#show', :as => :cart_path
+  # delete '/cart' => 'carts#destroy'
+  # delete '/cart_items' => 'cart_items#destroy'
 
   get 'users/:id/dishes' => 'dishes#index', :as => :user_dishes_path
 

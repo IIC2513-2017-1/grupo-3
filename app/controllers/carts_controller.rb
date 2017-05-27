@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  # before_action :set_cart, only: [:show, :destroy]
   # def destroy
   #   cart = session[:cart]
   #   item = cart.data.find { |item| item['product_id'] == params[:id].to_s }
@@ -6,13 +7,33 @@ class CartsController < ApplicationController
   #   redirect_to cart_path
   # end
 
-
-  def destroy
-    @cart = current_cart
-    @cart.destroy
-    session[:cart_id] = nil
-    redirect_to cart_path, notice: 'Your cart is now empty'
+  def show
+    @cart = Cart.find(params[:id])
   end
+
+  #
+  #
+  #
+  # def destroy
+  #   # @cart = current_cart
+  #   @cart.destroy
+  #   session[:cart] = nil
+  #   @cart = Cart.create
+  #   session[:cart] = @cart
+  #   redirect_to cart_path, notice: 'Your cart is now empty'
+  #
+  # end
+  #
+  # private
+  #
+  # def set_cart
+  #   @cart = Cart.find(params[:id])
+  # end
+
+  # def cart_params
+  #   params.require(:cart).permit(:id)
+  # end
+
 
   # def remove
   #   @dish = Dish.find(params[:id])

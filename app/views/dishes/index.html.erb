@@ -2,7 +2,7 @@
 
 <h1>Menu</h1>
 
-<% if @recipes.blank? && @dishes.size <= 0 %>
+<% if (@recipes.blank? && @dishes.size == 0) %>
 
     <h4>There are no dishes avaliable at this moment.</h4>
 
@@ -25,17 +25,10 @@
       Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
       </p>
 
+
       <div class="dish-buttons">
+        <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
         <%= link_to 'Show', dish %>
-        <%if current_user %>
-           | <%= link_to 'Add to Cart', cart_items_path(dish_id: dish.id) %>
-
-          <%if current_user.is_cook? || current_user.is_admin? %>
-             | <%= link_to 'Edit', edit_dish_path(dish) %>
-          <% end %>
-
-        <% end %>
-
       </div>
     </div>
   <% end %>

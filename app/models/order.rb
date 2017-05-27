@@ -1,10 +1,9 @@
 class Order < ApplicationRecord
   validates :card_number, presence: true, if: :paid_with_card?
-  validates :final_price, presence: true
   validates :status, presence: true, inclusion: { in: %w(UNPAID PAID DELIVERED RECIEVED),
     message: "%{value} is not valid" }
 
-  has_many :order_items
+  has_many :dishes, through: :order_items
   belongs_to :users
 
   def total_price

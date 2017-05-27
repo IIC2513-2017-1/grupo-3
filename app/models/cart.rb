@@ -1,26 +1,12 @@
 class Cart < ApplicationRecord
-  attr_reader :data
 
   has_many :cart_items, :dependent => :destroy
   has_many :dishes, :through => :cart_items
-  belongs_to :user
+  belongs_to :user, optional: true
 
 
-  def initialize(cart_data = {})
-    super()
-    @data = cart_data || Hash.new(0)
-  end
-
-  def add_dish(dish)
-    @data[dish.id.to_s] ||= 0
-    @data[dish.id.to_s] += 1
-  end
-
-  def items
-    @data.map do |dish_id, quantity|
-      dish = Dish.find(dish_id)
-      CartItem.new(dish, quantity)
-    end
+  def total_price
+    cart_items.map {|cart_item| cart_item.total_price}.sum
   end
 
   # def total
@@ -28,8 +14,8 @@ class Cart < ApplicationRecord
   # end
 
   def remove(item)
-    if item.quantity > 1
-      item.update_attribute(:quantity, item.quantity - 1)
+    if item.amount > 1
+      item.update_attribute(:amount, item.amount - 1)
     else
       CartItem.destroy(item.id)
     end

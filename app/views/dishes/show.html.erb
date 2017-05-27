@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <%= link_to 'Add Review', new_dish_review_path(@dish) %>
-      <%= button_to 'Add to Cart', cart_items_path(dish_id: @dish.id)%>
+      <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
       <p><%= link_to "Back to Dishes", dishes_path %></p>
 
     </div>

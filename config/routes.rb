@@ -68,5 +68,7 @@ Rails.application.routes.draw do
   get '/admin_help' => 'static_pages#admin_help'
   get '/shopping_history' => 'static_pages#shopping_history'
 
+  resources :favorite_dishes, only: [:create, :destroy]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

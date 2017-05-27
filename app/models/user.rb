@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :rates
   has_many :dishes
   has_many :orders
+  has_many :favorites
+  has_many :favorite_dishes, through: :favorites, source: :favorited, source_type: 'Dish'
   has_one  :cart
 
   def downcase_email

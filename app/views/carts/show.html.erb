@@ -11,7 +11,7 @@
       <th> </th>
     </tr>
     <% @cart.cart_items.each do |cart_item| %>
-      <tr class="<%= cycle :odd, :even %>">
+      <tr>
         <td><%= cart_item.dish.name %></td>
         <td class="qty"><%= cart_item.amount %></td>
         <td class="price"><%= number_to_currency(cart_item.unit_price) %></td>

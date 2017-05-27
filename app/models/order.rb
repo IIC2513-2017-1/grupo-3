@@ -4,7 +4,8 @@ class Order < ApplicationRecord
     message: "%{value} is not valid" }
 
   has_many :dishes, through: :order_items
-  belongs_to :users
+  belongs_to :user
+  belongs_to :cart
 
   def total_price
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum

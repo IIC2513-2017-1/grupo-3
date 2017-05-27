@@ -16,7 +16,7 @@ class Cart < ApplicationRecord
   def remove_item(item_id)
     item = cart_items.find(item_id)
     if item.amount > 1
-      CartItem.update(item.id, amount: item.amount - 1)
+      item.update(amount: item.amount - 1)
     else
       CartItem.destroy(item.id)
     end

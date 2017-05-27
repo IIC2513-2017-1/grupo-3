@@ -27,8 +27,13 @@
 
 
       <div class="dish-buttons">
-        <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
         <%= link_to 'Show', dish %>
+        <%if current_user %>
+           | <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
+          <%if (current_user.is_cook? && current_user.id == dish.user_id) || current_user.is_admin? %>
+             | <%= link_to 'Edit', edit_dish_path(dish) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>

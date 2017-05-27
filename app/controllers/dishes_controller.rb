@@ -48,6 +48,7 @@ class DishesController < ApplicationController
   # GET /dishes/new
   def new
     @dish = Dish.new
+    @categories = Category.all
   end
 
   # GET /dishes/1/edit

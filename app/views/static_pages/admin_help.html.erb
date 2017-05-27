@@ -1,135 +1,146 @@
 <%if current_user && admin?%>
 
-  <h2>Users Database Info</h2>
+  <h1>Database Info</h1>
 
-  <div class="users-table">
-    <table class="users-table">
-      <thead>
-        <tr class="users-table">
-          <th class="users-table">User ID</th>
-          <th class="users-table">Fist name</th>
-          <th class="users-table">Last name</th>
-          <th class="users-table">Email</th>
-          <th class="users-table">Address</th>
-          <th class="users-table">Points</th>
-          <th class="users-table">Role</th>
-          <th class="users-table">Phone</th>
-          <th class="users-table">Gender</th>
-          <th class="users-table">Birth date</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+  <main class="database-tabs">
+    <input class="database-tabs" id="tab1" type="radio" name="tabs" checked>
+    <label class="database-tabs" for="tab1">Users</label>
 
-      <tbody>
-        <% @users.each do |user| %>
-          <tr class="users-table">
-            <td class="users-table"><%= user.id %></td>
-            <td class="users-table"><%= user.first_name %></td>
-            <td class="users-table"><%= user.last_name %></td>
-            <td class="users-table"><%= user.email %></td>
-            <td class="users-table"><%= user.address %></td>
-            <td class="users-table"><%= user.points %></td>
-            <td class="users-table"><%= user.role %></td>
-            <td class="users-table"><%= user.phone %></td>
-            <td class="users-table"><%= user.gender %></td>
-            <td class="users-table"><%= user.birth_date %></td>
-            <td ><%= link_to 'Show', user %></td>
-            <td><%= link_to 'Edit', edit_user_path(user) %></td>
-            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <input class="database-tabs" id="tab2" type="radio" name="tabs">
+    <label class="database-tabs" for="tab2">Dishes</label>
+
+    <input class="database-tabs" id="tab3" type="radio" name="tabs">
+    <label class="database-tabs" for="tab3">Categories</label>
+
+    <input class="database-tabs" id="tab4" type="radio" name="tabs">
+    <label class="database-tabs" for="tab4">Tags</label>
+
+    <section class="database-tabs" id="content1">
+
+      <div class="users-table">
+        <table class="users-table">
+          <thead>
+            <tr class="users-table">
+              <th class="users-table">User ID</th>
+              <th class="users-table">Fist name</th>
+              <th class="users-table">Last name</th>
+              <th class="users-table">Email</th>
+              <th class="users-table">Address</th>
+              <th class="users-table">Points</th>
+              <th class="users-table">Role</th>
+              <th class="users-table">Phone</th>
+              <th class="users-table">Gender</th>
+              <th class="users-table">Birth date</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="users-table">
+                <td class="users-table"><%= user.id %></td>
+                <td class="users-table"><%= user.first_name %></td>
+                <td class="users-table"><%= user.last_name %></td>
+                <td class="users-table"><%= user.email %></td>
+                <td class="users-table"><%= user.address %></td>
+                <td class="users-table"><%= user.points %></td>
+                <td class="users-table"><%= user.role %></td>
+                <td class="users-table"><%= user.phone %></td>
+                <td class="users-table"><%= user.gender %></td>
+                <td class="users-table"><%= user.birth_date %></td>
+                <td ><%= link_to 'Show', user %></td>
+                <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="database-tabs" id="content2">
+
+      <table class="dishes-table">
+        <thead>
+          <tr class="dishes-table">
+            <th class="dishes-table">Dish ID</th>
+            <th class="dishes-table">Name</th>
+            <th class="dishes-table">Price</th>
+            <th class="dishes-table">Cook</th>
+            <th class="dishes-table">Times buyed</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
 
-  <br>
-  <br>
-  <br>
+        <tbody>
+          <% @dishes.each do |dish| %>
+            <tr class="dishes-table">
+              <td class="dishes-table"><%= dish.id %></td>
+              <td class="dishes-table"><%= dish.name %></td>
+              <td class="dishes-table"><%= dish.price %></td>
+              <td class="dishes-table"><%= dish.user.first_name %> <%= dish.user.last_name %></td>
+              <td class="dishes-table"><%= dish.times_buyed %></td>
+              <td><%= link_to 'Show', dish %></td>
+              <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+              <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <h2>Dishes Database Info</h2>
+    </section>
 
-  <table class="dishes-table">
-    <thead>
-      <tr class="dishes-table">
-        <th class="dishes-table">Dish ID</th>
-        <th class="dishes-table">Name</th>
-        <th class="dishes-table">Price</th>
-        <th class="dishes-table">Cook</th>
-        <th class="dishes-table">Times buyed</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <section class="database-tabs" id="content3">
 
-    <tbody>
-      <% @dishes.each do |dish| %>
-        <tr class="dishes-table">
-          <td class="dishes-table"><%= dish.id %></td>
-          <td class="dishes-table"><%= dish.name %></td>
-          <td class="dishes-table"><%= dish.price %></td>
-          <td class="dishes-table"><%= dish.user.first_name %> <%= dish.user.last_name %></td>
-          <td class="dishes-table"><%= dish.times_buyed %></td>
-          <td><%= link_to 'Show', dish %></td>
-          <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-          <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <table class="categories-table">
+        <thead>
+          <tr class="categories-table">
+            <th class="categories-table">Category ID</th>
+            <th class="categories-table">Name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <br>
-  <br>
-  <br>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr class="categories-table">
+              <td class="categories-table"><%= category.id %></td>
+              <td class="categories-table"><%= category.name %></td>
+              <td><%= link_to 'Show', category %></td>
+              <td><%= link_to 'Edit', edit_category_path(category) %></td>
+              <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <h2>Tags Database Info</h2>
+    </section>
 
-  <table class="tags-table">
-    <thead>
-      <tr class="tags-table">
-        <th class="tags-table">Tag ID</th>
-        <th class="tags-table">Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <section class="database-tabs" id="content4">
 
-    <tbody>
-      <% @tags.each do |tag| %>
-        <tr class="tags-table">
-          <td class="tags-table"><%= tag.id %></td>
-          <td class="tags-table"><%= tag.name %></td>
-          <td><%= link_to 'Show', tag %></td>
-          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <table class="tags-table">
+        <thead>
+          <tr class="tags-table">
+            <th class="tags-table">Tag ID</th>
+            <th class="tags-table">Name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <br>
-  <br>
-  <br>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr class="tags-table">
+              <td class="tags-table"><%= tag.id %></td>
+              <td class="tags-table"><%= tag.name %></td>
+              <td><%= link_to 'Show', tag %></td>
+              <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+              <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <h2>Categories Database Info</h2>
-
-  <table class="categories-table">
-    <thead>
-      <tr class="categories-table">
-        <th class="categories-table">Category ID</th>
-        <th class="categories-table">Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @categories.each do |category| %>
-        <tr class="categories-table">
-          <td class="categories-table"><%= category.id %></td>
-          <td class="categories-table"><%= category.name %></td>
-          <td><%= link_to 'Show', category %></td>
-          <td><%= link_to 'Edit', edit_category_path(category) %></td>
-          <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    </section>
+  </main class="database-tabs">
 
 <% end %>

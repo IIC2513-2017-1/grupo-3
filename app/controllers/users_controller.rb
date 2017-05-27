@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
       @user = User.find(params[:id])
-      @dish = Dish.find(params[:id])
+      @dishes = Dish.all
   end
 
   # GET /users/new

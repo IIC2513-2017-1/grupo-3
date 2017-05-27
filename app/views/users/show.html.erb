@@ -29,6 +29,48 @@
 
     <div class="fav">
       <h1 class="profile-title">Favorite Dishes</h2>
+
+        <% @dishes.each do |dish| %>
+          <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
+
+          <% else %>
+            <div class="dish-display" >
+
+              <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+
+              <% if dish.pictures.first %>
+               <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+              <% else %>
+                <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
+              <% end %>
+              <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+
+              <p><%= dish.description %></p>
+
+              <p>
+              Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
+              </p>
+
+              <p>
+              Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+              </p>
+
+              <div class="dish-buttons">
+                <%= link_to 'Show', dish %>
+                <%if current_user %>
+                   | <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
+                  <%if (current_user.is_cook? && current_user.id == dish.user_id) || current_user.is_admin? %>
+                     | <%= link_to 'Edit', edit_dish_path(dish) %>
+                  <% end %>
+                  <br>
+                  <%= link_to 'Remove from favorites', favorite_dish_path(dish), method: :delete %>
+                <% end %>
+              </div>
+
+            </div>
+          <% end %>
+        <% end %>
+
     </div>
   </div>
 </div>

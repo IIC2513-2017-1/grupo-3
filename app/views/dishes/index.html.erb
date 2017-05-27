@@ -37,7 +37,7 @@
           <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
             <%= link_to 'Add to favorites', favorite_dishes_path(dish_id: dish), method: :post %>
           <%- else -%>
-            <%= link_to 'Remove from favorites', favorite_dishes_path(dish), method: :delete %>
+            <%= link_to 'Remove from favorites', favorite_dish_path(dish), method: :delete %>
           <%- end -%>
         <% end %>
       </div>

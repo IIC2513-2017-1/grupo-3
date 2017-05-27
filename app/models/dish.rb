@@ -56,7 +56,6 @@ class Dish < ApplicationRecord
     end
   end
 
-
   def self.categorized_with(name)
     Category.find_by!(name: name).dishes
   end

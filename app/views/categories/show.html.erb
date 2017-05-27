@@ -1,9 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<h1>Category: <%= @category.name %></h1>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+    <% @category.dishes.each do |dish| %>
+    <div class="dish-display" >
+      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+      <% if dish.pictures.first %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+      <% else %>
+        <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
+      <% end %>
+      <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <p><%= dish.description %></p>
+      <p>
+      Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
+      </p>
+      <p>
+      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+      </p>
+      <div class="dish-buttons">
+        <%= link_to 'Show', dish %>
+        <%if current_user %>
+           | <%= link_to 'Add to Cart', cart_items_path(dish_id: dish.id) %>
+
+          <%if current_user.is_cook? || current_user.is_admin? %>
+             | <%= link_to 'Edit', edit_dish_path(dish) %>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+    <% end %>
+<br>
+
+<%= link_to 'Back', dishes_path %>

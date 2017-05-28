@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tag: <%= @tag.name %></h1>
+<h1>Tags: <%= @tag.name %></h1>
 
     <% @tag.dishes.each do |dish| %>
     <div class="dish-display" >
@@ -19,16 +19,11 @@
       Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
       </p>
       <div class="dish-buttons">
-        <%= link_to 'Show', dish %>
-        <%if current_user %>
-           | <%= link_to 'Add to Cart', cart_items_path(dish_id: dish.id) %>
-
+        <%= link_to 'Show', dish %> |
+        <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
           <%if current_user.is_cook? || current_user.is_admin? %>
              | <%= link_to 'Edit', edit_dish_path(dish) %>
           <% end %>
-
-        <% end %>
-
       </div>
     </div>
     <% end %>

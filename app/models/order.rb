@@ -1,8 +1,7 @@
 class Order < ApplicationRecord
   # include ActiveModel::ForbiddenAttributesProtection
-  #attr_protected :id, :customer_ip, :status, :error_message, :updated_at, :created_at
-  attr_accessor :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
-  validates :card_number, presence: true, if: :paid_with_card?
+  # attr_acce :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
+  # validates :card_number, presence: true, if: :paid_with_card?
   validates_size_of :order_items, :minimum => 1
   validates :status, presence: true, inclusion: { in: %w(UNPAID PAID DELIVERED RECIEVED),
     message: "%{value} is not valid" }
@@ -15,9 +14,9 @@ class Order < ApplicationRecord
     order_items.map {|order_item| order_item.total_price}.sum
   end
 
-  def paid_with_card?
-    payment_method == "Credit Card"
-  end
+  # def paid_with_card?
+  #   payment_method == "Credit Card"
+  # end
 
   def update_price
     self[:total_price] = total_price

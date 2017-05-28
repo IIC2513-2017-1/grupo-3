@@ -23,7 +23,7 @@
     </p>
     <p>
       <label for="order_deliver_to_address">Address</label><br/>
-      <%= f.text_field :deliver_to_address, class: "field", :value => current_user.address%>
+      <%= f.text_field :deliver_to_address, class: "field", :value => current_user.adress%>
     </p>
   </fieldset>
 
@@ -31,7 +31,7 @@
   <legend>Billing Information</legend>
   <p>
     <label for="order_card_number">Card number</label><br/>
-    <%= f.password_field :card_number %>
+    <%= password_field :order, :card_number %>
   </p>
   <p>
     <label for="order_card_expiration_month">Expiration date</label><br/>
@@ -48,7 +48,7 @@
       <abbr title="Card Validation Check">CVC</abbr>
     </label>
     <br/>
-    <%= f.password_field :card_verification_value %>
+    <%= password_field :order, :card_verification_value %>
   </p>
 </fieldset>
 

@@ -13,13 +13,13 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order = current_user.orders.new(order_params)
     @cart = current_cart
     if @cart.cart_items.empty?
         flash[:error] = "Your cart is empty"
         redirect_to :back
         return
     end
+    @order = current_user.orders.new(params[:order])
   end
 
   def new
@@ -168,6 +168,7 @@ class OrdersController < ApplicationController
 
     #Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:final_price, :status, :tipping, :tips, :deliver_to_address, :customer_phone_number, :deliver_to_first_name, :deliver_to_first_name, :deliver_to_last_name, :payment_method, :delivery_time, :cart_id, :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value)
+      params.require(:order).permit(:final_price, :status, :tipping, :tips, :deliver_to_address, :customer_phone_number, :deliver_to_first_name, :deliver_to_first_name, :deliver_to_last_name, :payment_method, :delivery_time, :cart_id)
+      # :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value)
     end
 end

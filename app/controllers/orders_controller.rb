@@ -36,6 +36,14 @@ class OrdersController < ApplicationController
     @order.update(deliver_to_last_name: params[:deliver_to_last_name])
     populate_order
     if @order.save
+      cook = nil
+      prev_cook = nil
+      @order.order_items.each do |order_item|
+        prev_cook = cook
+        cook = order_item.dish.user
+        OrderMailer.cook_order(current_user, cook).deliver_now if !cook.nil? && prev_cook != cook
+      end
+      OrderMailer.user_order(current_user).deliver_now
       session.delete(:cart_id)
       redirect_to @order, notice: "Your order it's on it's way !"
     else
@@ -44,34 +52,43 @@ class OrdersController < ApplicationController
   end
 
 
-  def build_order
-    @cart = current_cart
-    if @cart.cart_items.empty?
-        flash[:error] = "Your cart is empty"
-        redirect_to :back
-        return
-    end
-    @order = Order.new
-    @order.update(user_id: current_user.id)
-    @order.save
-    # @order.cart = @cart
-    @order.update(payment_method: 'Cash')
-    if @order.payment_method == 'Credit card'
-      @order.update(status: 'PAID')
-    else
-      @order.update(status: 'UNPAID')
-    end
-    @order.update(tipping: true)
-    @order.update(tips: @cart.total_price * 0.1)
-    if @order.tipping?
-      @order.update(final_price: @cart.total_price * 1.1)
-    else
-      @order.update(final_price: @cart.total_price)
-    end
-    @order.save
-    session.delete(:cart_id)
-    redirect_to dishes_path
-  end
+  # def build_order
+  #   @cart = current_cart
+  #   if @cart.cart_items.empty?
+  #       flash[:error] = "Your cart is empty"
+  #       redirect_to :back
+  #       return
+  #   end
+  #   @order = Order.new
+  #   @order.update(user_id: current_user.id)
+  #   @order.save
+  #   # @order.cart = @cart
+  #   @order.update(payment_method: 'Cash')
+  #   if @order.payment_method == 'Credit card'
+  #     @order.update(status: 'PAID')
+  #   else
+  #     @order.update(status: 'UNPAID')
+  #   end
+  #   @order.update(tipping: true)
+  #   @order.update(tips: @cart.total_price * 0.1)
+  #   if @order.tipping?
+  #     @order.update(final_price: @cart.total_price * 1.1)
+  #   else
+  #     @order.update(final_price: @cart.total_price)
+  #   end
+  #   if @order.save
+  #     cook = nil
+  #     prev_cook = nill
+  #     @order.order_items.each do |order_item|
+  #       prev_cook = cook
+  #       cook = order_item.dish.user
+  #       OrderMailer.cook_order(cook).deliver_now if !cook.nil? && prev_cook != cook
+  #     end
+  #     OrderMailer.user_order(current_user).deliver_now
+  #     session.delete(:cart_id)
+  #     redirect_to dishes_path
+  #   end
+  # end
 
   # GET /orders/1
   # GET /orders/1.json

@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:show, :index] do
     member do
-      get :place_order
+      get  :checkout, as: "checkout"
+      post :place_order
     end
   end
 

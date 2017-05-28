@@ -1,0 +1,61 @@
+<%= form_for @order, :url => { :action => "place_order" }, :html => { :method => "post" } do |f| %>
+  <fieldset>
+    <legend>Contact Information</legend>
+    <p>
+    <label for="order_email">Email</label><br/>
+    <%= f.email_field :customer_email, class: "field", :value => current_user.email %>
+    </p>
+    <p>
+    <label for="order_phone_number">Phone number</label><br/>
+    <%= f.phone_field :customer_phone_number, class: "field", :value => current_user.phone %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Shipping Address</legend>
+    <p>
+      <label for="order_deliver_to_first_name">First name</label><br/>
+      <%= f.text_field :deliver_to_first_name, class: "field", :value => current_user.first_name %>
+    </p>
+    <p>
+      <label for="order_deliver_to_last_name">Last name</label><br/>
+      <%= f.text_field :deliver_to_last_name, class: "field", :value => current_user.last_name %>
+    </p>
+    <p>
+      <label for="order_deliver_to_address">Address</label><br/>
+      <%= f.text_field :deliver_to_address, class: "field", :value => current_user.address%>
+    </p>
+  </fieldset>
+
+<fieldset>
+  <legend>Billing Information</legend>
+  <p>
+    <label for="order_card_number">Card number</label><br/>
+    <%= f.password_field :card_number %>
+  </p>
+  <p>
+    <label for="order_card_expiration_month">Expiration date</label><br/>
+    <select name="order[card_expiration_month]">
+      <%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12),  @order.card_expiration_month) %>
+    </select>
+    <select name="order[card_expiration_year]">
+      <%= options_for_select(%w(2017 2018 2019 2020 2021 2022 2023 2024 2025 2026 2027), @order.card_expiration_year) %>
+    </select>
+  </p>
+  <p>
+    <label for="order_card_verification_value">
+      <abbr title="Card Verification Value">CVV</abbr>
+      <abbr title="Card Validation Check">CVC</abbr>
+    </label>
+    <br/>
+    <%= f.password_field :card_verification_value %>
+  </p>
+</fieldset>
+
+<div class="actions">
+  <p>
+    <%= f.submit "Place Order", :class => "button" %>
+  </p>
+</div>
+
+<% end %>

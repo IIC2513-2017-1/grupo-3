@@ -1,13 +1,14 @@
 class Order < ApplicationRecord
+  # include ActiveModel::ForbiddenAttributesProtection
   #attr_protected :id, :customer_ip, :status, :error_message, :updated_at, :created_at
-  #attr_accessor :card_type, :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
+  attr_accessor :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
   validates :card_number, presence: true, if: :paid_with_card?
   validates_size_of :order_items, :minimum => 1
   validates :status, presence: true, inclusion: { in: %w(UNPAID PAID DELIVERED RECIEVED),
     message: "%{value} is not valid" }
 
   belongs_to :user
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :dishes, through: :order_items
 
   def total_price

@@ -12,20 +12,28 @@ class OrdersController < ApplicationController
       })
   end
 
-  def new
-    @order = Order.new
-  end
-
-
-  def place_order
+  def checkout
+    @order = current_user.orders.new(order_params)
     @cart = current_cart
     if @cart.cart_items.empty?
         flash[:error] = "Your cart is empty"
         redirect_to :back
         return
     end
-    @order = current_user.orders.new(params[:order])
-    # @order.customer_ip = request.remote_ip
+  end
+
+  def new
+    @order = Order.new
+  end
+
+  def place_order
+    @order = current_user.orders.new(order_params)
+    @order.update(customer_ip: request.remote_ip)
+    @order.update(deliver_to_address: params[:deliver_to_address])
+    @order.update(customer_email: params[:customer_email])
+    @order.update(customer_phone_number: params[:customer_phone_number])
+    @order.update(deliver_to_first_name: params[:deliver_to_first_name])
+    @order.update(deliver_to_last_name: params[:deliver_to_last_name])
     populate_order
     if @order.save
       session.delete(:cart_id)
@@ -160,6 +168,6 @@ class OrdersController < ApplicationController
 
     #Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:final_price, :status, :tipping, :tips, :payment_method, :delivery_time, :cart_id)
+      params.require(:order).permit(:final_price, :status, :tipping, :tips, :deliver_to_address, :customer_phone_number, :deliver_to_first_name, :deliver_to_first_name, :deliver_to_last_name, :payment_method, :delivery_time, :cart_id, :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value)
     end
 end

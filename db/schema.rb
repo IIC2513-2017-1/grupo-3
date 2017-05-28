@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527200305) do
+ActiveRecord::Schema.define(version: 20170528172043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,16 +95,21 @@ ActiveRecord::Schema.define(version: 20170527200305) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "final_price",    precision: 12, scale: 3
+    t.decimal  "final_price",           precision: 12, scale: 3
     t.string   "status"
     t.boolean  "tipping"
-    t.decimal  "tips",           precision: 12, scale: 3
+    t.decimal  "tips",                  precision: 12, scale: 3
     t.string   "payment_method"
     t.time     "delivery_time"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.integer  "card_number"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "user_id"
+    t.string   "customer_email"
+    t.string   "customer_phone_number"
+    t.string   "deliver_to_first_name"
+    t.string   "deliver_to_last_name"
+    t.string   "deliver_to_address"
+    t.string   "customer_ip"
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -184,7 +189,7 @@ ActiveRecord::Schema.define(version: 20170527200305) do
   add_foreign_key "dishes", "users"
   add_foreign_key "favorites", "users"
   add_foreign_key "order_items", "dishes"
-  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "orders", on_delete: :cascade
   add_foreign_key "reviews", "dishes"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "dishes"

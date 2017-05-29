@@ -23,6 +23,7 @@ class User::DishesController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @dishes = current_user.dishes.find(params[:id])
   end
 

@@ -1,13 +1,17 @@
 <h1 class="title"><span>Eats</span> User Profile</h1>
 <div class="user-container">
   <div class="user-card">
-    <img class="avatar" src="http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png" alt="User profile picture" />
-        <h1 class="profile-title"><%= @user.first_name %> <%= @user.last_name %></h2>
+    <% if current_user.avatar.present? %>
+    <%= image_tag(current_user.avatar.url(:medium), :class => "avatar border-white", :alt => "User profile picture") %>
+    <% else %>
+    <%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "avatar border-white", :alt => "User profile picture") %>
+    <% end %>
+        <h1 class="profile-title"><%= @user.name %></h2>
         <h2 class="role"><%= @user.role %></h2>
-        <% if @user.dishes.size > 0%>
+        <% if !@user.avg_stars.nan? %>
           <h4><%= '%.2f' % @user.avg_stars %> Stars</h4>
         <% else %>
-          <h4> 0 Stars</h4>
+          <h4> Stars: no dish reviewed</h4>
         <% end %>
     <ul class="data">
       <li class="data">
@@ -33,14 +37,14 @@
           <% else %>
             <div class="dish-display" >
 
-              <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+              <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path_url(dish.user.id)%> </p>
 
               <% if dish.pictures.first %>
-               <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+                <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
               <% else %>
-                <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
+                <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
               <% end %>
-              <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+              <p class="text-right">Price: <span style="color: green">$ <%= dish.price %></span></p>
 
               <p><%= dish.description %></p>
 

@@ -4,11 +4,13 @@
 
 
     <% current_user.dishes.each do |dish| %>
-      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= dish.user.first_name %> <%= dish.user.last_name %></p>
+      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path_url(dish.user.id)%></p>
       <% if dish.pictures.first %>
-       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar" %>
+       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
+      <% else %>
+      <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
       <% end %>
-      <p class="text-right">Price: <span style="color: green"><%= number_to_currency dish.price %></span></p>
+      <p class="text-right">Price: <span style="color: green">$ <%=dish.price %></span></p>
       <p><%= dish.description %></p>
       <p>
       Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
@@ -16,8 +18,10 @@
 
       <div class="dish-buttons">
         <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
-        <%= link_to 'Edit', edit_dish_path(dish) %>
-        <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if dish.user_id == current_user.id %>
+          <%= link_to 'Edit', edit_dish_path(dish) %>
+          <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </div>
     <% end %>
 

@@ -12,6 +12,9 @@
     <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
   <% end %>
   <p>
+    by <%= link_to "#{@dish.user.name}", user_dishes_path_url(@dish.user.id)%>
+  </p>
+  <p>
     <strong>Description:</strong>
     <%=@dish.description %>
   </p>

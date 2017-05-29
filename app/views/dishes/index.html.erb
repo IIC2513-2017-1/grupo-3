@@ -10,7 +10,7 @@
 
   <% @dishes.each do |dish| %>
     <div class="dish-display" >
-      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path_url(dish.user.id)%> </p>
+      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%> </p>
       <% if dish.pictures.first %>
        <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
       <% else %>

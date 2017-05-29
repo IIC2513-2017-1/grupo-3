@@ -27,6 +27,9 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 
 gem 'figaro'
 
+gem 'sendgrid-rails'
+gem 'sendgrid-ruby'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 

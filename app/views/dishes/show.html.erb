@@ -27,7 +27,6 @@
     <%= 0 unless @dish.times_buyed %>
   </p>
 
-<%= link_to 'Add Review', new_dish_review_path(@dish) %>
 <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
 
 
@@ -35,6 +34,9 @@
 <main class="comments">
   <div class="comments-container">
 		<h2>Comments</h2>
+    <%= render partial: 'reviews/form', locals: {dish: @dish, review: Review.new} %>
+
+    <%= link_to 'Add Review', new_dish_review_path(@dish) %>
 
 		<ul id="comments-list" class="comments-list">
       <% Review.where(dish_id: @dish.id).each do |review| %>

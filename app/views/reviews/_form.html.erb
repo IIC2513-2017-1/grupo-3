@@ -28,10 +28,10 @@
   </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :dish_id, :value => current_dish.id %>
+  <%= f.hidden_field :dish_id, :value => dish.id %>
 
   <div class="actions">
     <%= f.submit %>
-    <%= button_to 'Back', current_dish, :method => :get, :class => "button" %>
+    <%= button_to 'Back', dish, :method => :get, :class => "button" %>
   </div>
 <% end %>

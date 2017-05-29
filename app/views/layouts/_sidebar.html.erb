@@ -17,5 +17,8 @@
   <hr>
   <br><br>
   <a id="navbar-item" href="#">All dishes</a>
+  <% @categories.each do |category| %>
+    <a id="navbar-item" href="#"><%= category.name %></a>
+  <% end %>
 
 </div>

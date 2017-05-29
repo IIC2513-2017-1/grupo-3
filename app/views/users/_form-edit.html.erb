@@ -11,56 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-  <%= f.label :avatar, 'Profile picture' %>
-  <%= f.file_field :avatar, :class => 'upload-avatar', :onchange => 'readURL(this);'%>
+  <div class='photo'>
+    <%= f.label :avatar, 'Profile Picture' %>
+    <%= f.file_field :avatar, :class => 'upload-avatar', :onchange => 'readURL(this);'%>
   </div>
 
-  <div class="upload-preview">
+  <div class="upload-preview" align="center">
     <img id="avatar-upload" src="#" />
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+  <%= f.text_field :first_name, :placeholder => '  First Name', :class => 'field' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+  <%= f.text_field :last_name, :placeholder => '  Last Name', :class => 'field' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
+  <%= f.email_field :email, :placeholder => '  Email Address', :class => 'field' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+  <%= f.text_field :address, :placeholder => '  Address', :class => 'field' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <%= f.text_field :phone, :placeholder => '  Phone', :class => 'field' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.telephone_field :phone %>
-  </div>
+  <p>Gender</p>
+  <%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']]), :prompt => "Select Gender", :class => 'genForm_dropBox' %>
+  <br>
 
-  <div class="field">
-    <%= f.label :gender %>
-    <%= f.select :gender, options_for_select([['M', 'Male'], ['F', 'Female']]), :prompt => "Select Gender", :class => 'genForm_dropBox' %>
-  </div>
+  <p>Birth Date</p>
+  <%= f.date_select :birth_date, :start_year=>1910, :end_year=>Date.today.year, :order=>[:day, :month, :year] %>
+  <br>
+  <br>
+  <hr>
+  <br>
+  <h2 align="center">Password Update</h2>
 
-  <div class="field">
-    <%= f.label :birth_date %>
-    <%= f.date_select :birth_date, :start_year=>1910, :end_year=>Date.today.year, :order=>[:day, :month, :year] %>
-  </div>
+  <%= f.password_field :password, :placeholder => '  Password' , :class => 'field' %>
+  </br>
+
+  <%= f.password_field :password_confirmation, :placeholder => '  Password Confirmation', :class => 'field' %>
+  </br>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", :class => 'button' %>
   </div>
 <% end %>

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
  @import url(http://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda|Awesome);

@@ -1,42 +1,59 @@
-<div>
-  <div>
-    <div>
-      <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-      <% current_dish = @dish %>
-      <h2><%= @dish.name %></h2>
+<div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+  <% current_dish = @dish %>
+  <h2><%= @dish.name %></h2>
+  <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
+  <p>
+    <strong>Description:</strong>
+    <%=@dish.description %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency @dish.price %>
+  </p>
+  <p>
+    <strong>Times buyed:</strong>
+    <%= 0 unless @dish.times_buyed %>
+  </p>
 
-      <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
-      <p>
-        <strong>Description:</strong>
-        <%=@dish.description %>
-      </p>
-      <p>
-        <strong>Price:</strong>
-        <%= number_to_currency @dish.price %>
-      </p>
-      <p>
-        <strong>Times buyed:</strong>
-        <%= 0 unless @dish.times_buyed %>
-      </p>
+<%= link_to 'Add Review', new_dish_review_path(@dish) %>
+<%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
 
-      <div>
-        <% Review.where(dish_id: @dish.id).each do |review| %>
-          <div class="reviews-display" >
-            <p> <%= review.forks %></p>
-            <h4><%= review.title %></h4><p>by <%= review.user.name %></p>
-            <p><%= review.body %></p>
-            <% if current_user.id == review.user_id %>
+
+
+<main class="comments">
+  <div class="comments-container">
+		<h2>Comments</h2>
+
+		<ul id="comments-list" class="comments-list">
+      <% Review.where(dish_id: @dish.id).each do |review| %>
+      <li>
+        <div class="comment-main-level">
+          <!-- Avatar -->
+          <div class="comment-avatar"><%= image_tag(current_user.avatar.url(:thumb), :class => "avatar border-white") %></div>
+          <!-- Contenedor del Comentario -->
+          <div class="comment-box">
+            <div class="comment-head">
+              <h6 class="comment-name by-author"><%= review.user.name %></h6>
+            </div>
+
+            <div class="comment-content">
+              <p><%= review.body %></p>
+              <br>
+              <p>FORKS:  <%= review.forks %></p>
+              <% if current_user.id == review.user_id %>
               <p>
-                <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit Comment', edit_review_path(review) %> | <%= link_to 'Delete Comment', review, method: :delete, data: { confirm: 'Are you sure?' } %>
               </p>
             <% end %>
+            </div>
           </div>
-        <% end %>
-      </div>
-      <%= link_to 'Add Review', new_dish_review_path(@dish) %>
-      <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
-      <p><%= link_to "Back to Dishes", dishes_path %></p>
+        </div>
+      </li>
+      <% end %>
+		</ul>
+	</div>
+</main>
 
-    </div>
-  </div>
-</div>
+
+
+<p><%= link_to "Back to Dishes", dishes_path %></p>

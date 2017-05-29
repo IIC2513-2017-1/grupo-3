@@ -1,6 +1,8 @@
-<h1>Editing User</h1>
-
-<%= render 'form-edit', user: @user %>
+<h1 align="center">Update User Profile</h1>
+<%= render 'layouts/header'%>
+<div class="edit-user-form">
+  <%= render 'form-edit', user: @user %>
+</div>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %> |

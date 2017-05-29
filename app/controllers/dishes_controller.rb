@@ -24,6 +24,7 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @pictures = @dish.pictures
+    @review = Review.new
   end
 
   def add_to_cart

@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# fonts in assets pipeline
+# config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
 module Eats
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

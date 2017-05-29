@@ -21,28 +21,28 @@
       <td><%= order_item.dish.name %></td>
       <td><%= order_item.dish.user.name %></td>
       <td class="qty"><%= order_item.quantity %></td>
-      <td class="price"><%= number_to_currency(order_item.unit_price) %></td>
-      <td class="price"><%= number_to_currency(order_item.total_price) %></td>
+      <td class="price"><span style="color: green"> $ <%= order_item.unit_price %></span></td>
+      <td class="price"><span style="color: green"> $ <%= order_item.total_price %></span></td>
     </tr>
   <% end %>
   <tr>
     <td class="taxes" colspan="5">
-      Taxes (19%): <%= number_to_currency(@order.total_price * 0.19) %>
+      Taxes (19%): <span style="color: green">$ <%= @order.total_price * 0.19 %></span>
     </td>
   </tr>
   <tr>
     <td class="total price" colspan="5">
-      Total: <%= number_to_currency(@order.total_price) %>
+      Total: <span style="color: green">$ <%= @order.total_price %></span>
     </td>
   </tr>
   <tr>
     <td class="tips" colspan="5">
-      Tips: <%= number_to_currency(@order.total_price * 0.1) %>
+      Tips: <span style="color: green">$ <%= @order.total_price * 0.1 %></span>
     </td>
   </tr>
   <tr>
     <td class="tips" colspan="4">
-      Final Price: <%= number_to_currency(@order.total_price * 1.1) %>
+      Final Price: <span style="color: green">$ <%= @order.total_price * 1.1 %></span>
     </td>
   </tr>
 </table>

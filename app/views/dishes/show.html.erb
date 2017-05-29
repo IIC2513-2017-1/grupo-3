@@ -1,7 +1,16 @@
 <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <% current_dish = @dish %>
   <h2><%= @dish.name %></h2>
-  <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
+  <% if !@dish.avg_forks.nan? %>
+    <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
+  <% else %>
+    <h4>Forks: 0 </h4>
+  <% end %>
+  <% if @dish.pictures.first %>
+   <%= image_tag(@dish.pictures.first.image.url, :size => '200x200', :class => "dish-avatar") %>
+  <% else %>
+    <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
+  <% end %>
   <p>
     <strong>Description:</strong>
     <%=@dish.description %>

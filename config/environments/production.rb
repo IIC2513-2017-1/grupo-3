@@ -1,3 +1,5 @@
+# https://devcenter.heroku.com/articles/sendgrid
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -76,8 +78,10 @@ Rails.application.configure do
    :address              => 'smtp.sendgrid.net',
    :domain               => 'eats-cl.herokuapp.com',
    :port                 => 587,
-   :user_name            => Rails.application.secrets.sendgrid_username,
-   :password             => Rails.application.secrets.sendgrid_password,
+   :user_name            => ENV['SENDGRID_USERNAME'],
+   :password             => ENV['SENDGRID_PASSWORD'],
+   :authentication => :plain,
+   :enable_starttls_auto => true, # detects and uses STARTTLS
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

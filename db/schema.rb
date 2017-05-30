@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528172043) do
+ActiveRecord::Schema.define(version: 20170530131615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type",           null: false
+    t.string   "account",        null: false
+    t.string   "bank",           null: false
+    t.string   "id_card_number", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_bank_accounts_on_user_id", using: :btree
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "dish_id"
@@ -103,7 +114,6 @@ ActiveRecord::Schema.define(version: 20170528172043) do
     t.time     "delivery_time"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
-    t.integer  "dish_id"
     t.integer  "user_id"
     t.string   "customer_email"
     t.string   "customer_phone_number"
@@ -111,7 +121,6 @@ ActiveRecord::Schema.define(version: 20170528172043) do
     t.string   "deliver_to_last_name"
     t.string   "deliver_to_address"
     t.string   "customer_ip"
-    t.index ["dish_id"], name: "index_orders_on_dish_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -186,13 +195,13 @@ ActiveRecord::Schema.define(version: 20170528172043) do
     t.datetime "reset_sent_at"
   end
 
+  add_foreign_key "bank_accounts", "users", on_delete: :cascade
   add_foreign_key "categorizings", "categories"
   add_foreign_key "categorizings", "dishes"
   add_foreign_key "dishes", "users"
   add_foreign_key "favorites", "users"
   add_foreign_key "order_items", "dishes"
   add_foreign_key "order_items", "orders", on_delete: :cascade
-  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "dishes"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "dishes"

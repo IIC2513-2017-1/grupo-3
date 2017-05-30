@@ -1,0 +1,50 @@
+<%= form_for(user_bank_account_path(current_user)) do |f| %>
+  <% if bank_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bank_account.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% bank_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :id_card_number, :placeholder => '  Card number ID (RUT)' , :class => 'field'%>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :account, :placeholder => '  Account number' , :class => 'field' %>
+  </div>
+
+  <p>Account Type</p>
+  <div class="field">
+    <%= f.select :type, options_for_select(['Cuenta Corriente', 'Cuenta Vista', 'Cuenta de Ahorro', 'Libreta Ahorro']), :prompt => 'Select', :class => 'form-select' %>
+  </div>
+
+  <p>Bank</p>
+  <div class="field">
+    <%= f.select :bank, options_for_select(['BANCO DE CHILE - EDWARDS',
+      'BANCO BICE',
+      'BANCO CONSORCIO',
+      'BANCO DEL ESTADO DE CHILE',
+      'BANCO DO BRASIL S.A',
+      'BANCO FALABELLA',
+      'BANCO PARIS',
+      'BANCO RIPLEY',
+      'BANCO SANTANDER',
+      'BBVA (BCO BILBAO VIZCAYA ARG)',
+      'BCI (BCO DE CREDITO E INV)',
+      'HSBC BANK',
+      'ITAU CHILE',
+      'ITAU-CORPBANCA',
+      'SCOTIABANK',
+      ]), :prompt => 'Select', :class => 'form-select' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update Bank Account' %>
+  </div>
+<% end %>

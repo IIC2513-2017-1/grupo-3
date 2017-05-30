@@ -30,6 +30,9 @@ gem 'figaro'
 gem 'sendgrid-rails'
 gem 'sendgrid-ruby'
 
+# to validate chilean RUT
+gem 'rut_chileno'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 

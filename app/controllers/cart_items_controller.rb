@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = Review.new(review_params)
+    @cart_item = CartItem.new(cart_item_params)
     respond_to do |format|
       if @cart_item.save
         # format.html { redirect_to dishes_, notice: 'Review was successfully created.' }

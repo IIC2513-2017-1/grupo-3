@@ -37,7 +37,12 @@
 
 <main class="comments">
   <div class="comments-container">
+<<<<<<< HEAD
 		<h2>Add a New Review </h2>
+=======
+		<h2>Comments</h2>
+    <%= render partial: 'reviews/form', locals: {dish: @dish, review: @dish.reviews.new} %>
+>>>>>>> bank account scaffold
 
     <% if current_user %>
       <%= render partial: 'reviews/form', locals: {dish: @dish, review: Review.new} %>
@@ -60,8 +65,14 @@
             </div>
 
             <div class="comment-content">
+              <% if review.title.present? %>
+              <h3><%= review.title %></h3>
+              <br>
+              <% end %>
+              <% if review.body.present? %>
               <p><%= review.body %></p>
               <br>
+              <% end %>
               <p>FORKS:  <%= review.forks %></p>
               <% if current_user&.id == review.user_id %>
               <p>

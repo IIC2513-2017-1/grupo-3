@@ -37,13 +37,7 @@
 
 <main class="comments">
   <div class="comments-container">
-<<<<<<< HEAD
 		<h2>Add a New Review </h2>
-=======
-		<h2>Comments</h2>
-    <%= render partial: 'reviews/form', locals: {dish: @dish, review: @dish.reviews.new} %>
->>>>>>> bank account scaffold
-
     <% if current_user %>
       <%= render partial: 'reviews/form', locals: {dish: @dish, review: Review.new} %>
     <% end %>

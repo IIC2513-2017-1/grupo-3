@@ -5,6 +5,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  config.encoding = "utf-8"
 
   config.serve_static_assets = true
 
@@ -73,16 +74,25 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+
 # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  #  :address              => 'smtp.sendgrid.net',
+  #  :domain               => 'eats-cl.herokuapp.com',
+  #  :port                 => 587,
+  #  :user_name            => ENV['SENDGRID_USERNAME'],
+  #  :password             => ENV['SENDGRID_PASSWORD'],
+  #  :authentication => :plain,
+  #  :enable_starttls_auto => true, # detects and uses STARTTLS
+  # }
+
   config.action_mailer.smtp_settings = {
-   :address              => 'smtp.sendgrid.net',
-   :domain               => 'eats-cl.herokuapp.com',
+   :address              => "smtp.gmail.com",
    :port                 => 587,
-   :user_name            => ENV['SENDGRID_USERNAME'],
-   :password             => ENV['SENDGRID_PASSWORD'],
-   :authentication => :plain,
-   :enable_starttls_auto => true, # detects and uses STARTTLS
+   :user_name            => Rails.application.secrets.gmail_username,
+   :password             => Rails.application.secrets.gmail_password,
   }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

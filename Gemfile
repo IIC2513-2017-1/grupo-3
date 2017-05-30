@@ -27,8 +27,8 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 
 gem 'figaro'
 
-gem 'sendgrid-rails'
-gem 'sendgrid-ruby'
+# gem 'sendgrid-rails'
+# gem 'sendgrid-ruby'
 
 # to validate chilean RUT
 gem 'rut_chileno'

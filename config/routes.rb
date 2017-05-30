@@ -71,6 +71,11 @@ Rails.application.routes.draw do
 
   get '/admin_help' => 'static_pages#admin_help'
   get '/shopping_history' => 'static_pages#shopping_history'
+  get '/promotions' => 'static_pages#promotions'
+  get '/app_info' => 'static_pages#app_info'
+  get '/popular_cooks' => 'static_pages#popular_cooks'
+  get '/popular_dishes' => 'static_pages#popular_dishes'
+  get '/statistics' => 'static_pages#statistics'
 
   resources :favorite_dishes, only: [:create, :destroy]
 

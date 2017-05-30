@@ -5,13 +5,13 @@
     <a id="navbar-item" href="#">Your Locations</a>
     <a id="navbar-item" href="#">New Promotion</a>
   <% elsif current_user && current_user.is_admin? %>
-    <a id="navbar-item" href="#">Eats Info</a>
+    <%= link_to 'Eats Info', app_info_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Database', admin_help_path, {style: "font-size: 16px;"} %>
-    <a id="navbar-item" href="#">Statistics</a>
+    <%= link_to 'Statistics', statistics_path, {style: "font-size: 16px;"} %>
   <% else %>
-    <a id="navbar-item" href="#">Promotions</a>
-    <a id="navbar-item" href="#">Popular Cooks</a>
-    <a id="navbar-item" href="#">Popular Dishes</a>
+    <%= link_to 'Promotions', promotions_path, {style: "font-size: 16px;"} %>
+    <%= link_to 'Popular Cooks', popular_cooks_path, {style: "font-size: 16px;"} %>
+    <%= link_to 'Popular Dishes', popular_dishes_path, {style: "font-size: 16px;"} %>
   <% end %>
   <br><br>
   <hr>

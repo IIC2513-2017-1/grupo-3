@@ -70,7 +70,7 @@
               <p>FORKS:  <%= review.forks %></p>
               <% if current_user&.id == review.user_id %>
               <p>
-                <%= link_to 'Edit Comment', edit_review_path(review) %> | <%= link_to 'Delete Comment', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit Review', edit_review_path(review) %> | <%= link_to 'Delete Review', review, method: :delete, data: { confirm: 'Are you sure?' } %>
               </p>
             <% end %>
             </div>

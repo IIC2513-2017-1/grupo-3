@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :dishes, controller: 'users/dishes'
     resources :carts
     resources :orders, except: [:delete, :update]
+    resources :bank_accounts
   end
   # resources :carts, only: [:destroy]
   resources :account_activations, only: [:edit]

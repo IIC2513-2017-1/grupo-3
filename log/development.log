@@ -1,115 +1,43 @@
-Started GET "/dishes" for ::1 at 2017-05-30 14:29:20 -0400
-  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/users/23/edit" for ::1 at 2017-05-30 14:33:12 -0400
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:ApplicationController> at /Users/federico/Desktop/grupo-3/app/controllers/application_controller.rb:4)
-Processing by DishesController#index as HTML
-  Parameters: {"swallow"=>true}
-  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendering dishes/index.html.erb within layouts/application
-  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "dishes"[0m
-  [1m[36mDish Load (0.7ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes" ORDER BY created_at DESC[0m
-  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
-  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
-  [1m[36mDish Exists (7.9ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 8], ["LIMIT", 1]]
-  Rendered layouts/_dish_item.html.erb (162.1ms)
-  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
-  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 7], ["LIMIT", 1]]
-  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 7]]
-  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 7]]
-  [1m[36mDish Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 7], ["LIMIT", 1]]
-  Rendered layouts/_dish_item.html.erb (9.3ms)
-  Rendered dishes/index.html.erb within layouts/application (191.3ms)
-  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
-  Rendered layouts/_sidebar.html.erb (2.0ms)
-  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+Processing by UsersController#edit as HTML
+  Parameters: {"swallow"=>true, "id"=>"23"}
   [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendered layouts/_navbar.html.erb (7.7ms)
-  Rendered layouts/_footer.html.erb (0.3ms)
-Completed 200 OK in 547ms (Views: 452.8ms | ActiveRecord: 49.2ms)
-
-
-Started GET "/dishes" for ::1 at 2017-05-30 14:29:21 -0400
-Processing by DishesController#index as HTML
-  Parameters: {"swallow"=>true}
-  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendering dishes/index.html.erb within layouts/application
-  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "dishes"[0m
-  [1m[36mDish Load (0.8ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes" ORDER BY created_at DESC[0m
-  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
-  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
-  [1m[36mDish Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 8], ["LIMIT", 1]]
-  Rendered layouts/_dish_item.html.erb (18.9ms)
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
-  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 7], ["LIMIT", 1]]
-  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 7]]
-  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 7]]
-  [1m[36mDish Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 7], ["LIMIT", 1]]
-  Rendered layouts/_dish_item.html.erb (9.4ms)
-  Rendered dishes/index.html.erb within layouts/application (34.2ms)
-  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
-  Rendered layouts/_sidebar.html.erb (1.9ms)
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendered layouts/_navbar.html.erb (7.9ms)
-  Rendered layouts/_footer.html.erb (0.3ms)
-Completed 200 OK in 117ms (Views: 101.8ms | ActiveRecord: 12.2ms)
-
-
-Started GET "/dishes/8" for ::1 at 2017-05-30 14:29:22 -0400
-Processing by DishesController#show as HTML
-  Parameters: {"swallow"=>true, "id"=>"8"}
-  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mDish Load (0.6ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  Rendering dishes/show.html.erb within layouts/application
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
-  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("reviews"."forks") FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
-  Rendered reviews/_form.html.erb (15.6ms)
-  Rendered reviews/_form.html.erb (1.4ms)
-  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  Rendered dishes/show.html.erb within layouts/application (46.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered bank_accounts/_form.html.erb (4.1ms)
+  Rendered users/_form-edit.html.erb (33.6ms)
+  Rendered users/edit.html.erb within layouts/application (38.2ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (4.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (8.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 162ms (Views: 91.6ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/users/23/edit" for ::1 at 2017-05-30 14:33:13 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"swallow"=>true, "id"=>"23"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered bank_accounts/_form.html.erb (4.5ms)
+  Rendered users/_form-edit.html.erb (12.0ms)
+  Rendered users/edit.html.erb within layouts/application (16.7ms)
   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
   Rendered layouts/_sidebar.html.erb (2.1ms)
   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendered layouts/_navbar.html.erb (10.5ms)
+  Rendered layouts/_navbar.html.erb (7.9ms)
   Rendered layouts/_footer.html.erb (0.3ms)
-Completed 200 OK in 168ms (Views: 122.2ms | ActiveRecord: 21.3ms)
-
-
-Started GET "/dishes/8" for ::1 at 2017-05-30 14:30:34 -0400
-Processing by DishesController#show as HTML
-  Parameters: {"swallow"=>true, "id"=>"8"}
-  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mDish Load (0.6ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  Rendering dishes/show.html.erb within layouts/application
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("reviews"."forks") FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
-  Rendered reviews/_form.html.erb (3.6ms)
-  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."dish_id" = $1[0m  [["dish_id", 8]]
-  Rendered dishes/show.html.erb within layouts/application (19.0ms)
-  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
-  Rendered layouts/_sidebar.html.erb (2.3ms)
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  Rendered layouts/_navbar.html.erb (7.1ms)
-  Rendered layouts/_footer.html.erb (0.3ms)
-Completed 200 OK in 108ms (Views: 99.6ms | ActiveRecord: 4.4ms)
+Completed 200 OK in 90ms (Views: 84.3ms | ActiveRecord: 1.4ms)
 
 

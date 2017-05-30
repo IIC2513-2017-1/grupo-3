@@ -1,6 +1,10 @@
 <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <% current_dish = @dish %>
-  <h2><%= @dish.name %></h2>
+  <h1><%= @dish.name%></h1>
+  <% if current_user.is_admin? %>
+    <h3>ID: <%= @dish.id%></h3>
+  <% end %>
+  <br>
   <% if !@dish.avg_forks.nan? %>
     <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
   <% else %>

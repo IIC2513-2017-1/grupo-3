@@ -17,7 +17,6 @@
   <hr>
   <br><br>
   <%= link_to 'All Dishes', dishes_path, {style: "font-size: 16px;"} %>
-  <a id="navbar-item" href="#">All dishes</a>
   <% @categories.each do |category| %>
     <a id="navbar-item" href="#"><%= category.name %></a>
   <% end %>

@@ -55,7 +55,7 @@ module SessionsHelper
   end
 
   def admin?
-    current_user.role == 'admin'
+    current_user&.role == 'admin'
   end
 
   # Forgets a persistent session.

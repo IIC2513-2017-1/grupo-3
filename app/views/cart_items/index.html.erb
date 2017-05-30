@@ -9,8 +9,8 @@
   <tr>
     <td class="dish-name"><%= cart_item.name %></td>
     <td class="quantity"><%= cart_item.quantity %></td>
-    <td class="price"><%= number_to_currency cart_item.unit_price %></td>
-    <td class="price"><%= number_to_currency cart_item.total_price %></td>
+    <td class="price"><%= cart_item.unit_price %></td>
+    <td class="price"><%= cart_item.total_price %></td>
     <td><%= link_to 'Remove', cart_path , method: :delete %></td>
   </tr>
   <%final_price += cart_item.total_price %>
@@ -18,7 +18,7 @@
 </table>
 
 
-<p id="cart_total"><strong>Total: <%= number_to_currency final_price %></strong></p>
+<p id="cart_total"><strong>Total: <%=  final_price %></strong></p>
 
 <p>
   <%= button_to 'Empty cart', current_cart , :method => :delete,

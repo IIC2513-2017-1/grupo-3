@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :reviewer?, only: [:edit, :update, :destroy]
-  before_action :is_admin, only: [:index]
+  before_action :is_admin, only: [:index, :show]
 
   include ApplicationHelper
 

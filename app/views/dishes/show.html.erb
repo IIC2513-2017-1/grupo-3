@@ -43,7 +43,11 @@
       <li>
         <div class="comment-main-level">
           <!-- Avatar -->
-          <div class="comment-avatar"><%= image_tag(current_user.avatar.url(:thumb), :class => "avatar border-white") %></div>
+          <% if review.user.avatar.present? %>
+          <div class="comment-avatar"><%= image_tag(review.user.avatar.url(:medium), :class => "avatar border-white", :alt => "User profile picture") %></div>
+          <% else %>
+          <div class="comment-avatar"><%= image_tag(review.user.avatar.url(:thumb), :class => "avatar border-white", :alt => "User profile picture") %></div>
+          <% end %>
           <!-- Contenedor del Comentario -->
           <div class="comment-box">
             <div class="comment-head">
@@ -54,7 +58,7 @@
               <p><%= review.body %></p>
               <br>
               <p>FORKS:  <%= review.forks %></p>
-              <% if current_user.id == review.user_id %>
+              <% if current_user&.id == review.user_id %>
               <p>
                 <%= link_to 'Edit Comment', edit_review_path(review) %> | <%= link_to 'Delete Comment', review, method: :delete, data: { confirm: 'Are you sure?' } %>
               </p>

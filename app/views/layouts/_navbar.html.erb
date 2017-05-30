@@ -54,7 +54,9 @@ Dropdown</button>
         </div>
       </li>
     <% else %>
-      <li id="navbar" class="right"><%= link_to 'Login', new_session_path %></li>
+      <%@cart = current_cart %>
+      <li id="navbar" class="right"><%= link_to 'Login', login_path %></li>
+      <li id="navbar" class="right"><%= link_to "Cart", cart_path(current_cart) %></li>
     <% end %>
   </ul>
 </nav>

@@ -38,11 +38,10 @@ class DishesController < ApplicationController
       item = cart.cart_items.where("dish_id = ?", @dish.id).first
       if item.present?
         item.update(amount: item.amount + 1)
-        redirect_to cart, notice: "#{@dish.name} amount +1"
       else
         cart.cart_items.create(dish_id: @dish.id, amount: 1)
-        redirect_to cart, notice: "#{@dish.name} added to cart"
       end
+      redirect_to cart, notice: "#{@dish.name} added to cart"
 
   end
 

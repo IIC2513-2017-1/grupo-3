@@ -32,6 +32,10 @@
     <%= f.label :avatar, 'Profile Picture' %>
     <%= f.file_field :avatar %>
   </div>
+  <div class="upload-preview" align="center">
+    <img id="avatar-upload" src="#" />
+  </div>
+
   </br>
 
   <%= f.hidden_field :role, :value => params[:role] %>

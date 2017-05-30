@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bank_accounts, only: [:show, :edit, :destroy]
+
   resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'
     resources :carts

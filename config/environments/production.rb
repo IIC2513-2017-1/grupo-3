@@ -76,22 +76,22 @@ Rails.application.configure do
 
 
 # SMTP settings for gmail
-  # config.action_mailer.smtp_settings = {
-  #  :address              => 'smtp.sendgrid.net',
-  #  :domain               => 'eats-cl.herokuapp.com',
-  #  :port                 => 587,
-  #  :user_name            => ENV['SENDGRID_USERNAME'],
-  #  :password             => ENV['SENDGRID_PASSWORD'],
-  #  :authentication => :plain,
-  #  :enable_starttls_auto => true, # detects and uses STARTTLS
-  # }
-
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.gmail.com",
+   :address              => 'smtp.sendgrid.net',
+   :domain               => 'eats-cl.herokuapp.com',
    :port                 => 587,
-   :user_name            => Rails.application.secrets.gmail_username,
-   :password             => Rails.application.secrets.gmail_password,
+   :user_name            => ENV['SENDGRID_USERNAME'],
+   :password             => ENV['SENDGRID_PASSWORD'],
+   :authentication => :plain,
+   :enable_starttls_auto => true, # detects and uses STARTTLS
   }
+
+  # config.action_mailer.smtp_settings = {
+  #  :address              => "smtp.gmail.com",
+  #  :port                 => 587,
+  #  :user_name            => Rails.application.secrets.gmail_username,
+  #  :password             => Rails.application.secrets.gmail_password,
+  # }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

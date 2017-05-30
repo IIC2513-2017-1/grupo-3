@@ -1,72 +1,31 @@
-Started POST "/orders/55/place_order" for ::1 at 2017-05-30 16:51:42 -0400
-  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:ApplicationController> at /Users/federico/Desktop/grupo-3/app/controllers/application_controller.rb:4)
-Processing by OrdersController#place_order as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6YCrFrEjaDqK+3wmbszhDJ1yjSaazUlBKPMcGcnS9dw/LDLQA6ga2ddD9FSSmvwVGYwL4AgwIt6CCbOGf40V7w==", "order"=>{"customer_email"=>"fekunze@uc.cl", "customer_phone_number"=>"1234456", "deliver_to_first_name"=>"Federico", "deliver_to_last_name"=>"Kunze", "deliver_to_address"=>"Callao 3464 dpto 802", "card_number"=>"", "card_expiration_month"=>"1", "card_expiration_year"=>"2017", "card_verification_value"=>""}, "commit"=>"Place Order", "id"=>"55"}
-  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
-DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
-still causes `String`s to be parsed as if they were in `Time.zone`,
-and `Time`s to be converted to `Time.zone`.
-
-To keep the old behavior, you must add the following to your initializer:
-
-    config.active_record.time_zone_aware_types = [:datetime]
-
-To silence this deprecation warning, add the following:
-
-    config.active_record.time_zone_aware_types = [:datetime, :time]
- (called from place_order at /Users/federico/Desktop/grupo-3/app/controllers/orders_controller.rb:30)
-Unpermitted parameters: customer_email, card_number, card_expiration_month, card_expiration_year, card_verification_value
-  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
-  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."cart_id" = $1[0m  [["cart_id", 55]]
-  [1m[36mDish Load (0.8ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mDish Load (0.9ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" WHERE "dishes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "orders" ("status", "payment_method", "created_at", "updated_at", "user_id", "customer_ip") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["status", "UNPAID"], ["payment_method", "Cash"], ["created_at", 2017-05-30 20:51:42 UTC], ["updated_at", 2017-05-30 20:51:42 UTC], ["user_id", 23], ["customer_ip", "::1"]]
-  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "order_items" ("dish_id", "order_id", "unit_price", "quantity", "total_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dish_id", 8], ["order_id", 28], ["unit_price", 0.799e4], ["quantity", 5], ["total_price", 0.3995e5], ["created_at", 2017-05-30 20:51:42 UTC], ["updated_at", 2017-05-30 20:51:42 UTC]]
-  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "orders" SET "tipping" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["tipping", true], ["updated_at", 2017-05-30 20:51:42 UTC], ["id", 28]]
-  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (2.5ms)[0m  [1m[33mUPDATE "orders" SET "tips" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["tips", 0.3995e4], ["updated_at", 2017-05-30 20:51:42 UTC], ["id", 28]]
-  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "orders" SET "final_price" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["final_price", 0.43945e5], ["updated_at", 2017-05-30 20:51:42 UTC], ["id", 28]]
-  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 287ms (ActiveRecord: 46.5ms)
+Started GET "/dishes" for ::1 at 2017-05-30 17:02:17 -0400
+Processing by DishesController#index as HTML
+  Parameters: {"swallow"=>true}
+  [1m[36mCart Load (6.8ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  Rendering dishes/index.html.erb within layouts/application
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "dishes"[0m
+  [1m[36mDish Load (2.2ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 8]]
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 8]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mDish Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 8], ["LIMIT", 1]]
+  Rendered layouts/_dish_item.html.erb (66.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 7], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 7]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 7]]
+  [1m[36mDish Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "dishes" INNER JOIN "favorites" ON "dishes"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = $1 AND "favorites"."favorited_type" = $2 AND "dishes"."id" = $3 LIMIT $4[0m  [["user_id", 23], ["favorited_type", "Dish"], ["id", 7], ["LIMIT", 1]]
+  Rendered layouts/_dish_item.html.erb (9.5ms)
+  Rendered dishes/index.html.erb within layouts/application (89.9ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (3.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (11.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 175ms (Views: 134.8ms | ActiveRecord: 33.8ms)
 
 
-  
-LoadError (Unable to autoload constant Mail, expected /Users/federico/Desktop/grupo-3/app/helpers/mail.rb to define it):
-  
-app/mailers/application_mailer.rb:1:in `<top (required)>'
-app/mailers/order_mailer.rb:1:in `<top (required)>'
-app/controllers/orders_controller.rb:44:in `block in place_order'
-app/controllers/orders_controller.rb:41:in `place_order'
-  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
-  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
-  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.9ms)
-  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
-  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
-  Rendering /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
-  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
-  Rendered /Users/federico/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (102.9ms)

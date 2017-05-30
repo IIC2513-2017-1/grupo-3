@@ -33,11 +33,10 @@
 
 <main class="comments">
   <div class="comments-container">
-		<h2>Comments</h2>
+		<h2>Add a New Review </h2>
 
     <% if current_user %>
       <%= render partial: 'reviews/form', locals: {dish: @dish, review: Review.new} %>
-      <%= link_to 'Add Review', new_dish_review_path(@dish) %>
     <% end %>
 
 		<ul id="comments-list" class="comments-list">

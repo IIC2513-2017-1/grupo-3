@@ -41,9 +41,23 @@ class OrdersController < ApplicationController
       @order.order_items.each do |order_item|
         prev_cook = cook
         cook = order_item.dish.user
-        OrderMailer.cook_order(current_user, cook).deliver_now if !cook.nil? && prev_cook != cook
+        # if Rails.env.development?
+          OrderMailer.cook_order(current_user, cook).deliver_now if !cook.nil? && prev_cook != cook
+        # else
+        #   if !cook.nil? && prev_cook != cook
+        #     email = OrderMailer.cook_order(current_user, cook)
+        #     contents = email.body.parts.last.body.raw_source
+        #     User.sendEmail('noreply@eats.cl', cook.email, '[Eats] You have recieved a new order', contents)
+        #   end
+        # end
       end
-      OrderMailer.user_order(current_user).deliver_now
+      # if Rails.env.development?
+        OrderMailer.user_order(current_user).deliver_now
+      # else
+      #   email = OrderMailer.user_order(current_user)
+      #   contents = email.body.parts.last.body.raw_source
+      #   User.sendEmail('noreply@eats.cl', current_user.email, '[Eats] Order confirmed', contents)
+      # end
       session.delete(:cart_id)
       redirect_to @order, notice: "Your order it's on it's way !"
     else

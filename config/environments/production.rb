@@ -6,6 +6,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.encoding = "utf-8"
+  config.action_mailer.default :charset => "utf-8"
 
   config.serve_static_assets = true
 
@@ -73,12 +74,13 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :smtp
-
+  host = 'eats-cl.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
 
 # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
    :address              => 'smtp.sendgrid.net',
-   :domain               => 'eats-cl.herokuapp.com',
+   :domain               => 'heroku.com',
    :port                 => 587,
    :user_name            => ENV['SENDGRID_USERNAME'],
    :password             => ENV['SENDGRID_PASSWORD'],

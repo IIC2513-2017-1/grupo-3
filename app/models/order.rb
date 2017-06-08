@@ -14,12 +14,15 @@ class Order < ApplicationRecord
     order_items.map {|order_item| order_item.total_price}.sum
   end
 
-  # def paid_with_card?
-  #   payment_method == "Credit Card"
-  # end
 
   def update_price
     self[:total_price] = total_price
   end
 
+  def pending
+    order_items.each do |order|
+      return true if order.pending == true
+    end
+    false
+  end
 end

@@ -53,12 +53,15 @@
   <%= f.password_field :password_confirmation, :placeholder => '  Password Confirmation', :class => 'field' %>
   </br>
   <% if user.is_cook? or user.is_admin? %>
-  <hr>
-  <br>
-  <h2 align="center">Bank Account</h2>
-  <%= render partial: 'bank_accounts/form', locals: {user: user, bank_account: BankAccount.new} %>
+    <hr>
+    <br>
+    <h2 align="center">Bank Account</h2>
+    <% if current_user.bank_account.nil? %>
+      <%= link_to 'Bank Account', new_user_bank_account_path(current_user) %>
+    <% else %>
+      <%= link_to 'Bank Account', edit_user_bank_account_path(current_user) %>
+    <% end %>
   <% end %>
-
   <div class="actions">
     <%= f.submit "Update", :class => 'button' %>
   </div>

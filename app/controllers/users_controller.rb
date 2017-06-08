@@ -31,13 +31,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # if Rails.env.development?
-        UserMailer.account_activation(@user).deliver_now
-      # else
-      #   email = UserMailer.account_activation(@user)
-      #   contents = email.body.parts.last.body.raw_source
-      #   User.sendEmail('noreply@eats.cl', user.email, 'Eats Account activation', contents)
-      # end
+      UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else

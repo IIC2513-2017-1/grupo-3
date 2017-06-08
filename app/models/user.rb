@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
-  attr_accessor   :new_password, :new_password_confirmation
+  attr_accessor :new_password, :new_password_confirmation
   has_secure_password
   before_save :downcase_email
   before_create :create_activation_digest
@@ -34,6 +34,9 @@ class User < ApplicationRecord
   has_many :favorite_dishes, through: :favorites, source: :favorited, source_type: 'Dish'
   has_one  :cart
   has_one  :bank_account
+
+  scope :with_pending_orders, -> { joins(:order_items).where(
+    'order.pending = ? AND order_item.order_id = order.id AND order_item.dish.user_id = ?', true, id) }
 
   def downcase_email
     self.email = email.downcase

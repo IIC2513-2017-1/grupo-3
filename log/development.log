@@ -1,0 +1,126 @@
+Started GET "/dishes" for ::1 at 2017-06-08 13:50:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DishesController#index as HTML
+  Parameters: {"swallow"=>true}
+  Rendering dishes/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "dishes"[0m
+  [1m[36mDish Load (0.8ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" ORDER BY created_at DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 8], ["OFFSET", 0]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 6], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 6]]
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 6]]
+  Rendered layouts/_dish_item.html.erb (167.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 5], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 5]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 5]]
+  Rendered layouts/_dish_item.html.erb (8.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 4], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 4]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 4]]
+  Rendered layouts/_dish_item.html.erb (7.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 3]]
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 3]]
+  Rendered layouts/_dish_item.html.erb (9.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 2], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 2]]
+  Rendered layouts/_dish_item.html.erb (10.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 1]]
+  Rendered layouts/_dish_item.html.erb (8.5ms)
+  Rendered dishes/index.html.erb within layouts/application (242.7ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (2.6ms)
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", 2017-06-08 17:50:30 UTC], ["updated_at", 2017-06-08 17:50:30 UTC]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (27.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 571ms (Views: 484.6ms | ActiveRecord: 52.6ms)
+
+
+Started GET "/login" for ::1 at 2017-06-08 13:50:34 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered sessions/new.html.erb within layouts/application (15.0ms)
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (2.6ms)
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (8.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 73ms (Views: 69.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/carts/1" for ::1 at 2017-06-08 13:50:35 -0400
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."cart_id" = $1[0m  [["cart_id", 1]]
+  Rendered carts/show.html.erb within layouts/application (17.3ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (2.2ms)
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 96ms (Views: 87.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/dishes" for ::1 at 2017-06-08 13:50:37 -0400
+Processing by DishesController#index as HTML
+  Parameters: {"swallow"=>true}
+  Rendering dishes/index.html.erb within layouts/application
+  [1m[35m (11.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "dishes"[0m
+  [1m[36mDish Load (1.3ms)[0m  [1m[34mSELECT  "dishes".* FROM "dishes" ORDER BY created_at DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 8], ["OFFSET", 0]]
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (1.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 6], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 6]]
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 6]]
+  Rendered layouts/_dish_item.html.erb (18.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 5], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 5]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 5]]
+  Rendered layouts/_dish_item.html.erb (7.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 4], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 4]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 4]]
+  Rendered layouts/_dish_item.html.erb (7.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 3]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 3]]
+  Rendered layouts/_dish_item.html.erb (8.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 2], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 2]]
+  Rendered layouts/_dish_item.html.erb (7.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."dish_id" = $1 ORDER BY "pictures"."id" ASC LIMIT $2[0m  [["dish_id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categorizings" ON "categories"."id" = "categorizings"."category_id" WHERE "categorizings"."dish_id" = $1[0m  [["dish_id", 1]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."dish_id" = $1[0m  [["dish_id", 1]]
+  Rendered layouts/_dish_item.html.erb (7.5ms)
+  Rendered dishes/index.html.erb within layouts/application (82.6ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_sidebar.html.erb (2.1ms)
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navbar.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 152ms (Views: 119.9ms | ActiveRecord: 27.6ms)
+
+

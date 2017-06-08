@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530131615) do
+ActiveRecord::Schema.define(version: 20170606165617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "type",           null: false
+    t.string   "account_type",   null: false
     t.string   "account",        null: false
     t.string   "bank",           null: false
     t.string   "id_card_number", null: false
@@ -99,8 +99,9 @@ ActiveRecord::Schema.define(version: 20170530131615) do
     t.decimal  "unit_price",  precision: 12, scale: 3
     t.integer  "quantity"
     t.decimal  "total_price", precision: 12, scale: 3
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.boolean  "pending",                              default: true
     t.index ["dish_id"], name: "index_order_items_on_dish_id", using: :btree
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
   end

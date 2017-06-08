@@ -27,30 +27,20 @@
     </p>
   </fieldset>
 
-<fieldset>
-  <legend>Billing Information</legend>
+
+  <h3>Transfer Information</h3>
+
   <p>
-    <label for="order_card_number">Card number</label><br/>
-    <%= password_field :order, :card_number %>
+    Please transfer the total amount of <%= @order.total_price %> to the following account to validate your order.
   </p>
-  <p>
-    <label for="order_card_expiration_month">Expiration date</label><br/>
-    <select name="order[card_expiration_month]">
-      <%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12),  @order.card_expiration_month) %>
-    </select>
-    <select name="order[card_expiration_year]">
-      <%= options_for_select(%w(2017 2018 2019 2020 2021 2022 2023 2024 2025 2026 2027), @order.card_expiration_year) %>
-    </select>
-  </p>
-  <p>
-    <label for="order_card_verification_value">
-      <abbr title="Card Verification Value">CVV</abbr>
-      <abbr title="Card Validation Check">CVC</abbr>
-    </label>
-    <br/>
-    <%= password_field :order, :card_verification_value %>
-  </p>
-</fieldset>
+
+  <p><strong>Name:</strong> Eats Spa</p>
+  <p><strong>Account Type:</strong> Cuenta Corriente</p>
+  <p><strong>Card Number ID (RUT):</strong> 18.641.959-6</p>
+  <p><strong>Account Number:</strong> 9998881223</p>
+  <p><strong>Email:</strong> payments@eats.cl</p>
+
+
 
 <div class="actions">
   <p>

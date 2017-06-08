@@ -1,24 +1,19 @@
-class BankAccountController < ApplicationController
+class BankAccountsController < ApplicationController
   before_action :set_bank_account, only: [:show, :edit, :update, :destroy]
   before_action :is_admin, only: [:index, :destroy]
 
   def new
-    @bank_account = current_user.bank_account.new
+    @bank_account = BankAccount.new
   end
 
-  # POST /bank_accountes
-  # POST /bank_accountes.json
+  # POST /bank_accounts
+  # POST /bank_accounts.json
   def create
     @bank_account = BankAccount.new(bank_account_params)
     @bank_account.user_id = current_user.id
 
     respond_to do |format|
       if @bank_account.save
-        if params[:images]
-          params[:images].each { |image|
-            @bank_account.pictures.create(image: image)
-          }
-        end
         format.html { redirect_to current_user, notice: 'Bank Account was successfully created.' }
         format.json { render :show, status: :created, location: @bank_account }
       else
@@ -45,16 +40,16 @@ class BankAccountController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bank_account
-      @bank_account = BankAccount.find(params[:id])
+      @bank_account = current_user.bank_account
     end
 
     def is_admin
-      redirect_to(bank_accountes_path) unless admin?
+      redirect_to(bank_accounts_path) unless admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bank_account_params
-      params.require(:bank_account).permit(:type, :account, :id_card_number, :bank, :user_id, @user)
+      params.require(:bank_account).permit(:account_type, :account, :id_card_number, :bank, :user_id, @user)
     end
 
 

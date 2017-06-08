@@ -1,8 +1,8 @@
 class RUTValidator < ActiveModel::Validator
 
   def validate(record)
-    unless RUT.validar(record.rut)
-      record.errors[:rut] << I18n.t(:invalid_rut)
+    unless RUT.validar(record.id_card_number)
+      record.errors[:id_card_number] << I18n.t(:invalid_rut)
     end
   end
 end
@@ -29,7 +29,7 @@ class BankAccount < ApplicationRecord
     'ITAU-CORPBANCA',
     'SCOTIABANK'
   ], message: '%{value} is not a valid bank' }
-  validates :type, presence: true, inclusion: { in: [
+  validates :account_type, presence: true, inclusion: { in: [
     'Cuenta Corriente',
     'Cuenta Vista',
     'Cuenta de Ahorro',

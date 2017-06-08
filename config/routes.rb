@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "orders/order_completed/:id" => "orders#completed", as: "completed_order"
+
 
   resources :categories do
     resources :dishes, only: [:index, :show]
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bank_accounts, only: [:show, :edit, :destroy]
+  resources :bank_accounts, only: [:new, :create, :show, :edit, :update, :destroy]
 
   resources :users, swallow: true do
     resources :dishes, controller: 'users/dishes'

@@ -29,7 +29,7 @@
   <div class="user-info">
 
     <div class="fav">
-      <h1 class="profile-title">Favorite Dishes</h2>
+      <h1 class="profile-title">Favorite Dishes</h1>
 
         <% @dishes.each do |dish| %>
           <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
@@ -38,7 +38,18 @@
             <%= render 'layouts/dish_item.html', dish: dish%>
           <% end %>
         <% end %>
+    </div>
 
+    <div class"bank_account">
+      <h1 class="profile-title">Bank Account</h1>
+      <% if current_user.bank_account.present? %>
+        <p><strong>Type:</strong> <%= current_user.bank_account.account_type %></p>
+        <p><strong>ID card number:</strong> <%= current_user.bank_account.id_card_number %></p>
+        <p><strong>Account number:</strong> <%= current_user.bank_account.account %></p>
+        <p><strong>Bank:</strong> <%= current_user.bank_account.bank %></p>
+      <% else %>
+        <%= link_to 'Update Bank Account', new_user_bank_account_path(current_user) %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -2,32 +2,7 @@
 
 <h1>Discounts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>From date</th>
-      <th>To date</th>
-      <th>Discount percent</th>
-      <th>Dish</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @discounts.each do |discount| %>
-      <tr>
-        <td><%= discount.from_date %></td>
-        <td><%= discount.to_date %></td>
-        <td><%= discount.discount_percent %></td>
-        <td><%= discount.dish %></td>
-        <td><%= link_to 'Show', discount %></td>
-        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
-        <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Discount', new_discount_path %>
+<% @discounts.each do |discount| %>
+  <% @dish = Dish.find(discount.dish_id) %>
+  <%= render 'layouts/dish_item.html', dish: @dish%>
+<% end %>

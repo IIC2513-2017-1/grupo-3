@@ -5,7 +5,12 @@
   <% else %>
   <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
   <% end %>
+  <% if dish.discounts.size > 0 %>
+  <p class="text-right">Price: <span style="color: orange"> $ <%= (dish.price*(100-dish.discounts.last.discount_percent))/100%></span></p>
+  <p class="text-right"><strong><%=dish.discounts.last.discount_percent%>% OFF!</strong></p>
+  <% else %>
   <p class="text-right">Price: <span style="color: green"> $ <%= dish.price %></span></p>
+  <% end %>
   <p><%= dish.description %></p>
   <p>
   Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>

@@ -3,13 +3,13 @@
   <% if current_user && current_user.is_cook? %>
     <a id="navbar-item" href="#">Partners</a>
     <a id="navbar-item" href="#">Your Locations</a>
-    <a id="navbar-item" href="#">New Promotion</a>
+    <%= link_to 'Discount Dishes', discounts_path, id: "navbar-item" %>
   <% elsif current_user && current_user.is_admin? %>
     <%= link_to 'Eats Info', app_info_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Database', admin_help_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Statistics', statistics_path, {style: "font-size: 16px;"} %>
   <% else %>
-    <%= link_to 'Promotions', promotions_path, {style: "font-size: 16px;"} %>
+    <%= link_to 'Discount Dishes', discounts_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Popular Cooks', popular_cooks_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Popular Dishes', popular_dishes_path, {style: "font-size: 16px;"} %>
   <% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_date: 2017-06-08 14:20:21
+  to_date: 2017-06-08 14:20:21
+  discount_percent: 1
+  dish: one
+
+two:
+  from_date: 2017-06-08 14:20:21
+  to_date: 2017-06-08 14:20:21
+  discount_percent: 1
+  dish: two

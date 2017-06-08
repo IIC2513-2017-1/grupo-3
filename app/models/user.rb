@@ -35,8 +35,8 @@ class User < ApplicationRecord
   has_one  :cart
   has_one  :bank_account
 
-  scope :with_pending_orders, -> { joins(:order_items).where(
-    'order.pending = ? AND order_item.order_id = order.id AND order_item.dish.user_id = ?', true, id) }
+  # scope :with_pending_orders, -> { joins(:order_items).where(
+  #   'order.pending = ? AND order_item.order_id = order.id AND order_item.dish.user_id = ?', true, id) }
 
   def downcase_email
     self.email = email.downcase

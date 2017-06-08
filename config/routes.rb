@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :discounts
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -7,8 +8,11 @@ Rails.application.routes.draw do
   resources :tags
   resources :reviews
 
+  resources :discounts
+  
   resources :dishes, swallow: true do
     resources :reviews
+    resources :discounts
     resources :tags
     resources :pictures, only: [:index]
     member do

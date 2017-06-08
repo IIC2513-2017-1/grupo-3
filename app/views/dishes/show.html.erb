@@ -1,7 +1,6 @@
 <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-  <% current_dish = @dish %>
   <h1><%= @dish.name%></h1>
-  <% if current_user.is_admin? %>
+  <% if current_user&.is_admin? %>
     <h3>ID: <%= @dish.id%></h3>
   <% end %>
   <br>
@@ -37,9 +36,11 @@
 
 <main class="comments">
   <div class="comments-container">
-		<h2>Add a New Review </h2>
     <% if current_user %>
-      <%= render partial: 'reviews/form', locals: {dish: @dish, review: Review.new} %>
+    <h2>Add a New Review </h2>
+      <%= render partial: 'reviews/form', locals: {:dish_id => @dish.id, review: @dish.reviews.new} %>
+    <%else%>
+    <h2><%= link_to "Add a New Review", login_path %></h2>
     <% end %>
 
 		<ul id="comments-list" class="comments-list">

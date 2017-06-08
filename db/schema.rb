@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606165617) do
+ActiveRecord::Schema.define(version: 20170608182021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20170606165617) do
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_categorizings_on_category_id", using: :btree
     t.index ["dish_id"], name: "index_categorizings_on_dish_id", using: :btree
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.integer  "discount_percent"
+    t.integer  "dish_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["dish_id"], name: "index_discounts_on_dish_id", using: :btree
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -201,6 +211,7 @@ ActiveRecord::Schema.define(version: 20170606165617) do
   add_foreign_key "bank_accounts", "users", on_delete: :cascade
   add_foreign_key "categorizings", "categories"
   add_foreign_key "categorizings", "dishes"
+  add_foreign_key "discounts", "dishes"
   add_foreign_key "dishes", "users"
   add_foreign_key "favorites", "users"
   add_foreign_key "order_items", "dishes"

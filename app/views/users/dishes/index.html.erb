@@ -4,6 +4,7 @@
 
 
     <% current_user.dishes.each do |dish| %>
+    <% @dish = dish %>
       <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path_url(dish.user.id)%></p>
       <% if dish.pictures.first %>
        <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
@@ -20,6 +21,7 @@
         <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
         <% if dish.user_id == current_user.id %>
           <%= link_to 'Edit', edit_dish_path(dish) %>
+          <%= link_to 'Create Discount', new_dish_discount_path(@dish, :dish_id => @dish.id) %>
           <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>

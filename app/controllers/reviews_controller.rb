@@ -18,7 +18,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    @dish = Dish.find(params[:dish_id])
+    @review = @dish.reviews.build
+    # @review = Review.new
   end
 
   # GET /reviews/1/edit
@@ -30,7 +32,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.dish_id = current_dish.id
     @dish = Dish.find(@review.dish_id)
     respond_to do |format|
       if @review.save
@@ -85,8 +86,7 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :body, :forks, :dish_id, :user_id,
-      current_dish, current_user)
+      params.require(:review).permit(:title, :body, :forks, :dish_id, :user_id, @dish, current_user)
     end
 
     def new_release

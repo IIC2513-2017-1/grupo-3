@@ -54,6 +54,15 @@ Dish.create(name: 'Gong Bao Chicken', price: 3000, description: 'This is a famou
 # 21
 Dish.create(name: 'Gulab jaamun', price: 1200, description: 'Small balls of dried milk, slow cooked and boiled in a sugar syrup.', times_buyed: 48, created_at: DateTime.now, user_id: 4, active: true)
 
+# 1
+Discount.create(from_date: DateTime.now, to_date: DateTime.now + 1.month, discount_percent: 20, dish_id: 1, created_at: DateTime.now)
+# 2
+Discount.create(from_date: DateTime.now, to_date: DateTime.now.next_week, discount_percent: 10, dish_id: 20, created_at: DateTime.now)
+# 3
+Discount.create(from_date: DateTime.now, to_date: DateTime.now + 2.month, discount_percent: 50, dish_id: 5, created_at: DateTime.now)
+# 4
+Discount.create(from_date: DateTime.now, to_date: DateTime.now.next_week, discount_percent: 15, dish_id: 18, created_at: DateTime.now)
+
 Tag.create(name: 'Sushi')               # 1
 Tag.create(name: 'JunkFood')            # 2
 Tag.create(name: 'Alcohol')             # 3

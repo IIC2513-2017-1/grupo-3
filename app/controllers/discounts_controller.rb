@@ -83,8 +83,8 @@ class DiscountsController < ApplicationController
 
     # Confirms the correct user.
     def dish_owner
-      user = Dish.find(params[:dish_id]).user if params[:dish_id]
-      redirect_to(discounts_path) unless current_user?(user) || current_user.role == 'admin'
+      @user = Dish.find(params[:dish_id]).user if params[:dish_id]
+      # redirect_to(discounts_path) unless current_user?(@user) || admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

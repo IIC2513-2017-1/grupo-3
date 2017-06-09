@@ -6,16 +6,16 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     if params[:tag]
-      @dishes = Dish.tagged_with(params[:tag]).paginate(:per_page => 8, :page => params[:page])
+      @dishes = Dish.tagged_with(params[:tag]).paginate(per_page: 8, page: params[:page])
     else
-      @dishes = Dish.paginate(:per_page => 8, :page => params[:page])
+      @dishes = Dish.paginate(:per_page => 8, page: params[:page])
     end
     # @order_item = current_order.order_items.new
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
     if !params[:search].blank?
-      @dishes = Dish.search(params[:search]).paginate(:per_page => 8, :page => params[:page]).order("created_at DESC")
+      @dishes = Dish.search(params[:search]).paginate(per_page: 8, page: params[:page]).order("created_at DESC")
     else
-      @dishes = Dish.paginate(:per_page => 8, :page => params[:page]).order("created_at DESC")
+      @dishes = Dish.paginate(per_page: 8, page: params[:page]).order("created_at DESC")
     end
   end
 
@@ -24,6 +24,7 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @pictures = @dish.pictures
+    @reviews = @dish.reviews.paginate(per_page: 5, page: params[:page])
     @review = Review.new
   end
 
@@ -115,8 +116,8 @@ class DishesController < ApplicationController
 
   # Confirms the correct user.
   def dish_owner
-    user = Dish.find(params[:id]).user if params[:id]
-    redirect_to(dishes_path) unless current_user?(user) or current_user.role == 'admin'
+    @user = Dish.find(params[:id]).user if params[:id]
+    redirect_to(dishes_path) unless current_user?(@user) || admin?
   end
 
 

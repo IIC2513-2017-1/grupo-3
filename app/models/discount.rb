@@ -15,7 +15,7 @@ class Discount < ApplicationRecord
 
   def from_date_cannot_be_in_the_past
     if from_date.present? && from_date < Time.zone.today
-      errors.add(from_date, "can't be in the past")
+      errors.add(:from_date, "can't be in the past")
     end
   end
 
@@ -28,8 +28,10 @@ class Discount < ApplicationRecord
   scope :scheduled, lambda{ |date = DateTime.now| where(" to_date > ?", date)}
 
   def active?
-    DateTime.now.utc >= from_date && DateTime.now.utc < to_date
+    DateTime.now.utc >= from_date.utc && DateTime.now.utc < to_date.utc
   end
 
-
+  def expired?
+    DateTime.now.utc >= to_date.utc
+  end
 end

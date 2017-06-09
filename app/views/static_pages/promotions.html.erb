@@ -1,10 +1,46 @@
 <% if current_user %>
   <h1 align="center">My Scheduled Promotions</h1>
-
+  <br />
+<table class="promotions">
+  <tr>
+    <th>Picture</th>
+    <th>Dish</th>
+    <th>Discount id</th>
+    <th>Discount (%)</th>
+    <th>Status</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th></th>
+    <th></th>
+  </tr>
   <% current_user&.dishes.each do |dish| %>
       <% dish.discounts.scheduled.each do |discount| %>
-        <% discount_dish = current_user.dishes.find(discount.dish_id)%>
-        <%= render 'layouts/dish_item.html', dish: discount_dish%>
+      <% discount_dish = current_user.dishes.find(discount.dish_id)%>
+      <tr>
+        <% if discount_dish.pictures.first %>
+          <td><%= link_to image_tag(dish.pictures.first.image.url, :size => '50x50'), dish_path(discount_dish), :class => "dish-avatar" %></td>
+        <% else %>
+          <td><%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '50x50'), dish_path(discount_dish), :class => "dish-avatar", :alt => "Dish picture" %></td>
+        <% end %>
+        <td><%= discount_dish.name %></td>
+        <td><%= discount.id %></td>
+        <td><%= discount.discount_percent %> %</td>
+        <% if discount.active? %>
+        <td> Active </td>
+        <% else %>
+        <td> Inactive </td>
+        <% end %>
+        <td><%= discount.from_date %></td>
+        <td><%= discount.to_date %></td>
+        <td><%= link_to 'Preview', discount_dish %></td>
+        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
+        <td><%= link_to 'Delete', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
       <%end%>
-  <%end%>
+    <%end%>
+</table>
+
+
+
+
 <%end%>

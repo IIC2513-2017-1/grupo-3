@@ -22,8 +22,12 @@
     <%=@dish.description %>
   </p>
   <p>
-    <strong>Price:</strong>
-    <span style="color:green">$ <%= @dish.price %></span>
+    <% if @dish.discounts.active.size > 0 %>
+    <p class="text-right"><strong>Price:</strong> <span style="color: orange"> $ <%= (@dish.price*(100-@dish.discounts.active.last.discount_percent))/100%></span></p>
+    <p class="text-right"><strong><%= @dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
+    <% else %>
+    <p class="text-right"><strong>Price:</strong> <span style="color: green"> $ <%= @dish.price %></span></p>
+    <% end %>
   </p>
   <p>
     <strong>Times buyed:</strong>
@@ -44,7 +48,8 @@
     <% end %>
 
 		<ul id="comments-list" class="comments-list">
-      <% Review.where(dish_id: @dish.id).each do |review| %>
+      <% @reviews = Review.where(dish_id: @dish.id)%>
+      <% @reviews.each do |review| %>
       <li>
         <div class="comment-main-level">
           <!-- Avatar -->

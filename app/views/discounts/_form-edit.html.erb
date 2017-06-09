@@ -1,0 +1,32 @@
+<%= form_for(discount) do |f| %>
+  <% if discount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(discount.errors.count, "error") %> prohibited this discount from being saved:</h2>
+
+      <ul>
+      <% discount.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from_date %>
+    <%= f.datetime_select :from_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_date %>
+    <%= f.datetime_select :to_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :discount_percent %>
+    <%= f.number_field :discount_percent %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

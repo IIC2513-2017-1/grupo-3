@@ -1,3 +1,10 @@
 $('.remove_item').bind('ajax:success', function() {
-        $(this).closest('td.qty').html("Hola");
+        var quantity = +($(this).closest('tr').children(".qty").text());
+        if (quantity == 1){
+          $(this).closest('tr').fadeOut();
+        }
+        else{
+          quantity--;
+          $(this).closest('tr').children(".qty").text(quantity.toString());
+        }
 });

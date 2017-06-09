@@ -7,13 +7,21 @@ class CartsController < ApplicationController
 
   def remove
     @item = @cart.remove_item(params[:id])
-    redirect_to cart_path(current_cart.id), notice: "Removed 1 #{@item.dish.name}"
+    respond_to do |format|
+      format.html { redirect_to cart_path(current_cart.id), notice: "Removed 1 #{@item.dish.name}"}
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 
   def delete
     @item = CartItem.find(params[:id])
     @item.destroy
-    redirect_to cart_path(current_cart.id), notice: 'Cart item deleted'
+    respond_to do |format|
+      format.html { redirect_to cart_path(current_cart.id), notice: 'Cart item deleted' }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 
   # private

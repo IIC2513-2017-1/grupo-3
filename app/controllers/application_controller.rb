@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-  before_filter :load_cart
+  before_action :load_cart
+  after_action :clear_xhr_flash
   before_action :all_categories
 
   def all_categories
@@ -10,6 +11,11 @@ class ApplicationController < ActionController::Base
 
   def load_cart
     @cart = Cart.find(session[:cart_id]) if session[:cart_id]&.present?
+  end
+
+  def clear_xhr_flash
+    flash.discard if request.xhr?
+    # Also modify 'flash' to other attributes which you use in your common/flashes for js
   end
   # def clear_cart_link(text = 'Empty Cart')
   #   link_to_remote text,

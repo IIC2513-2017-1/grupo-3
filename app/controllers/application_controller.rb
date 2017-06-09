@@ -1,16 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-  # before_filter :load_cart
+  before_filter :load_cart
   before_action :all_categories
 
   def all_categories
     @categories = Category.all
   end
 
-  # def load_cart
-  #   @cart = Cart.find(session[:cart_id]) if session[:cart_id].present?
-  # end
+  def load_cart
+    @cart = Cart.find(session[:cart_id]) if session[:cart_id]&.present?
+  end
   # def clear_cart_link(text = 'Empty Cart')
   #   link_to_remote text,
   #     {:url => { :controller => "cart",

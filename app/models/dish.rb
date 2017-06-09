@@ -15,7 +15,7 @@ class Dish < ApplicationRecord
   has_many :categorizings
   has_many :categories, through: :categorizings
 
-  # default_scope { where(active: true) }
+
 
   def self.search(search)
     if search
@@ -23,16 +23,12 @@ class Dish < ApplicationRecord
                 "#{search}%".downcase, "#{search}%".downcase).ids
       tags_ids = Tag.where('(lower(name) LIKE ? OR lower(name) LIKE ?)',
                 "#{search}%".downcase, "% #{search}%".downcase).ids
-      # categories_ids = Category.where('(lower(name) LIKE ? OR lower(name) LIKE ?)',
-      #                     "#{search}%".downcase, "% #{search}%".downcase).ids
       joins(:taggings).where('(lower(name) LIKE ? OR lower(name) LIKE ?)
             OR (lower(description) LIKE ? OR lower(description) LIKE ?)
             OR (user_id IN (?))
             OR ((taggings.tag_id IN (?)) AND (taggings.dish_id IN (?)))',
       "#{search}%".downcase, "% #{search}%".downcase, "#{search}%".downcase, "% #{search}%".downcase,
       users_ids, tags_ids, ids).distinct
-      # query.joins(:categories_dishes).where('((categories_dishes.category_id IN (?)) AND (categories_dishes.dish_id IN (?))',
-      #      categories_ids, ids).distinct
     else
       all
     end

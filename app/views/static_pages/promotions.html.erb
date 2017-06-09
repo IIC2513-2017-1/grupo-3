@@ -1,1 +1,10 @@
-<h1 align="center">Promotions</h1>
+<% if current_user %>
+  <h1 align="center">My Scheduled Promotions</h1>
+
+  <% current_user&.dishes.each do |dish| %>
+      <% dish.discounts.scheduled.each do |discount| %>
+        <% discount_dish = current_user.dishes.find(discount.dish_id)%>
+        <%= render 'layouts/dish_item.html', dish: discount_dish%>
+      <%end%>
+  <%end%>
+<%end%>

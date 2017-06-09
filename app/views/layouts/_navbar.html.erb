@@ -43,6 +43,7 @@ Dropdown</button>
             <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
             <% if current_user.is_cook? %>
               <li class="dropdown-item"><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>
+              <li class="dropdown-item"><%= link_to "My Promotions", promotions_path %></li>
             <% end %>
             <%@cart = current_cart %>
             <li class="dropdown-item"><%= link_to "Cart", cart_path(current_cart) %></li>

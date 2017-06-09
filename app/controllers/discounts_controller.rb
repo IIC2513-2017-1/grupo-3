@@ -1,4 +1,6 @@
 class DiscountsController < ApplicationController
+  before_action :logged_in?, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update]
   before_action :set_discount, only: [:show, :edit, :update, :destroy]
   before_action :dish_owner, only: [:edit, :update, :destroy]
   # GET /discounts
@@ -70,10 +72,19 @@ class DiscountsController < ApplicationController
       @discount = Discount.find(params[:id])
     end
 
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
     # Confirms the correct user.
     def dish_owner
-      user = Dish.find(params[:dish_id]).user if params[:id]
-      redirect_to(dishes_path) unless current_user?(user) || current_user.role == 'admin'
+      user = Dish.find(params[:dish_id]).user if params[:dish_id]
+      redirect_to(discounts_path) unless current_user?(user) || current_user.role == 'admin'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -3,6 +3,8 @@
 <h1>Discounts</h1>
 
 <% @discounts.each do |discount| %>
-  <% @dish = Dish.find(discount.dish_id) %>
-  <%= render 'layouts/dish_item.html', dish: @dish%>
+  <% if discount.active? %>
+    <% @dish = Dish.find(discount.dish_id) %>
+    <%= render 'layouts/dish_item.html', dish: @dish%>
+  <% end %>
 <% end %>

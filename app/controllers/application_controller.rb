@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cart
-  #  @cart = Cart.find(session[:cart_id]) if session[:cart_id]&.present?
+    @cart = Cart.find(session[:cart_id]) if session[:cart_id]&.present?
   end
 
   def clear_xhr_flash

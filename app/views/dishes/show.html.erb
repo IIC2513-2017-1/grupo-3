@@ -38,13 +38,14 @@
         <strong>Times buyed:</strong>
         <%= 0 unless @dish.times_buyed %>
       </p>
-
-      <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
-      <% if current_user %>
-        <%= link_to '| Add a New Review', new_review_path(@review, :dish_id => @dish.id), :id => 'new_review_link', remote: true %>
-      <%else%>
-        <%= link_to "| Add a New Review", login_path %>
-      <% end %>
+      <p class="link">
+        <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
+        <% if current_user %>
+          <%= link_to '| Add a New Review', new_review_path(@review, :dish_id => @dish.id), :id => 'new_review_link', remote: true %>
+        <%else%>
+          <%= link_to "| Add a New Review", login_path %>
+        <% end %>
+      </p>
     </section>
 
   <h1 id="view-subtitle" align="center">Reviews</h1>

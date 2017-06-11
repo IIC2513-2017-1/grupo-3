@@ -78,7 +78,7 @@
                 <% end %>
                 <p>FORKS:  <%= review.forks %></p>
                 <% if current_user&.id == review.user_id %>
-                <p>
+                <p class="link">
                   <%= link_to 'Edit Review', edit_review_path(review) %> |
                   <%= link_to 'Delete Review', review, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
                 </p>

@@ -12,11 +12,18 @@ jQuery ->
     labels: ['Quantity']
 
   Morris.Line
-    element: "dishes_chart"
-    data: $('#dishes_chart').data('dishes')
+    element: "dishes1_chart"
+    data: $('#dishes1_chart').data('dishes')
     xkey: 'created_at'
     ykeys: ['price']
     labels: ['Price']
+
+  Morris.Line
+    element: "dishes2_chart"
+    data: $('#dishes2_chart').data('dishes')
+    xkey: 'price'
+    ykeys: ['times_buyed']
+    labels: ['Times Buyed']
 
   Morris.Line
     element: "orders_chart"

@@ -149,26 +149,26 @@
 
     <section class="database-tabs" id="content5">
 
-      <table class="reviews-table">
+      <table class="users-table">
         <thead>
-          <tr class="reviews-table">
-            <th class="reviews-table">Review ID</th>
-            <th class="reviews-table">Name</th>
-            <th class="reviews-table">User ID</th>
-            <th class="reviews-table">Dish ID</th>
-            <th class="reviews-table">Forks</th>
+          <tr class="users-table">
+            <th class="users-table">Review ID</th>
+            <th class="users-table">Name</th>
+            <th class="users-table">User ID</th>
+            <th class="users-table">Dish ID</th>
+            <th class="users-table">Forks</th>
             <th colspan="3"></th>
           </tr>
         </thead>
 
         <tbody>
           <% @reviews.each do |review| %>
-            <tr class="reviews-table">
-              <td class="reviews-table"><%= review.id %></td>
-              <td class="reviews-table"><%= review.title %></td>
-              <td class="reviews-table"><%= review.user_id %></td>
-              <td class="reviews-table"><%= review.dish_id %></td>
-              <td class="reviews-table"><%= review.forks %></td>
+            <tr class="users-table">
+              <td class="users-table"><%= review.id %></td>
+              <td class="users-table"><%= review.title %></td>
+              <td class="users-table"><%= review.user_id %></td>
+              <td class="users-table"><%= review.dish_id %></td>
+              <td class="users-table"><%= review.forks %></td>
               <td><%= link_to 'Show', review %></td>
               <td><%= link_to 'Edit', edit_review_path(review) %></td>
               <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>

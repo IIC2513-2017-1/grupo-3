@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
     @tags = Tag.all
     @categories = Category.all
     @reviews = Review.all
+    @orders = Order.all
     if not current_user
       redirect_to(root_url)
       return

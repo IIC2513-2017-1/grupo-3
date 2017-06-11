@@ -1,13 +1,19 @@
 <h1 id="view-title" align="center">Statistics</h1>
 
 <div id="charts">
+  <h3>Users Chart</h3>
+  <p>Number of users vs Creation date</p>
+  <%= content_tag :div, "", id: "users_chart", data: {users: users_chart_data} %>
+</div>
+
+<div id="charts">
   <h3>Dishes Chart</h3>
-  <p></p>
+  <p>Creation date vs Price</p>
   <%= content_tag :div, "", id: "dishes_chart", data: {dishes: @dishes} %>
 </div>
 
 <div id="charts">
-  <h3>Users Chart</h3>
-  <p></p>
-  <%= content_tag :div, "", id: "users_chart", data: {users: users_chart_data} %>
+  <h3>Orders Chart</h3>
+  <p>Total price vs Creation date</p>
+  <%= content_tag :div, "", id: "orders_chart", data: {orders: @orders} %>
 </div>

@@ -4,7 +4,7 @@ module UsersHelper
     (5.weeks.ago.to_date..Date.today).map do |date|
       {
         created_at: date,
-        quantity: User.where("date(created_at) = ?", date).count
+        quantity: User.where("date(created_at) = ?", date).count(:id)
       }
     end
   end

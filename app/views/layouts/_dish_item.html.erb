@@ -1,39 +1,44 @@
 <div class="dish-display" >
-  <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%> </p>
-  <% if dish.pictures.first %>
-   <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
-  <% else %>
-  <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
-  <% end %>
-  <% if dish.discounts.active.size > 0 %>
-  <p class="text-right">Price: <span style="color: orange"> $ <%= (dish.price*(100-dish.discounts.active.last.discount_percent))/100%></span></p>
-  <p class="text-right"><strong><%=dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
-  <% else %>
-  <p class="text-right">Price: <span style="color: green"> $ <%= dish.price %></span></p>
-  <% end %>
-  <p><%= dish.description %></p>
-  <p>
-  Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
-  </p>
-  <p>
-  Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
-  </p>
+  <h2 id="dish-show" align="center"><%= dish.name %></h2>
+  <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
+  <section align="center">
+    <% if dish.pictures.first %>
+     <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+    <% else %>
+    <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
+    <% end %>
+  </section>
+  <section id="info">
+      <% if dish.discounts.active.size > 0 %>
+      <p class="text-right">Price: <span style="color: orange"> $ <%= (dish.price*(100-dish.discounts.active.last.discount_percent))/100%></span></p>
+      <p class="text-right"><strong><%=dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
+      <% else %>
+      <p class="text-right">Price: <span style="color: green"> $ <%= dish.price %></span></p>
+      <% end %>
+      <p><%= dish.description %></p>
+      <p>
+      Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
+      </p>
+      <p>
+      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+      </p>
 
-  <div class="dish-buttons">
-    <%= link_to 'Show', dish %>
-       | <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
-      <%if (current_user&.is_cook? && current_user.id == dish.user_id) || current_user&.is_admin? %>
-         | <%= link_to 'Edit', edit_dish_path(dish) %>
-      <% end %>
-      <br>
-      <%if current_user %>
-        <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
-          <%= link_to 'Add to favorites', favorite_dishes_path(dish_id: dish), method: :post %>
-        <%- else -%>
-          <%= link_to 'Remove from favorites', favorite_dish_path(dish), method: :delete %>
-        <%- end -%>
-      <%- else -%>
-        <%= link_to 'Add to favorites', login_path %>
-      <% end %>
-  </div>
+      <div class="dish-buttons">
+        <%= link_to 'Show', dish %>
+           | <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
+          <%if (current_user&.is_cook? && current_user.id == dish.user_id) || current_user&.is_admin? %>
+             | <%= link_to 'Edit', edit_dish_path(dish) %>
+          <% end %>
+          <br>
+          <%if current_user %>
+            <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
+              <%= link_to 'Add to favorites', favorite_dishes_path(dish_id: dish), method: :post %>
+            <%- else -%>
+              <%= link_to 'Remove from favorites', favorite_dish_path(dish), method: :delete %>
+            <%- end -%>
+          <%- else -%>
+            <%= link_to 'Add to favorites', login_path %>
+          <% end %>
+    </div>
+  </section>
 </div>

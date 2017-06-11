@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
     @users = User.all
     @tags = Tag.all
     @categories = Category.all
+    @reviews = Review.all
     if not current_user
       redirect_to(root_url)
       return
@@ -33,6 +34,11 @@ class StaticPagesController < ApplicationController
   end
 
   def statistics
+    @dishes = Dish.all
+    @users = User.all
+    @tags = Tag.all
+    @categories = Category.all
+    @reviews = Review.all
     if not current_user
       redirect_to(root_url)
       return

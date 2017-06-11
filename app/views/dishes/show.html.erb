@@ -1,57 +1,60 @@
 <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-  <h1><%= @dish.name%></h1>
-  <% if current_user&.is_admin? %>
-    <h3>ID: <%= @dish.id%></h3>
-  <% end %>
-  <br>
+  <h1 id="view-title" align="center"><%= @dish.name%></h1>
+  <h2 id="view-subtitle" align="center">by <%= link_to "#{@dish.user.name}", user_dishes_path(@dish.user)%></h2>
   <% if !@dish.avg_forks.nan? %>
-    <h4>Forks: <%= '%.2f' % @dish.avg_forks %> </h4>
+    <h3 align="center"><%= '%.2f' % @dish.avg_forks %> Fork(s)</h3>
   <% else %>
-    <h4>Forks: 0 </h4>
+    <h3 align="center"> 0 Forks</h3>
   <% end %>
-  <% if @dish.pictures.first %>
-   <%= image_tag(@dish.pictures.first.image.url, :size => '200x200', :class => "dish-avatar") %>
-  <% else %>
-    <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
-  <% end %>
-  <p>
-    by <%= link_to "#{@dish.user.name}", user_dishes_path_url(@dish.user.id)%>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%=@dish.description %>
-  </p>
-  <p>
-    <% if @dish.discounts.active.size > 0 %>
-    <p class="text-right"><strong>Price:</strong> <span style="color: orange"> $ <%= (@dish.price*(100-@dish.discounts.active.last.discount_percent))/100%></span></p>
-    <p class="text-right"><strong><%= @dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
+
+<div id=dish-element>
+
+  <section id="dish-photos" align="center">
+    <% if @dish.pictures.first %>
+     <%= image_tag(@dish.pictures.first.image.url, :size => '200x200', :class => "dish-avatar") %>
     <% else %>
-    <p class="text-right"><strong>Price:</strong> <span style="color: green"> $ <%= @dish.price %></span></p>
+      <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
     <% end %>
-  </p>
-  <p>
-    <strong>Times buyed:</strong>
-    <%= 0 unless @dish.times_buyed %>
-  </p>
+  </section>
+</div>
 
-<%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
+  <section id="dish-info">
+    <% if current_user&.is_admin? %>
+      <h3>Dish ID: <%= @dish.id%></h3>
+    <% end %>
+    <p>
+      <strong>Description:</strong>
+      <%=@dish.description %>
+    </p>
+    <p>
+      <% if @dish.discounts.active.size > 0 %>
+      <p class="text-right"><strong>Price:</strong> <span style="color: orange"> $ <%= (@dish.price*(100-@dish.discounts.active.last.discount_percent))/100%></span></p>
+      <p class="text-right"><strong><%= @dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
+      <% else %>
+      <p class="text-right"><strong>Price:</strong> <span style="color: green"> $ <%= @dish.price %></span></p>
+      <% end %>
+    </p>
+    <p>
+      <strong>Times buyed:</strong>
+      <%= 0 unless @dish.times_buyed %>
+    </p>
 
-
-
-<main class="comments">
-  <div class="comments-container">
+    <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
     <% if current_user %>
-    <h2>Add a New Review </h2>
-      <%= render partial: 'reviews/form', locals: {:dish_id => @dish.id, review: @dish.reviews.new} %>
+      <%= link_to '| Add a New Review', new_review_path(@review, :dish_id => @dish.id), :id => 'new_review_link', remote: true %>
     <%else%>
-    <h2><%= link_to "Add a New Review", login_path %></h2>
+      <%= link_to "| Add a New Review", login_path %>
     <% end %>
+  </section>
 
+<h1 id="view-subtitle" align="center">Reviews</h1>
+<main class="comments">
+  <div class="comments-container" id="comments-container">
 		<ul id="comments-list" class="comments-list">
       <% @reviews = Review.where(dish_id: @dish.id)%>
       <% @reviews.each do |review| %>
       <li>
-        <div class="comment-main-level">
+        <div class="comment-main-level" id="comments-section">
           <!-- Avatar -->
           <% if review.user.avatar.present? %>
           <div class="comment-avatar"><%= image_tag(review.user.avatar.url(:medium), :class => "avatar border-white", :alt => "User profile picture") %></div>
@@ -76,7 +79,8 @@
               <p>FORKS:  <%= review.forks %></p>
               <% if current_user&.id == review.user_id %>
               <p>
-                <%= link_to 'Edit Review', edit_review_path(review) %> | <%= link_to 'Delete Review', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit Review', edit_review_path(review) %> |
+                <%= link_to 'Delete Review', review, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
               </p>
             <% end %>
             </div>
@@ -87,7 +91,5 @@
 		</ul>
 	</div>
 </main>
-
-
 
 <p><%= link_to "Back to Dishes", dishes_path %></p>

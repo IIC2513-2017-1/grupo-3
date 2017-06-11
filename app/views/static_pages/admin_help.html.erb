@@ -15,6 +15,9 @@
     <input class="database-tabs" id="tab4" type="radio" name="tabs">
     <label class="database-tabs" for="tab4">Tags</label>
 
+    <input class="database-tabs" id="tab5" type="radio" name="tabs">
+    <label class="database-tabs" for="tab5">Reviews</label>
+
     <section class="database-tabs" id="content1">
 
       <div class="users-table">
@@ -31,6 +34,7 @@
               <th class="users-table">Phone</th>
               <th class="users-table">Gender</th>
               <th class="users-table">Birth date</th>
+              <th class="users-table">Created At</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -48,6 +52,7 @@
                 <td class="users-table"><%= user.phone %></td>
                 <td class="users-table"><%= user.gender %></td>
                 <td class="users-table"><%= user.birth_date %></td>
+                <td class="users-table"><%= user.created_at %></td>
                 <td ><%= link_to 'Show', user %></td>
                 <td><%= link_to 'Edit', edit_user_path(user) %></td>
                 <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -135,6 +140,38 @@
               <td><%= link_to 'Show', tag %></td>
               <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
               <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="database-tabs" id="content5">
+
+      <table class="reviews-table">
+        <thead>
+          <tr class="reviews-table">
+            <th class="reviews-table">Review ID</th>
+            <th class="reviews-table">Name</th>
+            <th class="reviews-table">User ID</th>
+            <th class="reviews-table">Dish ID</th>
+            <th class="reviews-table">Forks</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr class="reviews-table">
+              <td class="reviews-table"><%= review.id %></td>
+              <td class="reviews-table"><%= review.title %></td>
+              <td class="reviews-table"><%= review.user_id %></td>
+              <td class="reviews-table"><%= review.dish_id %></td>
+              <td class="reviews-table"><%= review.forks %></td>
+              <td><%= link_to 'Show', review %></td>
+              <td><%= link_to 'Edit', edit_review_path(review) %></td>
+              <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

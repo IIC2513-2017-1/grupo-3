@@ -24,6 +24,36 @@ body {
   font-size: 18px;
 }
 
+#view-title {
+  font-family: 'Sofia';
+  font-size: 75px;
+  color: #5e0000;
+  margin-top: 125px;
+  margin-bottom: 50px;
+}
+
+#view-subtitle {
+  font-family: 'Sofia';
+  font-size: 35px;
+  color: #5e0000;
+  margin-top: 75px;
+
+  a, a:hover {
+    font-family: 'Sofia';
+    font-size: 35px;
+    color: #5e0000;
+    background-color: transparent;
+  }
+
+  a:hover {
+    font-family: 'Sofia';
+    font-size: 35px;
+    color: #666;
+    background-color: transparent;
+  }
+
+}
+
 main {
   height: 100%;
   width: 100%;
@@ -144,6 +174,8 @@ li#navbar a, .dropbtn {
 
 li#navbar a:hover, .dropdown:hover .dropbtn {
     background-color: #d3d3d3;
+    color: black;
+
 }
 
 li#navbar {
@@ -164,6 +196,18 @@ li#navbar:nth-last-child(2) {
 
 ul.dropdown {
   float: left;
+  margin: 2px;
+
+  a {
+    color: black;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #5e0000;
+    background-color: transparent;
+  }
+
 }
 
 li.dropdown {
@@ -173,22 +217,21 @@ li.dropdown {
 
 .dropdown-content {
     text-decoration: none;
-    list-style-type: none;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 150px;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
 .dropdown-item {
-    list-style-type: none;
+    list-style-type: circle;
 }
 
 .dropdown-content a {
     color: black;
-    padding: 6px 8px;
+    padding: 6px 5px;
     text-decoration: none;
     display: block;
 }
@@ -202,16 +245,16 @@ li.dropdown {
 }
 
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: #fff;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
     border-right: 1px solid #bbb;
 }
 
@@ -352,6 +395,17 @@ footer {
   padding: 1rem;
   background-color: #fff;
   text-align: center;
+
+  a {
+    color: black;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #5e0000;
+    background-color: transparent;
+  }
+
 }
 
 li.footer {

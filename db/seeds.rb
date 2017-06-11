@@ -6,11 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true)
-User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true)
-User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true)
-User.create(first_name: 'Jamie', last_name: 'Oliver', email: 'jamie_oliver@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true)
-
+User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
+User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
+User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
+User.create(first_name: 'Jamie', last_name: 'Oliver', email: 'jamie_oliver@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
+User.create(first_name: 'Client1', last_name: 'Tneilc', email: 'client1@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago)
+User.create(first_name: 'Client2', last_name: 'Tneilc', email: 'client2@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 3.weeks.ago)
+User.create(first_name: 'Client3', last_name: 'Tneilc', email: 'client3@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago)
+User.create(first_name: 'Client4', last_name: 'Tneilc', email: 'client4@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 3.weeks.ago)
+User.create(first_name: 'Client5', last_name: 'Tneilc', email: 'client5@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 2.weeks.ago)
+User.create(first_name: 'Client6', last_name: 'Tneilc', email: 'client6@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 2.weeks.ago)
+User.create(first_name: 'Client7', last_name: 'Tneilc', email: 'client7@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true)
+User.create(first_name: 'Client8', last_name: 'Tneilc', email: 'client8@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true)
 # 1
 Dish.create(name: 'Pizza', price: 10000, description: 'Pepperoni pizza', times_buyed: 8, created_at: DateTime.now, user_id: 3, active: true)
 # 2

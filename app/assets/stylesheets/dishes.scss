@@ -2,13 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#dishes {
+  width: 100%;
+  margin: auto;
+}
+
+#dish-element {
+  height: 100%;
+  width: 100%;
+  margin: 20px;
+}
+
+#dish-info {
+
+  p, a {
+    margin: 0px;
+  }
+
+}
+
+#dish-photos {
+
+}
+
 div.dish-display {
  width: 275px;
  margin-top: 35px;
+ margin-right: 20px;
+ margin-left: 20px;
  display: inline-block;
  vertical-align: top;
+ color: black;
+ background-color: transparent;
  *display: inline;
  *zoom: 1;
+
+ p, a {
+   margin: 10px 0px 10px 0px;
+ }
+
+ a {
+
+ }
+
+ a:hover {
+   color: #5e0000;
+   background-color: transparent;
+ }
+
+}
+
+#dish-info {
+  margin-top: 25px;
 }
 
 div.new-dish-form {
@@ -91,15 +137,6 @@ div.new-dishes-button {
     height: 25px;
   }
 }
-
-#tag_cloud {
-  width: 400px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; }
-  .m { font-size: 1.2em; }
-  .l { font-size: 1.8em; }
-}
-
 
 // ---
 
@@ -342,5 +379,20 @@ ul {
 	.comments-list .comment-box {
 		width: 390px;
 	}
+
+}
+
+#paginate-dish {
+  margin-top: 200px;
+  margin-bottom: 50px;
+
+  a {
+
+  }
+
+  a:hover {
+    color: #5e0000;
+    background-color: transparent;
+  }
 
 }

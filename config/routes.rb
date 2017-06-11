@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :reviews
 
   resources :discounts
-  
+
   resources :dishes, swallow: true do
     resources :reviews
     resources :discounts
@@ -26,8 +26,6 @@ Rails.application.routes.draw do
       post :place_order
     end
   end
-
-
 
   resources :categories do
     resources :dishes, only: [:index, :show]

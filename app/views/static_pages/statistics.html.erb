@@ -1,1 +1,13 @@
-<h1 align="center">Statistics</h1>
+<h1 id="view-title" align="center">Statistics</h1>
+
+<div id="charts">
+  <h3>Dishes Chart</h3>
+  <p></p>
+  <%= content_tag :div, "", id: "dishes_chart", data: {dishes: @dishes} %>
+</div>
+
+<div id="charts">
+  <h3>Users Chart</h3>
+  <p></p>
+  <%= content_tag :div, "", id: "users_chart", data: {users: users_chart_data} %>
+</div>

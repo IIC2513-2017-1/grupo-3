@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require raphael
+//= require morris
 //= require_tree .
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */

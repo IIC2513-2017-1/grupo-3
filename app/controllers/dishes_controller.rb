@@ -56,6 +56,27 @@ class DishesController < ApplicationController
   def edit
   end
 
+  def toggle_activate
+    @dish = Dish.find(params[:id])
+    @dish.toggle!(:active)
+    if @dish.active
+      redirect_to user_dishes_path_url(current_user.id), notice: "#{@dish.name} is now active"
+    else
+      redirect_to user_dishes_path_url(current_user.id), notice: "#{@dish.name} is now unactive"
+    end
+  end
+
+  # def toggle_activate
+  # @dish = Dish.find(params[:id])
+  #
+  #   if @dish.active
+  #     @dish.update_attributes(active: false)
+  #   else
+  #     @dish.update_attributes(active: true)
+  #   end
+  #     flash[:success] = "#{@dish.name} is now active"
+  # end
+
   # POST /dishes
   # POST /dishes.json
   def create
@@ -123,6 +144,6 @@ class DishesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dish_params
-    params.require(:dish).permit(:name, :price, :description, :times_buyed, :pictures, :user_id, :tag_list, :category_list, @user)
+    params.require(:dish).permit(:name, :price, :active, :description, :times_buyed, :pictures, :user_id, :tag_list, :category_list, @user)
   end
 end

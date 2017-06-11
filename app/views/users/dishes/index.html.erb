@@ -1,35 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% @cook = User.find(params[:user_id])%>
+<h1 align="center"><%= @cook.name %>'s dishes</h1>
 
-<h1>Users</h1>
 
-
-    <% current_user.dishes.each do |dish| %>
-    <% @dish = dish %>
-      <h4 id="dish-show"><%= dish.name %></h4><p id="dish-show">by <%= link_to "#{dish.user.name}", user_dishes_path_url(dish.user.id)%></p>
-      <% if dish.pictures.first %>
-       <%= link_to image_tag(dish.pictures.first.image.url, :size => '220x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
-      <% else %>
-      <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
-      <% end %>
-      <p class="text-right">Price: <span style="color: green">$ <%=dish.price %></span></p>
-      <p><%= dish.description %></p>
-      <p>
-      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
-      </p>
-
-      <div class="dish-buttons">
-        <%= button_to 'Show', dish, :method => :get, :id => "dish-button" %>
-        <% if dish.user_id == current_user.id %>
-          <%= link_to 'Edit', edit_dish_path(dish) %>
-          <%= link_to 'Create Discount', new_dish_discount_path(@dish, :dish_id => @dish.id) %>
-          <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
+<% if current_user == @cook %>
+  <br />
+  <div style="overflow-x:auto;">
+    <table class="promotions">
+      <tr>
+        <th>Picture</th>
+        <th>Dish</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Times Buyed</th>
+        <th>Active</th>
+      </tr>
+      <% current_user&.dishes.each do |dish| %>
+        <% @dish = dish %>
+          <tr>
+            <% if dish.pictures.first %>
+              <td><%= link_to image_tag(dish.pictures.first.image.url, :size => '50x50'), dish_path(dish), :class => "dish-avatar" %></td>
+            <% else %>
+              <td><%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '50x50'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %></td>
+            <% end %>
+            <td><%= dish.name %></td>
+            <td>$ <%= dish.price %></td>
+            <td><%= dish.description %></td>
+            <td><%= dish.times_buyed %></td>
+            <td><%= link_to dish.activate_text(dish), toggle_activate_dish_path(dish), class: 'activate_dish' %> </td>
+            <td><%= link_to 'Preview', dish %></td>
+            <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+            <td><%= link_to 'Create Discount', new_dish_discount_path(@dish, :dish_id => @dish.id) %></td>
+            <td><%= link_to 'Delete', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <%end%>
+    </table>
+  </div>
+  <br>
+  <%= link_to 'New Dish', new_dish_path %>
+<% else %>
+    <% @cook.dishes.all_actives.each do |dish| %>
+      <%= render 'layouts/dish_item.html', dish: dish%>
     <% end %>
-
-
-
-
-<br>
-
-<%= link_to 'New Dish', new_dish_path %>
+<% end %>

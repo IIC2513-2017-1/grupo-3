@@ -15,7 +15,7 @@ class Dish < ApplicationRecord
   has_many :categorizings
   has_many :categories, through: :categorizings
 
-
+  scope :all_actives, lambda{ where("active = ?", true)}
 
   def self.search(search)
     if search
@@ -32,6 +32,10 @@ class Dish < ApplicationRecord
     else
       all
     end
+  end
+
+  def activate_text(activate_dish)
+    activate_dish.active? ? 'True' : 'False'
   end
 
   def self.tagged_with(name)

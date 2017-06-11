@@ -41,3 +41,16 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+// $(".dish_activate").bind('change', function(){
+//   if (this.checked){
+//     $.ajax({
+//       url: '/dishes/'+this.value+'/toggle_activate',
+//       type: 'POST',
+//       data: {"active": this.checked}
+//     });
+//   }
+//   else {
+//      alert("no");
+//   }
+// });

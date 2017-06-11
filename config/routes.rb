@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :discounts
     resources :tags
     resources :pictures, only: [:index]
+    get 'toggle_activate', :on => :member  
     member do
       get :add_to_cart
     end

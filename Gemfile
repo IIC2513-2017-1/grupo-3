@@ -35,6 +35,9 @@ gem 'will_paginate'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+
+gem 'switchery-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

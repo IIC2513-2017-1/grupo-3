@@ -9,12 +9,13 @@
 
     <% else%>
 
-      <% @dishes.each do |dish| %>
+
+    <% @dishes.all_actives.each do |dish| %>
         <%= render 'layouts/dish_item.html', dish: dish%>
       <% end %>
     <% end %>
   </section>
-  
+
 <div id="paginate-dish" align="center">
   <%= will_paginate @dishes %>
 </div>

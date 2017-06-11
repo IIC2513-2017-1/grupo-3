@@ -225,8 +225,9 @@ li.dropdown {
     z-index: 1;
 }
 
-.dropdown-item {
-    list-style-type: circle;
+.dditem {
+  font-size: 14px;
+  margin: 0px
 }
 
 .dropdown-content a {
@@ -385,6 +386,19 @@ li.dropdown {
 #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
 #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
   color:#5a0000
+}
+
+.link {
+  padding-top: 100px;
+
+  a {
+    color: black;
+    background-color: transparent;
+  }
+  a:hover {
+    color: #5e0000;
+    background-color: transparent;
+  }
 }
 
 footer {

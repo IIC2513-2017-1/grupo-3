@@ -40,16 +40,44 @@ Dropdown</button>
         </a>
         <div class="dropdown-content">
           <ul class="dropdown">
-            <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
+            <li class="dditem">
+              <%= link_to current_user do %>
+                <i class="fa fa-user-o"></i>  Profile
+              <% end %>
+            </li>
             <% if current_user.is_cook? %>
-              <li class="dropdown-item"><%= link_to "My Dishes", user_dishes_path_url(current_user.id) %></li>
-              <li class="dropdown-item"><%= link_to "My Promotions", promotions_path %></li>
+            <li class="dditem">
+              <%= link_to user_dishes_path_url(current_user.id) do %>
+                <i class="fa fa-user-o"></i>  My Dishes
+              <% end %>
+            </li>
+            <li class="dditem">
+              <%= link_to promotions_path do %>
+                <i class="fa fa-usd"></i>  My Promotions
+              <% end %>
+            </li>
             <% end %>
             <%@cart = current_cart %>
-            <li class="dropdown-item"><%= link_to "Cart", cart_path(current_cart) %></li>
-            <li class="dropdown-item"><%= link_to "Shopping history", user_orders_path(current_user.id) %></li>
-            <li class="dropdown-item"><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li class="dropdown-item"><%= link_to "Log out", logout_path, method: "delete" %></li>
+
+            <li class="dditem">
+              <%= link_to cart_path(current_cart) do %>
+                <i class="fa fa-shopping-cart"></i>  Cart
+              <% end %>
+            </li>
+
+            <li class="dditem">
+              <%= link_to user_orders_path(current_user.id) do %>
+                <i class="fa fa-file-text-o"></i>  Shopping History
+              <% end %>
+            </li>
+
+            <li class="dditem">
+              <%= link_to edit_user_path(current_user) do %>
+                <i class="fa fa-cogs"></i>  Settings
+              <% end %>
+            </li>
+
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
           </ul>
 
         </div>

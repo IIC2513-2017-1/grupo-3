@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.dish-show {
+  margin-left: 200px;
+  margin-right: 200px;
+  padding: 50px;
+	border-radius: 3px;
+  -webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.15);
+}
 
 #dishes {
   width: 100%;

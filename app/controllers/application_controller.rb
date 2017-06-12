@@ -4,9 +4,19 @@ class ApplicationController < ActionController::Base
   before_action :load_cart
   after_action :clear_xhr_flash
   before_action :all_categories
+  before_action :all_tags
+  before_action :all_dishes
 
   def all_categories
     @categories = Category.all
+  end
+
+  def all_dishes
+    @dishes = Dish.all
+  end
+
+  def all_tags
+    @tags = Tag.all
   end
 
   def load_cart

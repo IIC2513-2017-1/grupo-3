@@ -90,7 +90,7 @@ td {
 }
 
 div {
-  &.field, &.actions {
+  &#field, &.actions {
     margin-bottom: 10px;
   }
 }
@@ -136,18 +136,16 @@ label {
 
 ul.navbar {
     list-style-type: none;
-    padding: 0;
-    overflow: hidden;
+    padding: 10px;
     background-color: #fff;
     border-radius: 10px 10px 0px 0px;
     width: 95%;
-    border-bottom: 1px solid #d3d3d3;
 }
 
 li#navbar {
     float: left;
 
-    input.field {
+    input#field {
       border-radius: 5px;
       margin: 7px 7px;
       height: 20px;
@@ -428,3 +426,5 @@ li.footer {
     margin-left: 100px;
     margin-right: 100px;
 }
+
+// ============================================================================

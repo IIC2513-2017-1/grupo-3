@@ -19,9 +19,15 @@ body {
   font-size: 30px;
 }
 
-.info {
-  font-family: 'Anaheim';
-  font-size: 18px;
+#alert {
+  font-family: 'Coda', sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #ff6666;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
 }
 
 #view-title {

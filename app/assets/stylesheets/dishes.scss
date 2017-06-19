@@ -36,7 +36,8 @@
 }
 
 div.dish-display {
- width: 275px;
+ width: 225px;
+ min-height: 500px;
  margin-top: 35px;
  margin-right: 20px;
  margin-left: 20px;
@@ -44,6 +45,10 @@ div.dish-display {
  vertical-align: top;
  color: black;
  background-color: transparent;
+ padding: 25px;
+ -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.15);
+ -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.15);
+ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
  *display: inline;
  *zoom: 1;
 

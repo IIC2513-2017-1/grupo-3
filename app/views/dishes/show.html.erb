@@ -54,40 +54,7 @@
   		<ul id="comments-list" class="comments-list">
         <% @reviews = Review.where(dish_id: @dish.id)%>
         <% @reviews.each do |review| %>
-        <li>
-          <div class="comment-main-level" id="comments-section">
-            <!-- Avatar -->
-            <% if review.user.avatar.present? %>
-            <div class="comment-avatar"><%= image_tag(review.user.avatar.url(:medium), :class => "avatar border-white", :alt => "User profile picture") %></div>
-            <% else %>
-            <div class="comment-avatar"><%= image_tag(review.user.avatar.url(:thumb), :class => "avatar border-white", :alt => "User profile picture") %></div>
-            <% end %>
-            <!-- Contenedor del Comentario -->
-            <div class="comment-box">
-              <div class="comment-head">
-                <h6 class="comment-name by-author"><%= review.user.name %></h6>
-              </div>
-
-              <div class="comment-content">
-                <% if review.title.present? %>
-                <h3><%= review.title %></h3>
-                <br>
-                <% end %>
-                <% if review.body.present? %>
-                <p><%= review.body %></p>
-                <br>
-                <% end %>
-                <p>FORKS:  <%= review.forks %></p>
-                <% if current_user&.id == review.user_id %>
-                <p class="link">
-                  <%= link_to 'Edit Review', edit_review_path(review) %> |
-                  <%= link_to 'Delete Review', review, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-                </p>
-              <% end %>
-              </div>
-            </div>
-          </div>
-        </li>
+        <%= render partial: 'reviews/review_list', locals: {review: review} %>
         <% end %>
   		</ul>
   	</div>

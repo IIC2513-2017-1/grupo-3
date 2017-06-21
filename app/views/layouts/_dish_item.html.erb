@@ -2,11 +2,16 @@
   <h2 id="dish-show" align="center"><%= dish.name %></h2>
   <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
   <section align="center">
-    <% if dish.pictures.first %>
-     <%= link_to image_tag(dish.pictures.first.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
-    <% else %>
-    <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
-    <% end %>
+    <div class="fotorama">
+      <% if dish.pictures.first %>
+        <% dish.pictures.each do |picture|%>
+          <%= link_to image_tag(picture.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+        <% end %>
+      <% else %>
+      <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
+      <%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
+      <% end %>
+    </div>
   </section>
   <section id="info">
       <% if dish.discounts.active.size > 0 %>

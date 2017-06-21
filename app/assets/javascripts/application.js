@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require fotorama
 //= require jquery_ujs
 //= require turbolinks
 //= require raphael
@@ -39,6 +40,10 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+$('.fotorama').fotorama({
+    // options
+})
 
 // $(".dish_activate").bind('change', function(){
 //   if (this.checked){

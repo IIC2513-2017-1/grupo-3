@@ -5,8 +5,11 @@
   <div id=dish-element>
 
     <section id="dish-photos" align="center">
-      <% if @dish.pictures.first %>
-       <%= image_tag(@dish.pictures.first.image.url, :size => '200x200', :class => "dish-avatar") %>
+      <div class="fotorama" align="center" data-nav="thumbs">
+      <% if @dish.pictures.size > 0 %>
+        <% @dish.pictures.each do |picture| %>
+          <%= image_tag(picture.image.url, :class => "dish-avatar") %>
+        <% end %>
       <% else %>
         <img class="dish-avatar" src="https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg" alt="Dish picture" />
       <% end %>

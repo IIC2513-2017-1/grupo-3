@@ -35,6 +35,12 @@ gem 'will_paginate'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Image Galery Fotorama
+gem 'fotorama-rails'
+
+# For Heroku assets 404 
+gem 'rails_serve_static_assets'
+gem 'rails_stdout_logging'
 
 gem 'switchery-rails'
 

@@ -51,9 +51,21 @@
         <%= link_to 'Update Bank Account', new_user_bank_account_path(current_user) %>
       <% end %>
     </div>
+    <div style='width: 600px;'>
+      <div id="map" style='width: 600px; height: 300px;'></div>
+    </div>
   </div>
 </div>
 
 <div class="links">
   <%= link_to 'Edit', edit_user_path(@user) %>
 </div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>

@@ -26,6 +26,9 @@ class User < ApplicationRecord
       cook.validates :address, presence: true, length: { minimum: 5 }, on: :update
   end
 
+  geocoded_by :address
+  after_validation :geocode
+
   has_many :reviews
   has_many :rates
   has_many :dishes

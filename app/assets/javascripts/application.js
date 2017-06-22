@@ -16,7 +16,10 @@
 //= require turbolinks
 //= require raphael
 //= require morris
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
@@ -41,9 +44,11 @@ function readURL(input) {
   }
 }
 
-$('.fotorama').fotorama({
+$( document ).ready($('.fotorama').fotorama({
     // options
-})
+})});
+
+
 
 // $(".dish_activate").bind('change', function(){
 //   if (this.checked){

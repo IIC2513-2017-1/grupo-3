@@ -27,6 +27,10 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 
 gem 'figaro'
 
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'geocoder'
+
 # to validate chilean RUT
 gem 'rut_chileno'
 
@@ -38,7 +42,7 @@ gem 'omniauth-facebook'
 # Image Galery Fotorama
 gem 'fotorama-rails'
 
-# For Heroku assets 404 
+# For Heroku assets 404
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 

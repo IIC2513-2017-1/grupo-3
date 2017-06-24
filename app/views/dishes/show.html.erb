@@ -15,7 +15,31 @@
       <% end %>
     </section>
     <% if !@dish.avg_forks.nan? %>
-      <h3 align="center"><%= '%.2f' % @dish.avg_forks %> Fork(s)</h3>
+      <div align="center">
+        <%case @dish.avg_forks.round(1) %>
+          <%when 1%>
+            <%= image_tag "fork.png", size: "100x100", alt: '1 fork dish', class: "forks-show" %>
+            <%when 1.5%>
+              <%= image_tag "fork15.png", size: "100x100", alt: '1.5 fork dish', class: "forks-show" %>
+          <%when 2%>
+            <%= image_tag "fork2.png", size: "100x100", alt: '2 fork dish', class: "forks-show" %>
+            <%when 2.5%>
+              <%= image_tag "fork25.png", size: "100x100", alt: '2.5 fork dish', class: "forks-show" %>
+          <%when 3%>
+            <%= image_tag "fork3.png", size: "100x100", alt: '3 fork dish', class: "forks-show" %>
+            <%when 3.5%>
+              <%= image_tag "fork35.png", size: "100x100", alt: '3.5 fork dish', class: "forks-show" %>
+          <%when 4%>
+            <%= image_tag "fork4.png", size: "100x100", alt: '4 fork dish', class: "forks-show" %>
+            <%when 4.5%>
+              <%= image_tag "fork45.png", size: "100x100", alt: '4.5 fork dish', class: "forks-show" %>
+          <%when 5%>
+            <%= image_tag "fork5.png", size: "100x100", alt: '5 fork dish', class: "forks-show" %>
+          <%else%>
+            <%= image_tag "fork5.png", size: "100x100", alt: '5 fork dish', class: "forks-show" %>
+        <% end %>
+      </div>
+      <h3 align="center"><%= '%.1f' % @dish.avg_forks %> Fork(s)</h3>
     <% else %>
       <h3 align="center"> 0 Forks</h3>
     <% end %>
@@ -39,7 +63,10 @@
       </p>
       <p>
         <strong>Times buyed:</strong>
-        <%= 0 unless @dish.times_buyed %>
+        <%if @dish.times_buyed > 0%> <%= @dish.times_buyed%>
+        <% else %>
+        0
+        <% end %>
       </p>
       <%= social_share_button_tag(@dish.name, 'data-twitter-title' => @dish.name, :url => "http://eats-cl.herokuapp.com/dishes") %>
       <a class="twitter-share-button"

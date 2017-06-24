@@ -28,17 +28,16 @@
       </p>
 
       <div class="dish-buttons">
-        <%= link_to 'Show', dish %>
-           | <%= link_to 'Add to Cart', add_to_cart_dish_path(dish) %>
+        <%= link_to '', dish, class: "fa fa-search", id: "fa-icon" %>
+          <%= link_to '', add_to_cart_dish_path(dish), class: "fa fa-cart-plus" , id: "fa-icon" %>
           <%if (current_user&.is_cook? && current_user.id == dish.user_id) || current_user&.is_admin? %>
-             | <%= link_to 'Edit', edit_dish_path(dish) %>
+            <%= link_to '', edit_dish_path(dish), class: "fa fa-cog", id: "fa-icon" %>
           <% end %>
-          <br>
           <%if current_user %>
             <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
-              <%= link_to 'Add to favorites', favorite_dishes_path(dish_id: dish), method: :post %>
+              <%= link_to '', favorite_dishes_path(dish_id: dish), method: :post, class: "fa fa-star-o", id: "fa-icon" %>
             <%- else -%>
-              <%= link_to 'Remove from favorites', favorite_dish_path(dish), method: :delete %>
+              <%= link_to '', favorite_dish_path(dish), method: :delete, class: "fa fa-star", id: "fa-icon" %>
             <%- end -%>
           <%- else -%>
             <%= link_to 'Add to favorites', login_path %>

@@ -29,16 +29,10 @@ Dropdown</button>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
     <li id="navbar">
     <%= form_tag(dishes_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search , params[:search], placeholder: "  Dish, ingredients, cooks, ...", id: "field", class: "awesomplete", list: "mylist" %></div>
+      <%= text_field_tag :search , params[:search], placeholder: "  Find your favorite dish!", id: "field", class: "awesomplete", list: "mylist" %></div>
       <datalist id="mylist">
         <% @dishes.each do |dish| %>
           <option><%= dish.name %></option>
-        <% end %>
-        <% @categories.each do |category| %>
-          <option><%= category.name %></option>
-        <% end %>
-        <% @tags.each do |tag| %>
-          <option><%= tag.name %></option>
         <% end %>
       </datalist>
       <%= submit_tag "Search Dish", :name => nil, class: "button" %>
@@ -96,7 +90,7 @@ Dropdown</button>
     <% else %>
       <%@cart = current_cart %>
       <li id="navbar" class="right"><%= link_to 'Login', login_path %></li>
-      <li id="navbar" class="right"><%= link_to "Cart", cart_path(current_cart) %></li>
+      <li id="navbar" class="right"><%= link_to '', cart_path(current_cart), class: "fa fa-shopping-cart", id: "navbar-icon" %></li>
     <% end %>
   </ul>
 </nav>

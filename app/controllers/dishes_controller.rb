@@ -6,16 +6,16 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     if params[:tag]
-      @dishes = Dish.tagged_with(params[:tag]).paginate(per_page: 8, page: params[:page])
+      @dishes = Dish.tagged_with(params[:tag]).paginate(per_page: 12, page: params[:page])
     else
-      @dishes = Dish.paginate(:per_page => 8, page: params[:page])
+      @dishes = Dish.paginate(:per_page => 12, page: params[:page])
     end
     # @order_item = current_order.order_items.new
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
     if !params[:search].blank?
-      @dishes = Dish.search(params[:search]).paginate(per_page: 8, page: params[:page]).order("created_at DESC")
+      @dishes = Dish.where("name LIKE :search", search: "%#{params[:search]}%").paginate(per_page: 12, page: params[:page]).order("created_at DESC")
     else
-      @dishes = Dish.paginate(per_page: 8, page: params[:page]).order("created_at DESC")
+      @dishes = Dish.paginate(per_page: 12, page: params[:page]).order("created_at DESC")
     end
   end
 

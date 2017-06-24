@@ -46,6 +46,7 @@ div.dish-display {
  color: black;
  background-color: transparent;
  padding: 25px;
+ position: relative;
  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.15);
  -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.15);
  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
@@ -413,4 +414,25 @@ ul {
     background-color: transparent;
   }
 
+}
+
+.dish-buttons {
+  position: absolute;
+  bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 25px;
+}
+
+#fa-icon {
+
+  font-size: 25px;
+  margin: 8px;
+  color: #000;
+  padding: 7px;
+}
+
+#fa-icon:hover {
+  color: #5e0000;
+  transform: scale(1.5, 1.5);
 }

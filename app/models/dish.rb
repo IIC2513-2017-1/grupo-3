@@ -9,6 +9,7 @@ class Dish < ApplicationRecord
   has_many :carts, through: :cart_items
   belongs_to :user
   has_many :pictures, dependent: :destroy
+  accepts_nested_attributes_for :pictures, allow_destroy: true
   has_many :reviews
   has_many :discounts, dependent: :destroy
 
@@ -77,6 +78,20 @@ class Dish < ApplicationRecord
     self.categories = names.split(',').map do |n|
       Category.where(name: n.strip).first_or_create!
     end
+  end
+
+  def image_delete
+    @image_delete ||= "0"
+  end
+
+  def image_delete=(value)
+    @image_delete = value
+  end
+
+  private
+
+  def destroy_image?
+    pictures.clear if @image_delete == "1"
   end
 
 end

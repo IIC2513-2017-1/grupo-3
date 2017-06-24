@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require raphael
 //= require morris
+//= require social-share-button
 //= require underscore
 //= require gmaps/google
 //= require_tree .
@@ -46,7 +47,8 @@ function readURL(input) {
 
 $( document ).ready($('.fotorama').fotorama({
     // options
-})});
+})
+);
 
 
 

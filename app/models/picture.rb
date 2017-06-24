@@ -7,5 +7,4 @@ class Picture < ApplicationRecord
     :url  => "/images/:id/:filename"
 
   do_not_validate_attachment_file_type :image
-
 end

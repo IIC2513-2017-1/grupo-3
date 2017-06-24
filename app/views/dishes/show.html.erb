@@ -41,6 +41,11 @@
         <strong>Times buyed:</strong>
         <%= 0 unless @dish.times_buyed %>
       </p>
+      <%= social_share_button_tag(@dish.name, 'data-twitter-title' => @dish.name, :url => "http://eats-cl.herokuapp.com/dishes") %>
+      <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world"
+  data-size="large">
+Tweet</a>
       <p class="link">
         <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
         <% if current_user %>

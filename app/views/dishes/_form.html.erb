@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+
+
   <div class="new-dish-form">
     <%= f.text_field :name, class: "field", placeholder: "  Name" %>
     <%= f.number_field :price, class: "field", placeholder: "  Price" %>
@@ -19,12 +21,20 @@
     <%= f.text_field :tag_list, class: "field", placeholder: "  Tags (separated by commas)" %>
   </div>
 
+
     <div class="photo">
       <%= f.label :pictures, :class => "control-label" %>
       <div class="controls">
         <%= file_field_tag "images[]", type: :file, multiple: true  %>
       </div>
     </div>
+
+    <% @dish.pictures.each do |picture| %>
+      <%= f.fields_for :pictures, picture do |image_fields| %>
+        <%= image_tag picture.image.url %>
+        <%= image_fields.check_box :_destroy %>
+      <% end %>
+    <% end %>
 
     <% if @dish.user_id %>
       <p>COOK ID: <%= @dish.user_id %></p>

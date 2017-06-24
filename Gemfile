@@ -46,6 +46,11 @@ gem 'fotorama-rails'
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 
+# Share buttons
+gem 'social-share-button'
+gem 'twitter'
+gem 'omniauth-twitter'
+
 gem 'switchery-rails'
 
 # Use jquery as the JavaScript library

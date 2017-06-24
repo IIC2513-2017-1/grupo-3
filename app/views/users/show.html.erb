@@ -2,7 +2,7 @@
 <div class="user-container">
   <div class="user-card">
     <% if current_user.avatar.present? %>
-    <%= image_tag(current_user.avatar.url(:medium), :class => "avatar border-white", :alt => "User profile picture") %>
+        <%= image_tag(current_user.avatar.url, :class => "avatar border-white", :alt => "User profile picture", :size => '300x300') %>
     <% else %>
     <%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "avatar border-white", :alt => "User profile picture") %>
     <% end %>
@@ -51,9 +51,11 @@
         <%= link_to 'Update Bank Account', new_user_bank_account_path(current_user) %>
       <% end %>
     </div>
-    <div style='width: 600px;'>
-      <div id="map" style='width: 600px; height: 300px;'></div>
-    </div>
+    <% if current_user.address.present? && (current_user.role != 'cook' || current_user.role == 'admin') %>
+      <div style='width: 600px;'>
+        <div id="map" style='width: 600px; height: 300px;'></div>
+      </div>
+    <% end %>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621235019) do
+ActiveRecord::Schema.define(version: 20170624161332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,10 @@ ActiveRecord::Schema.define(version: 20170621235019) do
     t.datetime "reset_sent_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "twitter_uid"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "provider"
   end
 
   add_foreign_key "bank_accounts", "users", on_delete: :cascade

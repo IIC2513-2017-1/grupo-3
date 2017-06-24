@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :discounts
     resources :tags
     resources :pictures, only: [:index]
-    get 'toggle_activate', :on => :member  
+    get 'toggle_activate', :on => :member
     member do
       get :add_to_cart
     end
@@ -76,6 +76,8 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'dishes#index', :constraints  => { :tag => /[^\/]+/ }
 
   get '/admin_help' => 'static_pages#admin_help'
+  get '/privacy_policy' => 'static_pages#privacy_policy'
+  get '/terms_of_service' => 'static_pages#terms_of_service'
   get '/shopping_history' => 'static_pages#shopping_history'
   get '/promotions' => 'static_pages#promotions'
   get '/app_info' => 'static_pages#app_info'
@@ -83,6 +85,7 @@ Rails.application.routes.draw do
   get '/popular_dishes' => 'static_pages#popular_dishes'
   get '/statistics' => 'static_pages#statistics'
 
+  get '/auth/:provider/callback', to: 'sessions#create', :as => :twitter_login
   resources :favorite_dishes, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

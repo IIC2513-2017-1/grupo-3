@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  *= require font-awesome
  *= require fotorama
 
@@ -19,3 +20,10 @@
 
  @import url(http://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda|Awesome);
  @import url(http://weloveiconfonts.com/api/?family=entypo);
+
+ .ssb-facebook {
+   display: inline-block;
+   width: 32px;
+   height: 32px;
+   background: url("/social/facebook.png") no-repeat;
+ }

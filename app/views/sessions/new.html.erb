@@ -1,25 +1,51 @@
-<%= render 'layouts/header'%>
-<div class="login-form">
-  <h1>Login</h1>
-  <%= form_for :session, url: session_path do |f| %>
+<section id="new-session" align="center">
+
+  <h1 id="view-title" align="center">Login</h1>
+
+  <a href="/auth/twitter" id="image_button"><%= image_tag "twitter_button.png", size: "275x60" %></a>
+
+  <div class="login-form">
+
+    <%= form_for :session, url: session_path do |f| %>
       <%= f.text_field :email, class: "field", placeholder: "Email" %>
-    </br>
+      </br>
       <%= f.password_field :password, class: "field", placeholder: "Password" %>
-    <div class="field">
-    <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me</span>
-      <% end %>
+
+      <div class="field">
+
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>Remember me</span>
+        <% end %>
+
+      </div>
+
+      <div class="actions">
+
+        <%= f.submit 'Login', class: "action-button" %>
+
+      </div>
+
+    <% end %>
+
     </div>
-    <div class="actions">
-      <%= f.submit 'Login' %>
+
+    <div class="twodiv-container" align="center">
+
+      <div class="si-one">
+
+        <p id="view-subtitle">New to Eats?</p>
+        <%= button_to "Sign up now", signup_path, class: "action-button", :method => :get %>
+
+      </div>
+
+      <div class="si-two">
+
+        <p id="view-subtitle">Sell your food!</p>
+        <a href="/users/new/cook" class="action-button">Sign up as a cook</a>
+
+
+      </div>
     </div>
-  <% end %>
 
-  <button id="twitter"><a href="/auth/twitter">Sign in with Twitter</a></button>
-
-
-  <p>New to Eats? <%= link_to "Sign up now", signup_path %></p>
-
-  <p>Sell your food! <a href="/users/new/cook">Sign up as a cook</a></p>
-</div>
+</section>

@@ -1,3 +1,31 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.twodiv-container {
+  min-height: 75px;
+  width: 100%;
+  display: table;
+  margin: 10px;
+}
+
+.si-one {
+  width: 50%;
+  display: table-cell;
+  padding-left: 250px;
+}
+
+.si-two {
+  width: 50%;
+  display: table-cell;
+  min-height: 500px;
+  padding-right: 250px;
+}
+
+#image_button {
+
+}
+
+#image_button:hover {
+  background-color: transparent;
+}

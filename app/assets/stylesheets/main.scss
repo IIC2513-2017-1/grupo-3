@@ -439,3 +439,53 @@ li.footer {
 }
 
 // ============================================================================
+// BUTTON STYLE
+// ============================================================================
+
+.action-button {
+	position: relative;
+	padding: 5px 40px;
+  margin: 0px 10px 10px 0px;
+	border-radius: 10px;
+	font-family: 'Coda', cursive;
+	font-size: 15px;
+	color: #fff;
+	text-decoration: none;
+  background-color: #5e0000;
+	border-bottom: 5px solid #4b0000;
+	text-shadow: 0px -2px #4b0000;
+  transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button:hover {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #5e0000;
+  border-bottom: 5px solid #4b0000;
+  text-shadow: 0px -2px #4b0000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+.action-button:visited {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #5e0000;
+  border-bottom: 5px solid #4b0000;
+  text-shadow: 0px -2px #4b0000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+.action-button:active {
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+// ============================================================================
+// TEXT STYLE
+// ============================================================================

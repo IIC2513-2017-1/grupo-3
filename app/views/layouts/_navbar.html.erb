@@ -53,12 +53,12 @@ Dropdown</button>
             <% if current_user.is_cook? %>
             <li class="dditem">
               <%= link_to user_dishes_path_url(current_user.id) do %>
-                <i class="fa fa-user-o"></i>  My Dishes
+                <i class="fa fa-cutlery"></i>  Dishes
               <% end %>
             </li>
             <li class="dditem">
               <%= link_to promotions_path do %>
-                <i class="fa fa-usd"></i>  My Promotions
+                <i class="fa fa-usd"></i>  Promotions
               <% end %>
             </li>
             <% end %>

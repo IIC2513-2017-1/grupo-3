@@ -29,3 +29,23 @@
 #image_button:hover {
   background-color: transparent;
 }
+
+.form-container {
+  width: 75%;
+  height: 100px;
+  display: table;
+  margin: 10px;
+  padding-right: 200px;
+}
+
+.b-one {
+  padding-left: 40px;
+  width: 50%;
+  display: table-cell;
+}
+
+.b-two {
+  width: 50%;
+  display: table-cell;
+  min-height: 500px;
+}

@@ -62,7 +62,12 @@
       <%= link_to 'Bank Account', edit_user_bank_account_path(current_user) %>
     <% end %>
   <% end %>
-  <div class="actions">
-    <%= f.submit "Update", :class => 'button' %>
+  <div class="buttons-container">
+    <div class="b-one">
+      <%= f.submit "Update", :class => 'action-button' %>
+    </div>
+    <div class="b-two">
+      <%= link_to 'Back', login_url, class: "action-button" %>
+    </div>
   </div>
 <% end %>

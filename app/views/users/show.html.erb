@@ -62,7 +62,7 @@
 
 <div class="links">
   <%= link_to 'Edit', edit_user_path(@user) %>
-  <%= @user.token if @user == current_user %>
+  <%= @user.api_token if @user == current_user %>
 </div>
 
 <script type="text/javascript">

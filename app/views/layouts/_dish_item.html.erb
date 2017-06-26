@@ -1,7 +1,10 @@
 <div class="dish-display" >
-  <h2 id="dish-show" align="center"><%= dish.name %></h2>
-  <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
   <section align="center">
+    <% if dish.discounts.active.size > 0 %>
+      <div class="discount-flag">
+        - <%= dish.discounts.active.last.discount_percent %>%
+      </div>
+    <% end %>
     <div class="fotorama">
       <% if dish.pictures.first %>
         <% dish.pictures.each do |picture|%>
@@ -12,20 +15,28 @@
       <% end %>
     </div>
   </section>
+  <div align="right">
+    <% if dish.user.avatar.present? %>
+        <%= link_to image_tag(dish.user.avatar.url, :class => "dish-cook", :alt => "Dish Cook", :size => '50x50'), user_path(dish.user) %>
+    <% else %>
+    <%= link_to image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "dish-cook", :alt => "Dish Cook",:size => '50x50'), user_path(dish.user) %>
+    <% end %>
+  </div>
+  <div class="dish-subheader">
+    <h4 align="center">Perfecta para compartir<%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %></h4>
+  </div>
+  <h2 id="dish-show" align="center" class="dish-name" style="font-family: 'Lora', serif"><%= dish.name %></h2>
+  <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
   <section id="info">
       <% if dish.discounts.active.size > 0 %>
       <p class="text-right">Price: <span style="color: orange"> $ <%= (dish.price*(100-dish.discounts.active.last.discount_percent))/100%></span></p>
-      <p class="text-right"><strong><%=dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
       <% else %>
       <p class="text-right">Price: <span style="color: green"> $ <%= dish.price %></span></p>
       <% end %>
-      <p><%= dish.description %></p>
       <p>
       Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
       </p>
-      <p>
-      Tags: <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
-      </p>
+
 
       <div class="dish-buttons">
         <%= link_to '', dish, class: "fa fa-search", id: "fa-icon" %>

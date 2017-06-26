@@ -27,9 +27,9 @@ class User < ApplicationRecord
       cook.validates :address, presence: true, length: { minimum: 5 }, on: :update
   end
 
-  # geocoded_by :address
-  # after_validation :geocode_or_reset_coordinates, if: :address_changed?
-  # before_validation :geocode, on: :update
+  geocoded_by :address
+  after_validation :geocode_or_reset_coordinates, if: :address_changed?
+  before_validation :geocode, on: :update
 
   has_many :reviews
   has_many :rates
@@ -55,11 +55,11 @@ class User < ApplicationRecord
   end
 
   def is_cook?
-    self.role == 'cook'
+    role == 'cook'
   end
 
   def is_admin?
-    self.role == 'admin'
+    role == 'admin'
   end
 
   def name

@@ -25,11 +25,11 @@ Dropdown</button>
 <nav id="navbar">
   <ul class="navbar">
     <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "30x30", id: "menu-icon" %></span></li>
-    <li id="navbar"><a class="navbar-brand" href="/">Eats</a></li>
+    <li id="navbar"><%= link_to image_tag("logo_no_name.png", alt: "logo", size:"50x50"), '/', class: 'navbar-brand' %></li>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
     <li id="navbar">
     <%= form_tag(dishes_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search , params[:search], placeholder: "  Find your favorite dish!", id: "field", class: "awesomplete", list: "mylist" %></div>
+      <%= text_field_tag :search , params[:search], placeholder: "  Find your favorite dish!", id: "field", class: "awesomplete", list: "mylist", style: "width:150px;" %></div>
       <datalist id="mylist">
         <% @dishes.each do |dish| %>
           <option><%= dish.name %></option>
@@ -60,6 +60,9 @@ Dropdown</button>
               <%= link_to promotions_path do %>
                 <i class="fa fa-usd"></i>  Promotions
               <% end %>
+            </li>
+            <li class="dditem">
+              <%= link_to 'Pending Orders', pending_orders_path%>
             </li>
             <% end %>
             <%@cart = current_cart %>

@@ -1,8 +1,8 @@
 <h1 class="title"><span>Eats</span> User Profile</h1>
 <div class="user-container">
   <div class="user-card">
-    <% if current_user.avatar.present? %>
-        <%= image_tag(current_user.avatar.url, :class => "avatar border-white", :alt => "User profile picture", :size => '300x300') %>
+    <% if @user.avatar.present? %>
+        <%= image_tag(@user.avatar.url, :class => "avatar border-white", :alt => "User profile picture", :size => '300x300') %>
     <% else %>
     <%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "avatar border-white", :alt => "User profile picture") %>
     <% end %>
@@ -32,7 +32,7 @@
       <h1 class="profile-title">Favorite Dishes</h1>
 
         <% @dishes.each do |dish| %>
-          <%- unless current_user.favorite_dishes.exists?(id: dish.id) -%>
+          <%- unless @user.favorite_dishes.exists?(id: dish.id) -%>
 
           <% else %>
             <%= render 'layouts/dish_item.html', dish: dish%>
@@ -42,17 +42,16 @@
 
     <div class"bank_account">
       <h1 class="profile-title">Bank Account</h1>
-      <% if current_user.bank_account.present? %>
-        <p><strong>Type:</strong> <%= current_user.bank_account.account_type %></p>
-        <p><strong>ID card number:</strong> <%= current_user.bank_account.id_card_number %></p>
-        <p><strong>Account number:</strong> <%= current_user.bank_account.account %></p>
-        <p><strong>Bank:</strong> <%= current_user.bank_account.bank %></p>
+      <% if @user.bank_account.present? %>
+        <p><strong>Type:</strong> <%= @user.bank_account.account_type %></p>
+        <p><strong>ID card number:</strong> <%= @user.bank_account.id_card_number %></p>
+        <p><strong>Account number:</strong> <%= @user.bank_account.account %></p>
+        <p><strong>Bank:</strong> <%= @user.bank_account.bank %></p>
       <% else %>
-        <%= link_to 'Update Bank Account', new_user_bank_account_path(current_user) %>
+        <%= link_to 'Update Bank Account', new_user_bank_account_path(@user) %>
       <% end %>
     </div>
-    <% if current_user.address.present? && (current_user.role == 'cook' || current_user.role == 'admin') %>
-    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{current_user.latitude}%2C#{current_user.longitude}" %>
+    <% if @user.address.present? && (@user.is_cook? || @user.is_admin?) %>
       <div style='width: 600px;'>
         <div id="map" style='width: 600px; height: 300px;'></div>
       </div>

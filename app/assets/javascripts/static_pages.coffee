@@ -31,3 +31,17 @@ jQuery ->
     xkey: 'created_at'
     ykeys: ['final_price']
     labels: ['Total Price']
+
+  Morris.bar
+    element: "price_dish_chart"
+    data: $('#price_dish_chart').data('dishes')
+    xkey: 'total'
+    ykeys: ['dish_name']
+    labels: ['Dish Name']
+
+  Morris.bar
+    element: "price_category_chart"
+    data: $('#price_category_chart').data('categories')
+    xkey: 'total'
+    ykeys: ['category_name']
+    labels: ['Category Name']

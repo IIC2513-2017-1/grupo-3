@@ -1,0 +1,15 @@
+<h1 id="view-subtitle" align="center"><%= current_user.first_name %> <%= current_user.last_name %>'s Statistics</h1>
+
+<section>
+
+  <div id="cs-chart1">
+    <h3>Total Earnings by Dish</h3>
+    <%= content_tag :div, "", id: "price_dish_chart", data: {dishes: price_dish_chart_data} %>
+  </div>
+
+  <div id="cs-chart2">
+    <h3>Monto total recibido por plato</h3>
+    <%= content_tag :div, "", id: "price_category_chart", data: {categories: price_category_chart_data} %>
+  </div>
+
+</section>

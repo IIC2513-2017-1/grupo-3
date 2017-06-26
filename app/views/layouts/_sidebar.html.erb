@@ -4,6 +4,7 @@
     <a id="navbar-item" href="#">Partners</a>
     <a id="navbar-item" href="#">Your Locations</a>
     <%= link_to 'Discount Dishes', discounts_path, id: "navbar-item" %>
+    <%= link_to 'Statistics', cook_statistics_path, {style: "font-size: 16px;"} %>
   <% elsif current_user && current_user.is_admin? %>
     <%= link_to 'Eats Info', app_info_path, {style: "font-size: 16px;"} %>
     <%= link_to 'Database', admin_help_path, {style: "font-size: 16px;"} %>

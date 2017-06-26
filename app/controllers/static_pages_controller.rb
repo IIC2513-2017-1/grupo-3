@@ -57,4 +57,9 @@ class StaticPagesController < ApplicationController
     @dishes = Dish.all
   end
 
+  def cooks_statistics
+    @categories = Category.all
+    @dishes = Dishes.select {|dish| dish.user_id == current_user.id }
+  end
+
 end

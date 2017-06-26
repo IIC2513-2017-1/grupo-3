@@ -75,6 +75,7 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'dishes#index', :constraints  => { :tag => /[^\/]+/ }
 
+  get '/pending_orders' => 'orders#pending_orders'
   get '/admin_help' => 'static_pages#admin_help'
   get '/privacy_policy' => 'static_pages#privacy_policy'
   get '/terms_of_service' => 'static_pages#terms_of_service'

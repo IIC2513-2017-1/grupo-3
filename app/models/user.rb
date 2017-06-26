@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token, :reset_token, :address,
-                :latitude, :longitude, :new_password, :new_password_confirmation
+  attr_accessor :remember_token, :activation_token, :reset_token,
+                :new_password, :new_password_confirmation
   has_secure_password
   before_save :downcase_email
   before_create :create_activation_digest
@@ -18,20 +18,6 @@ class User < ApplicationRecord
     user.validates :password, presence: true, length: { minimum: 6 }, if: :password_changed?
   end
 
-  # validates :password,
-  #           presence: true,
-  #           length: { minimum: 6 },
-  #           confirmation: true,
-  #           if: :password_required?
-  #
-  # validates :password,
-  #           presence: true,
-  #           length: { minimum: 6 },
-  #           confirmation: true,
-  #           on: :update,
-  #           if: :password_changed?
-
-
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "default.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/, /PNG\Z/, /JPE?G\Z/]
@@ -41,8 +27,9 @@ class User < ApplicationRecord
       cook.validates :address, presence: true, length: { minimum: 5 }, on: :update
   end
 
-  geocoded_by :address
-  after_validation :geocode
+  # geocoded_by :address
+  # after_validation :geocode_or_reset_coordinates, if: :address_changed?
+  # before_validation :geocode, on: :update
 
   has_many :reviews
   has_many :rates
@@ -53,9 +40,7 @@ class User < ApplicationRecord
   has_one  :cart
   has_one  :bank_account
 
-  scope :with_active_discounts, -> { joins(:dishes).where('dishes.discounts.active.size > 0') }
-  # scope :with_pending_orders, -> { joins(:order_items).where(
-  #   'order.pending = ? AND order_item.order_id = order.id AND order_item.dish.user_id = ?', true, id) }
+  scope :with_active_discounts, (-> { joins(:dishes).where('dishes.discounts.active.size > 0') })
 
   def downcase_email
     self.email = email.downcase
@@ -190,6 +175,15 @@ class User < ApplicationRecord
     puts response.status_code
     puts response.body
     puts response.headers
+  end
+
+  private
+
+  def geocode_or_reset_coordinates
+    if geocode.nil?
+      self.latitude = nil
+      self.longitude = nil
+    end
   end
 
 end

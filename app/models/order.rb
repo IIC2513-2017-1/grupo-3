@@ -10,10 +10,15 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :dishes, through: :order_items
 
+
   def total_price
     order_items.map {|order_item| order_item.total_price}.sum
   end
 
+
+  def client_full_name
+    "#{deliver_to_first_name} #{deliver_to_last_name}"
+  end
 
   def update_price
     self[:total_price] = total_price

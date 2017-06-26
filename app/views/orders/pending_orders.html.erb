@@ -1,0 +1,47 @@
+<% if current_user %>
+
+<h1 align="center">Pending Orders</h1>
+<br />
+<div style="overflow-x:auto;">
+  <table class="promotions">
+    <tr>
+      <th>Picture</th>
+      <th>Dish</th>
+      <th>Order ID</th>
+      <th>Client</th>
+      <th>Deliver address</th>
+      <th>Amount</th>
+      <th>Total Price</th>
+    </tr>
+    <% OrderItem.pending_items.each do |item| %>
+      <% if item.dish.user_id == current_user.id %>
+        <% pending_dish = item.dish %>
+        <tr>
+          <% if pending_dish.pictures.first %>
+            <td><%= link_to image_tag(pending_dish.pictures.first.image.url, :size => '50x50'), dish_path(pending_dish), :class => "dish-avatar" %></td>
+          <% else %>
+            <td><%= link_to image_tag("https://www.devinecorp.net/cw2/Assets/product_full/107-new.jpg", :size => '50x50'), dish_path(pending_dish), :class => "dish-avatar", :alt => "Dish picture" %></td>
+          <% end %>
+          <td><%= pending_dish.name %></td>
+          <td><%= item.order_id %></td>
+          <% if Order.find(item.order_id).client_full_name.present? %>
+          <td><%= Order.find(item.order_id).client_full_name %></td>
+          <% else %>
+          <td><%= User.find(Order.find(item.order_id).user_id).name %></td>
+          <% end %>
+          <% if Order.find(item.order_id).deliver_to_address.present? %>
+          <td><%= Order.find(item.order_id).deliver_to_address %></td>
+          <% else %>
+          <td><%= User.find(Order.find(item.order_id).user_id).address %></td>
+          <% end %>
+          <td> <%= item.quantity %> </td>
+          <td>  <%= item.total_price %> </td>
+          <td><%= link_to 'Preview', pending_dish %></td>
+        </tr>
+      <%end%>
+
+  <%end%>
+  </table>
+</div>
+
+<%end%>

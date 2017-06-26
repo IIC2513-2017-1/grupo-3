@@ -13,7 +13,7 @@ class DishesController < ApplicationController
     # @order_item = current_order.order_items.new
     #@dishes = @dishes.search(params[:search]).order("created_at DESC") if params[:search].present?
     if !params[:search].blank?
-      @dishes = Dish.where("name LIKE :search", search: "%#{params[:search]}%").paginate(per_page: 12, page: params[:page]).order("created_at DESC")
+      @dishes = Dish.where("lower(name) LIKE :search", search: "%#{params[:search]}%".downcase).paginate(per_page: 12, page: params[:page]).order("created_at DESC").distinct
     else
       @dishes = Dish.paginate(per_page: 12, page: params[:page]).order("created_at DESC")
     end

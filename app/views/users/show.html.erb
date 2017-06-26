@@ -51,7 +51,8 @@
         <%= link_to 'Update Bank Account', new_user_bank_account_path(current_user) %>
       <% end %>
     </div>
-    <% if current_user.address.present? && (current_user.role != 'cook' || current_user.role == 'admin') %>
+    <% if current_user.address.present? && (current_user.role == 'cook' || current_user.role == 'admin') %>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{current_user.latitude}%2C#{current_user.longitude}" %>
       <div style='width: 600px;'>
         <div id="map" style='width: 600px; height: 300px;'></div>
       </div>

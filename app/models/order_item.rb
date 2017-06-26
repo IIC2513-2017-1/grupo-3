@@ -11,6 +11,8 @@ class OrderItem < ApplicationRecord
     unit_price * quantity
   end
 
+  scope :pending_items, ( -> { where('pending = ?', true)})
+
 private
   def product_present
     if dish.nil?

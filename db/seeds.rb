@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
-User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
+admin1 = User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
+admin2 = User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
 User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
 User.create(first_name: 'Jamie', last_name: 'Oliver', email: 'jamie_oliver@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
 User.create(first_name: 'Client1', last_name: 'Tneilc', email: 'client1@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago)
@@ -113,6 +113,9 @@ Categorizing.create(category_id: 10, dish_id: 15)
 Categorizing.create(category_id: 10, dish_id: 16)
 Categorizing.create(category_id: 10, dish_id: 17)
 Categorizing.create(category_id: 10, dish_id: 19)
-Categorizing.create(category_id: 10, dish_id: 21)
+Categorizing.create(category_id: 11, dish_id: 21)
 Categorizing.create(category_id: 11, dish_id: 18)
 Categorizing.create(category_id: 11, dish_id: 20)
+
+admin1.generate_api_token_and_save
+admin2.generate_api_token_and_save

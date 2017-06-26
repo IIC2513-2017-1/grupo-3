@@ -177,6 +177,13 @@ class User < ApplicationRecord
     puts response.headers
   end
 
+  def generate_api_token_and_save
+    loop do
+      self.api_token = SecureRandom.hex(64)
+      break if save
+    end
+  end
+
   private
 
   def geocode_or_reset_coordinates

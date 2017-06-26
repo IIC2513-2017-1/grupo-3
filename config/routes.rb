@@ -85,6 +85,7 @@ Rails.application.routes.draw do
   get '/popular_cooks' => 'static_pages#popular_cooks'
   get '/popular_dishes' => 'static_pages#popular_dishes'
   get '/statistics' => 'static_pages#statistics'
+  get '/cook_statistics' => 'static_pages#cook_statistics'
 
   get '/auth/:provider/callback', to: 'sessions#create', :as => :twitter_login
   resources :favorite_dishes, only: [:create, :destroy]

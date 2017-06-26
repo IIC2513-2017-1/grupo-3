@@ -25,17 +25,20 @@ Dropdown</button>
 <nav id="navbar">
   <ul class="navbar">
     <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "30x30", id: "menu-icon" %></span></li>
-    <li id="navbar"><%= link_to image_tag("logo_no_name.png", alt: "logo", size:"50x50"), '/', class: 'navbar-brand' %></li>
+    <li id="navbar"><%= link_to image_tag("logo_no_name.png", alt: "logo", size:"75x75", class: "site-logo"), '/', class: 'navbar-brand' %></li>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
+    <li id="navbar"><%= link_to 'About Eats', about_path %></li>
     <li id="navbar">
     <%= form_tag(dishes_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search , params[:search], placeholder: "  Find your favorite dish!", id: "field", class: "awesomplete", list: "mylist", style: "width:150px;" %></div>
+      <%= text_field_tag :search , params[:search], placeholder: "  Find your favorite dish!", id: "field", class: "awesomplete", list: "mylist" %></div>
       <datalist id="mylist">
         <% @dishes.each do |dish| %>
           <option><%= dish.name %></option>
         <% end %>
       </datalist>
-      <%= submit_tag "Search Dish", :name => nil, class: "button" %>
+      <%= button_tag(type: "submit", class: "search-button") do %>
+        <%= image_tag("icon_search.png", alt: "logo", size:"25x25", class: "search-icon")%>
+      <% end %>
     <% end %>
     </li>
     <% if logged_in? %>
@@ -99,4 +102,3 @@ Dropdown</button>
     <% end %>
   </ul>
 </nav>
-<hr>

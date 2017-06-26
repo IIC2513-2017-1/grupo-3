@@ -81,7 +81,7 @@ Rails.application.routes.draw do
   get '/terms_of_service' => 'static_pages#terms_of_service'
   get '/shopping_history' => 'static_pages#shopping_history'
   get '/promotions' => 'static_pages#promotions'
-  get '/app_info' => 'static_pages#app_info'
+  get '/about' => 'static_pages#about'
   get '/popular_cooks' => 'static_pages#popular_cooks'
   get '/popular_dishes' => 'static_pages#popular_dishes'
   get '/statistics' => 'static_pages#statistics'

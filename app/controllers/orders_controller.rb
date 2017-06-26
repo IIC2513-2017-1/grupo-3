@@ -22,6 +22,11 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new(params[:order])
   end
 
+  def prepare(item_id)
+    item = OrderItem.find(item_id)
+    item.toggle!(:pending)
+  end
+
   def new
     @order = Order.new
   end

@@ -46,6 +46,7 @@ gem 'fotorama-rails'
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 
+
 # Share buttons
 gem 'social-share-button'
 gem 'twitter'

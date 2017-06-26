@@ -14,6 +14,7 @@
 //= require fotorama
 //= require jquery_ujs
 //= require turbolinks
+//= require switchery
 //= require raphael
 //= require morris
 //= require social-share-button
@@ -23,6 +24,20 @@
 
 $(function(){
   $('#geoinput').geocomplete();
+});
+
+$('.js-switch').click(function() {
+  var checked;
+  if ($(this).is(':checked')) {
+    checked = true;
+  } else {
+    checked = false;
+  }
+  $.ajax({
+      type: "POST",
+      url: "/user/toggle_visible",
+      data: { id: $(this).data('post-id'), checked: checked }
+   });
 });
 
 

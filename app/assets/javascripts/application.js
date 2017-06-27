@@ -19,6 +19,8 @@
 //= require morris
 //= require social-share-button
 //= require underscore
+//= require jquery.purr
+//= require best_in_place
 //= require gmaps/google
 //= require_tree .
 
@@ -26,20 +28,10 @@ $(function(){
   $('#geoinput').geocomplete();
 });
 
-$('.js-switch').click(function() {
-  var checked;
-  if ($(this).is(':checked')) {
-    checked = true;
-  } else {
-    checked = false;
-  }
-  $.ajax({
-      type: "POST",
-      url: "/users/toggle_visible",
-      data: { id: $(this).data('post-id'), checked: checked }
-   });
+$(document).ready(function() {
+  /* Activating Best In Place */
+  $(".best_in_place").best_in_place();
 });
-
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {

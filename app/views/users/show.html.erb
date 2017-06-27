@@ -41,14 +41,14 @@
     </div>
 
 
+
+
     <% if @user.dishes.size >0 %>
       <div class="user-dishes">
-        <h1 class="profile-title"> <%=@user.name%>'s Dishes</h1>
-          <% @user.dishes.each do |dish| %>
-              <%= render 'layouts/dish_item.html', dish: dish%>
-            <% end %>
+        <h1 class="profile-title" style="color:rgb(154,6,6)"><%= link_to "#{@user.name}'s Dishes'", user_dishes_path(@user) %></h1>
       </div>
     <% end %>
+  <br />
   <% if current_user&.id == @user.id %>
     <div class"bank_account">
       <h1 class="profile-title">Bank Account</h1>

@@ -31,6 +31,8 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
 
+gem 'best_in_place'
+
 # to validate chilean RUT
 gem 'rut_chileno'
 

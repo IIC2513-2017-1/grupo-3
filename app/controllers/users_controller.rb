@@ -78,18 +78,21 @@ class UsersController < ApplicationController
     else
       @user.toggle!(:visible)
     end
-    @user.dishes.each do |dish|
-      if dish.active.nil?
-        dish.update_attributes(active: true)
+    if @user.visible
+      @user.dishes.update_all(active: true)
+    else
+      @user.dishes.update_all(active: false)
+    end
+    respond_to do |format|
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+      if @user.visible
+        flash[:info] = "You are now able to recieve orders"
       else
-        dish.toggle!(:active)
+        flash[:info] = "You are not recieving orders from now"
       end
     end
-    if @user.visible
-      flash[:info] = "You are now able to recieve orders"
-    else
-      flash[:info] = "You are not recieving orders from now"
-    end
+
   end
 
   private

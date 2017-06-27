@@ -35,11 +35,11 @@
   <%= f.text_field :phone, :placeholder => '  Phone', :class => 'field', :value => current_user.phone %>
   <br>
 
-  <p>Gender</p>
+  <h2 align="center">Gender</h2>
   <%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']]), :prompt => "Select Gender", :class => 'genForm_dropBox' %>
   <br>
 
-  <p>Birth Date</p>
+  <h2 align="center">Birth Date</h2>
   <%= f.date_select :birth_date, :start_year=>1910, :end_year=>Date.today.year, :order=>[:day, :month, :year] %>
   <br>
   <br>

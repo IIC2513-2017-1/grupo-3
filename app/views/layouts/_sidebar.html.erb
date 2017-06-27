@@ -1,25 +1,25 @@
 <div id="sidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <% if current_user && current_user.is_cook? %>
-    <a id="navbar-item" href="#">Partners</a>
-    <a id="navbar-item" href="#">Your Locations</a>
-    <%= link_to 'Discount Dishes', discounts_path, id: "navbar-item" %>
-    <%= link_to 'Statistics', cook_statistics_path, {style: "font-size: 16px;"} %>
+    <a id="sidebar-item" href="#">Partners</a>
+    <a id="sidebar-item" href="#">Your Locations</a>
+    <%= link_to 'Discount Dishes', discounts_path, id: "sidebar-item" %>
+    <%= link_to 'Statistics', cook_statistics_path, id: "sidebar-item" %>
   <% elsif current_user && current_user.is_admin? %>
-    <%= link_to 'Database', admin_help_path, {style: "font-size: 16px;"} %>
-    <%= link_to 'Statistics', statistics_path, {style: "font-size: 16px;"} %>
+    <%= link_to 'Database', admin_help_path, id: "sidebar-item" %>
+    <%= link_to 'Statistics', statistics_path, id: "sidebar-item" %>
   <% else %>
-    <%= link_to 'Discount Dishes', discounts_path, {style: "font-size: 16px;"} %>
-    <%= link_to 'Popular Cooks', popular_cooks_path, {style: "font-size: 16px;"} %>
-    <%= link_to 'Popular Dishes', popular_dishes_path, {style: "font-size: 16px;"} %>
+    <%= link_to 'Discount Dishes', discounts_path, id: "sidebar-item" %>
+    <%= link_to 'Popular Cooks', popular_cooks_path, id: "sidebar-item" %>
+    <%= link_to 'Popular Dishes', popular_dishes_path, id: "sidebar-item" %>
   <% end %>
   <br><br>
   <hr>
   <br><br>
-  <%= link_to 'All Dishes', dishes_path, {style: "font-size: 16px;"} %>
+  <%= link_to 'All Dishes', dishes_path, id: "sidebar-item" %>
   <% @categories.each do |category| %>
     <%= link_to category_path(category) do %>
-      <p id="navbar-item"><%= category.name %></p>
+      <p id="sidebar-item"><%= category.name %></p>
     <% end %>
   <% end %>
 

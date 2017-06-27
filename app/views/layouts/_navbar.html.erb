@@ -1,30 +1,8 @@
-<!--
-
-<h1><a href="https://dribbble.com/shots/850410" target="_blank">Dropdown Menu UI</a></h1>
-
-<div class="content">
-	<div class="admin-panel"><label for="toggle" class="admin-text">Admin Settings</label></div>
-	<input type="checkbox" id="toggle">
-	<label class="cog octicon octicon-gear" for="toggle"></label>
-	<div class="menu">
-		<div class="arrow"></div>
-			<a href="#">Edit Users <span class="icon octicon octicon-person"></span></a>
-			<a href="#">Web Statistics <span class="icon octicon octicon-graph"></span></a>
-			<a href="#">Upload Settings <span class="icon octicon octicon-cloud-upload"></span></a>
-			<a href="#">Edit Slider <span class="icon octicon octicon-pencil"></span></a>
-		</div>
-	</div>
-</div>
-
-Dropdown</button>
-
--->
-
 <%= render 'layouts/sidebar' %>
 
 <nav id="navbar">
   <ul class="navbar">
-    <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "30x30", id: "menu-icon" %></span></li>
+    <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "40x40", id: "menu-icon" %></span></li>
     <li id="navbar"><%= link_to image_tag("logo_no_name.png", alt: "logo", size:"75x75", class: "site-logo"), '/', class: 'navbar-brand' %></li>
     <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
     <li id="navbar"><%= link_to 'About Eats', about_path %></li>
@@ -71,12 +49,6 @@ Dropdown</button>
             <%@cart = current_cart %>
 
             <li class="dditem">
-              <%= link_to cart_path(current_cart) do %>
-                <i class="fa fa-shopping-cart"></i>  Cart
-              <% end %>
-            </li>
-
-            <li class="dditem">
               <%= link_to user_orders_path(current_user.id) do %>
                 <i class="fa fa-file-text-o"></i>  Shopping History
               <% end %>
@@ -95,6 +67,7 @@ Dropdown</button>
 
         </div>
       </li>
+      <li id="navbar" class="right"><%= link_to '', cart_path(current_cart), class: "fa fa-shopping-cart", id: "navbar-icon" %></li>
     <% else %>
       <%@cart = current_cart %>
       <li id="navbar" class="right"><%= link_to 'Login', login_path %></li>

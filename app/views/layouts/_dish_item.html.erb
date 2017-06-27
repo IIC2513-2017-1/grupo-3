@@ -23,7 +23,11 @@
     <% end %>
   </div>
   <div class="dish-subheader">
-    <h4 align="center">Perfecta para compartir<%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %></h4>
+    <h4 align="center">
+      Perfecta para compartir
+      <br>
+      <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+    </h4>
   </div>
   <h2 id="dish-show" align="center" class="dish-name" style="font-family: 'Lora', serif"><%= dish.name %></h2>
   <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>

@@ -40,7 +40,7 @@
 }
 
 div.dish-display {
- width:355px;
+ width:250px;
  min-height: 500px;
  margin-top: 35px;
  margin-right: 20px;
@@ -78,6 +78,31 @@ div.dish-display {
 
 #dish-info {
   margin-top: 25px;
+}
+
+.dish-subheader {
+    color: inherit;
+    text-transform: uppercase;
+    font-family: 'Montserrat', arial, sans-serif;
+    letter-spacing: 3px;
+    font-size: 12px;
+    line-height: 1.5em;
+    display: block;
+    border-bottom: none;
+    width: 100%;
+    height: auto;
+    margin: 45px auto 30px;
+}
+
+.dish-subheader:after {
+    content: "";
+    border-top: 1px solid;
+    width: 40px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    display: block;
+    margin: auto;
 }
 
 div.new-dish-form {

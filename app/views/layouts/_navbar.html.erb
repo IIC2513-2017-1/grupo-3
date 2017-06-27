@@ -87,8 +87,10 @@ Dropdown</button>
                 <i class="fa fa-cogs"></i>  Settings
               <% end %>
             </li>
-            <li>
+            <li class="dditem">
+
               Visible <%= check_box_tag current_user.visible, true, checked = true, :class =>"js-switch", :data => {:remote => true} %>
+
             </li>
             <li><%= link_to "Log out", logout_path, method: "delete" %></li>
           </ul>

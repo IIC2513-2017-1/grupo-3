@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
+        format.js   { render nothing: true }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -72,9 +73,17 @@ class UsersController < ApplicationController
 
   def toggle_visible
     @user = User.find(params[:id])
-    @user.toggle!(:visible)
+    if @user.visible.nil?
+      @user.update_attributes(visible: true)
+    else
+      @user.toggle!(:visible)
+    end
     @user.dishes.each do |dish|
-      dish.toggle!(:active)
+      if dish.active.nil?
+        dish.update_attributes(active: true)
+      else
+        dish.toggle!(:active)
+      end
     end
     if @user.visible
       flash[:info] = "You are now able to recieve orders"

@@ -40,6 +40,16 @@
         <% end %>
     </div>
 
+
+    <% if @user.dishes.size >0 %>
+      <div class="user-dishes">
+        <h1 class="profile-title"> <%=@user.name%>'s Dishes</h1>
+          <% @user.dishes.each do |dish| %>
+              <%= render 'layouts/dish_item.html', dish: dish%>
+            <% end %>
+      </div>
+    <% end %>
+  <% if current_user&.id == @user.id %>
     <div class"bank_account">
       <h1 class="profile-title">Bank Account</h1>
       <% if @user.bank_account.present? %>
@@ -57,12 +67,14 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 </div>
 
-<div class="links">
-  <%= link_to 'Edit', edit_user_path(@user) %>
-  <%= @user.api_token if @user == current_user %>
-</div>
+<% if current_user&.id == @user.id %>
+  <div class="links">
+    <%= @user.api_token if @user == current_user %>
+  </div>
+<% end %>
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');

@@ -35,7 +35,7 @@ $('.js-switch').click(function() {
   }
   $.ajax({
       type: "POST",
-      url: "/user/toggle_visible",
+      url: "/users/toggle_visible",
       data: { id: $(this).data('post-id'), checked: checked }
    });
 });

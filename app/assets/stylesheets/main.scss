@@ -141,6 +141,25 @@ label {
   margin-bottom: 35px;
 }
 
+nav {
+  margin-top: -150px;
+  width: 95%;
+  position: fixed;
+  z-index: 9999;
+  background-color: white;
+}
+nav:after {
+    content: "";
+    border-top: 1px solid gray;
+    width: 100%;
+    margin-top: 100px;
+    position: relative;
+    right: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+}
+
 ul.navbar {
     list-style-type: none;
     padding-left: 10px;
@@ -260,7 +279,7 @@ li#navbar a, .dropbtn {
     display: inline-block;
     color: #000;
     text-align: center;
-    padding: 14px 16px;
+    padding: 2px 16px;
     text-decoration: none;
 }
 
@@ -273,7 +292,6 @@ li#navbar a:hover, .dropdown:hover .dropbtn {
 
 ul.dropdown {
   float: left;
-  margin: 2px;
 
   a {
     color: black;
@@ -363,7 +381,6 @@ li.dropdown {
   margin-bottom:0;
   padding-left:0;
   list-style: none;
-
 }
 
 .carousel{
@@ -379,7 +396,6 @@ li.dropdown {
   position:relative;
   overflow:hidden;
   width:90%;
-  border-radius: 50px;
   margin-left: 5%;
 }
 

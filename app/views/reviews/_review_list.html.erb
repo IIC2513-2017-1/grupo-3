@@ -17,7 +17,7 @@
 
       <div class="comment-content">
         <% if review.title.present? %>
-        <%= image_tag "fork#{review.forks}.png", size: "65x65", alt: '2 fork dish', class: "forks-show" %>
+        <%= image_tag "fork#{review.forks}.png", size: "65x65", alt: '2 fork dish', id: "forks-show-review" %>
         <h3><%= review.title %></h3>
         <br>
         <% end %>

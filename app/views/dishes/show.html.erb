@@ -49,18 +49,18 @@
       <% if current_user&.is_admin? %>
         <h3>Dish ID: <%= @dish.id%></h3>
       <% end %>
-      <p>
-        <strong>Description:</strong>
-        <%=@dish.description %>
-      </p>
+      <p id="p-description" align="center"><%=@dish.description %></p>
+      <br>
       <p>
         <% if @dish.discounts.active.size > 0 %>
-        <p class="text-right"><strong>Price:</strong> <span style="color: orange"> $ <%= (@dish.price*(100-@dish.discounts.active.last.discount_percent))/100%></span></p>
-        <p class="text-right"><strong><%= @dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
+        <p class="text-right" id="p-price" align="center"><strong></strong> <span style="color: orange"> $ <%= (@dish.price*(100-@dish.discounts.active.last.discount_percent))/100%></span></p>
+        <br>
+        <p class="text-right" id="p-discount" align="center"><strong><%= @dish.discounts.active.last.discount_percent%>% OFF!</strong></p>
         <% else %>
-        <p class="text-right"><strong>Price:</strong> <span style="color: green"> $ <%= @dish.price %></span></p>
+        <p class="text-right" id="p-price" align="center"><span style="color: green"> $ <%= @dish.price %></span></p>
         <% end %>
       </p>
+      <br>
       <p>
         <strong>Times buyed:</strong>
         <%if @dish.times_buyed > 0%> <%= @dish.times_buyed%>
@@ -68,17 +68,17 @@
         0
         <% end %>
       </p>
-      <%= social_share_button_tag(@dish.name, 'data-twitter-title' => @dish.name, :url => "http://eats-cl.herokuapp.com/dishes") %>
+      <%= social_share_button_tag(@dish.name, 'data-twitter-title' => @dish.name, :url => "http://eats-cl.herokuapp.com/dishes", id: "social-media-button") %>
       <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large">
-Tweet</a>
+      href="https://twitter.com/intent/tweet?text=Hello%20world"
+      data-size="large">
+      Tweet</a>
       <p class="link">
-        <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
+        <%= button_to 'Add to Cart', add_to_cart_dish_path(@dish), :method => :get, class: "action-button"%>
         <% if current_user %>
-          <%= link_to '| Add a New Review', new_review_path(@review, :dish_id => @dish.id), :id => 'new_review_link', remote: true %>
+          <%= button_to "Add a New Review", new_review_path(@review, :dish_id => @dish.id), :method => :get, :id => 'new_review_link', remote: true, class: "action-button" %>
         <%else%>
-          <%= link_to "| Add a New Review", login_path %>
+          <%= button_to "Add a New Review", login_path, :method => :get, class: "action-button" %>
         <% end %>
       </p>
     </section>

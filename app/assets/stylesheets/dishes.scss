@@ -32,7 +32,6 @@
   p, a {
     margin: 0px;
   }
-
 }
 
 #dish-photos {
@@ -66,7 +65,6 @@ div.dish-display {
  }
 
  a {
-
  }
 
  a:hover {
@@ -74,6 +72,21 @@ div.dish-display {
    background-color: transparent;
  }
 
+}
+
+#p-description {
+  font-family: 'Montserrat', arial, sans-serif;
+  font-size: 16px;
+}
+
+#p-price {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+#p-discount {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 #dish-info {
@@ -427,7 +440,6 @@ ul {
 	.comments-list .comment-box {
 		width: 390px;
 	}
-
 }
 
 #paginate-dish {
@@ -435,14 +447,12 @@ ul {
   margin-bottom: 50px;
 
   a {
-
   }
 
   a:hover {
     color: #5e0000;
     background-color: transparent;
   }
-
 }
 
 .dish-buttons {

@@ -74,11 +74,11 @@
       data-size="large">
       Tweet</a>
       <p class="link">
-        <%= button_to 'Add to Cart', add_to_cart_dish_path(@dish), :method => :get, class: "action-button"%>
+        <%= link_to 'Add to Cart', add_to_cart_dish_path(@dish)%>
         <% if current_user %>
-          <%= button_to "Add a New Review", new_review_path(@review, :dish_id => @dish.id), :method => :get, :id => 'new_review_link', remote: true, class: "action-button" %>
+          <%= link_to '| Add a New Review', new_review_path(@review, :dish_id => @dish.id), :id => 'new_review_link', remote: true %>
         <%else%>
-          <%= button_to "Add a New Review", login_path, :method => :get, class: "action-button" %>
+          <%= link_to "| Add a New Review", login_path %>
         <% end %>
       </p>
     </section>

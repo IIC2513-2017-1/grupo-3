@@ -7,6 +7,10 @@ body {
   margin: 20px 33px 33px 33px;
 }
 
+.index-text {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+}
 
 .header {
     width: 100%;
@@ -371,5 +375,73 @@ li.footer {
 }
 
 // ============================================================================
-// TEXT STYLE
+//
 // ============================================================================
+
+// https://codepen.io/linux/pen/QgMoQa
+
+@import url('https://fonts.googleapis.com/css?family=Amiri|Aref+Ruqaa|Cairo|Changa|El+Messiri|Harmattan|Jomhuria|Lateef|Mirza|Rakkas|Lato|Source+Sans+Pro|Ubuntu');
+/* *{transition: 0.3s linear; padding:0;margin:0;} */
+
+.item {
+/* 	background: #FFF; */
+	margin: 2em;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+	padding:0;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	margin: 3px;
+}
+.item p {
+	position: absolute;
+	top: 30%;
+	left: -20%;
+	background: rgba(0, 0, 0, 0.7);
+	padding: 10px 20px;
+	width:130%;
+	text-align:center;
+	color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+
+.item:hover {
+	transform: none;
+	transform: scale(1.5);
+	z-index:2;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.item:hover > p {
+	transform: none;
+	top: 0;
+
+}
+
+img.rotate-img {
+	width: 100%;
+	height: 100%;
+	transition: 0.3s linear;
+}
+
+.item:hover > img {
+	transform: none;
+}
+
+body::-webkit-scrollbar
+{
+	width: 0.7em;
+	background-color: #EEE;
+}
+
+body::-webkit-scrollbar-thumb{
+/* 	background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); */
+	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+/* 	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+/*   background: linear-gradient(to top, #2193b0, #6dd5ed);  */
+	border-radius:1em;
+}

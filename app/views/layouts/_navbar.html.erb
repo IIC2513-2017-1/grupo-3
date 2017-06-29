@@ -4,18 +4,25 @@
   <ul class="navbar">
     <li id="navbar"><span onclick="openNav()"><%= image_tag "menu_icon.png", size: "40x40", id: "menu-icon" %></span></li>
     <li id="navbar"><%= link_to image_tag("logo_no_name.png", alt: "logo", size:"75x75", class: "site-logo"), '/', class: 'navbar-brand' %></li>
-    <li id="navbar"><%= link_to 'Dishes', dishes_path %></li>
-    <!-- <li class="dropdown">
+    <li class="dropdown-left">
       <a href="javascript:void(0)" class="dropbtn">
         Dishes <b class="caret"></b>
       </a>
-      <div class="dropdown-content">
-        <ul class="dropdown">
-          <li class="navbar"><%= link_to 'All Dishes', dishes_path%></li>
-          <li class="navbar"><%= link_to 'Discount Dishes', discounts_path %></li>
+      <div class="dropdown-content-left">
+        <ul class="dropdown-left">
+          <li class="dditem-left">
+            <%= link_to dishes_path do %>
+              <i class="fa fa-cutlery"></i>   All Dishes
+            <% end %>
+          </li>
+          <li class="dditem-left">
+            <%= link_to discounts_path do %>
+              <i class="fa fa-usd"></i>   Discounts
+            <% end %>
+          </li>
         </ul>
       </div>
-    </li> -->
+    </li>
     <li id="navbar"><%= link_to 'About Eats', about_path %></li>
     <li id="navbar">
     <%= form_tag(dishes_path, :method => "get", id: "search-form") do %>
@@ -78,11 +85,7 @@
 
         </div>
       </li>
-      <% if current_user.avatar.url.present? %>
-          <li id="navbar" class="right"><%= image_tag(current_user.avatar.url, alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
-      <% else %>
-        <li id="navbar" class="right"><%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
-      <% end %>
+      <li id="navbar" class="right"><%= image_tag(current_user.avatar.url, alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
       <li id="navbar" class="right"><%= link_to '', cart_path(current_cart), class: "fa fa-shopping-cart", id: "navbar-icon" %></li>
     <% else %>
       <%@cart = current_cart %>

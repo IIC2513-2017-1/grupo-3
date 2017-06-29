@@ -12,10 +12,6 @@ nav {
   border-width: thin;
   border: 1px solid gray;
 }
-.user-nav:hover{
-  border-width: thin;
-  border: 2px solid #5e0000;
-}
 
 ul.navbar {
     list-style-type: none;
@@ -163,4 +159,72 @@ li.dropdown {
 #navbar-icon:hover {
   color: #000;
   background-color: #fff;
+}
+// #########################################################
+//
+// #########################################################
+
+ul.dropdown-left {
+  float: left;
+  padding: 5px;
+  margin: 0px;
+  line-height: 0px;
+  up: 50px;
+
+  a {
+    color: black;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #5e0000;
+    background-color: transparent;
+    font-weight: bold;
+  }
+
+}
+
+li.dropdown-left {
+  display: inline-block;
+  float: left;
+  line-height: 75px;
+  font-family: 'Montserrat', sans-serif;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.dropdown-content-left {
+    text-decoration: none;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: -30px;
+}
+
+.dditem-left {
+  font-size: 14px;
+  margin: 0px;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+.dropdown-content-left a {
+    color: black;
+    padding: 6px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content-left a:hover {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.dropdown-left:hover .dropdown-content-left {
+    display: block;
 }

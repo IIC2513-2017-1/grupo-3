@@ -15,7 +15,7 @@ class DishesController < ApplicationController
     if !params[:search].blank?
       @dishes = Dish.where("lower(name) LIKE :search", search: "%#{params[:search]}%".downcase).paginate(per_page: 12, page: params[:page]).order("created_at DESC").distinct
     else
-      @dishes = Dish.paginate(per_page: 12, page: params[:page]).order("created_at DESC")
+      @dishes = Dish.paginate(per_page: 12, page: params[:page]).order("id DESC")
     end
   end
 

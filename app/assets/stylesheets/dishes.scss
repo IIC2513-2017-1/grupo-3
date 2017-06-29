@@ -118,6 +118,20 @@ div.dish-display {
     margin: auto;
 }
 
+.dish-categories {
+    color: inherit;
+    text-transform: uppercase;
+    font-family: 'Montserrat', arial, sans-serif;
+    letter-spacing: 2px;
+    font-size: 10px;
+    line-height: 1em;
+    display: block;
+    border-bottom: none;
+    width: 100%;
+    height: auto;
+    margin: 45px auto 30px;
+}
+
 div.new-dish-form {
 
   margin: auto;

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h2 id="view-subtitle" align="center">Tag</h2>
-<h1 id="view-title" align="center"><%= @tag.name %></h1>
+<h2 class="view-subtitle" align="center">Tag</h2>
+<h1 class="view-title" align="center"><%= @tag.name %></h1>
 
     <% @tag.dishes.each do |dish| %>
       <%= render 'layouts/dish_item.html', dish: dish%>

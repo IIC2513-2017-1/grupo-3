@@ -33,13 +33,13 @@
   <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
   <section id="info">
       <% if dish.discounts.active.size > 0 %>
-      <p class="text-right">Price: <span style="color: orange"> $ <%= (dish.price*(100-dish.discounts.active.last.discount_percent))/100%></span></p>
+      <p class="crossed"> $ <%= dish.price %></p>
+      <p class="price-discount"> $ <%= (dish.price*(100-dish.discounts.active.last.discount_percent))/100%></p>
       <% else %>
-      <p class="text-right">Price: <span style="color: green"> $ <%= dish.price %></span></p>
+      <p class="price-index"> $ <%= dish.price %></p>
       <% end %>
-      <p>
-      Categories: <%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %>
-      </p>
+      <h5 align="center" class="dish-categories">Categories: </h6>
+      <h6 align="center" class="dish-categories"><%= raw dish.categories.map { |t| link_to t.name, category_path(t) }.join(', ') %></h6>
 
 
       <div class="dish-buttons">

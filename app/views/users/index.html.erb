@@ -1,6 +1,5 @@
-<% if current_user %>
+<% if current_user&.is_admin? %>
   <p id="notice"><%= notice %></p>
-
   <div id="profile">
     <% if current_user %>
       <h2>PROFILE ID <%= current_user.id %></h2>
@@ -12,10 +11,7 @@
       <p>Phone: <%= current_user.phone %></p>
       <p>Gender: <%= current_user.gender %></p>
       <p>Birth Date: <%= current_user.birth_date %></p>
-
     <% end %>
   </div>
-
-
   <%= button_to 'Create new User', new_user_path, :id => "new-user-button" %>
 <% end %>

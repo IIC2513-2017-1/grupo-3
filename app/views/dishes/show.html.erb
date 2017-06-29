@@ -1,5 +1,5 @@
-<h1 id="view-title" align="center"><%= @dish.name%></h1>
-<h2 id="view-subtitle" align="center">by <%= link_to "#{@dish.user.name}", user_dishes_path(@dish.user)%></h2>
+<h1 class="view-title" align="center"><%= @dish.name%></h1>
+<h2 class="view-subtitle" align="center">by <%= link_to "#{@dish.user.name}", user_dishes_path(@dish.user)%></h2>
 <div class="dish-show">
   <div id="modal-review" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <div id=dish-element>
@@ -83,7 +83,7 @@
       </p>
     </section>
 
-  <h1 id="view-subtitle" align="center">Reviews</h1>
+  <h1 class="view-subtitle" align="center">Reviews</h1>
   <main class="comments">
     <div class="comments-container" id="comments-container">
   		<ul id="comments-list" class="comments-list">

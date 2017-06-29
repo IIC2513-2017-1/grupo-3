@@ -1,18 +1,18 @@
 <% @cook = User.find(params[:user_id])%>
-<h1 id="view-title" align="center"><%= @cook.name %></h1>
+<h1 class="view-title" align="center"><%= @cook.name %></h1>
 
 <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu orci sollicitudin, sodales diam vitae, pulvinar ipsum. Suspendisse eleifend vel metus ut gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed placerat orci dolor, vel vehicula eros luctus in. Duis rhoncus dolor ut faucibus mollis. Aliquam felis odio, imperdiet eu efficitur sit amet, dictum sit amet eros. Vestibulum neque libero, congue aliquet velit et, egestas fringilla lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris imperdiet sapien non nibh maximus efficitur. Ut at neque in diam tristique tempor.
 </p>
 
 <% if current_user == @cook %>
-<h1 id="view-subtitle" align="center">Your Dishes</h1>
+<h1 class="view-subtitle" align="center">Your Dishes</h1>
 <div id="new-dish-button" align="center">
   <%= button_to 'New Dish', new_dish_path, class: "action-button", :method => :get %>
 </div>
   <br />
   <div style="overflow-x:auto;">
-    <table class="promotions">
+    <table class="promotions" align="center">
       <tr class="user-dishes">
         <th>Picture</th>
         <th>Dish</th>
@@ -45,7 +45,7 @@
   <br>
 
 <% else %>
-<h1 id="view-title" align="center">Dishes</h1>
+<h1 class="view-title" align="center">Dishes</h1>
     <% @cook.dishes.all_actives.each do |dish| %>
       <%= render 'layouts/dish_item.html', dish: dish%>
     <% end %>

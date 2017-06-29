@@ -35,7 +35,7 @@ body {
   padding: 15px;
 }
 
-#view-title {
+.view-title {
   font-family: 'Lora', serif;
   font-size: 75px;
   color: #5e0000;
@@ -43,7 +43,7 @@ body {
   margin-bottom: 50px;
 }
 
-#view-subtitle {
+.view-subtitle {
   font-family: 'Lora', serif;
   font-size: 35px;
   color: #5e0000;
@@ -146,7 +146,7 @@ label {
 }
 
 .site-logo{
-  border-radius: 3em;
+  border-radius: 50%;
   border-width: thin;
 }
 
@@ -176,6 +176,31 @@ label {
     text-indent: 3px;
     padding-top: 3px;
     z-index: 99;
+}
+
+.price-index{
+  text-align: center;
+  color: green;
+  font-family: 'Helvetica';
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+.price-discount{
+  text-align: center;
+  color: orange;
+  font-family: 'Helvetica';
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+.crossed{
+  text-align: center;
+  color: gray;
+  font-family: 'Helvetica';
+  font-size: 10pt;
+  font-weight: lighter;
+  text-decoration: line-through;
 }
 
 .carousel-indicators {

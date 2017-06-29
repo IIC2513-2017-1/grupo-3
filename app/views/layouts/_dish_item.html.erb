@@ -19,18 +19,42 @@
     <% if dish.user.avatar.present? %>
         <%= link_to image_tag(dish.user.avatar.url, :class => "dish-cook", :alt => "Dish Cook", :size => '75x75'), user_path(dish.user) %>
     <% else %>
-    <%= link_to image_tag("user-default.png", :class => "dish-cook", :alt => "Dish Cook",:size => '100x100'), user_path(dish.user) %>
+    <%= link_to image_tag("default.jpg", :class => "dish-cook", :alt => "Dish Cook",:size => '100x100'), user_path(dish.user) %>
     <% end %>
   </div>
   <div class="dish-subheader">
     <h4 align="center">
-      Perfecta para compartir
-      <br>
+      <% if dish.tags.size > 0 %>
       <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+      <% else %>
+      Perfecta para compartir
+      <% end %>
     </h4>
   </div>
   <h2 id="dish-show" align="center" class="dish-name" style="font-family: 'Lora', serif"><%= dish.name %></h2>
   <p id="dish-show" align="center">by <%= link_to "#{dish.user.name}", user_dishes_path(dish.user)%></p>
+  <%case dish.avg_forks.round(1) %>
+    <%when 1%>
+      <%= image_tag "fork.png", size: "65x65", alt: '1 fork dish', class: "forks-show" %>
+      <%when 1.5%>
+        <%= image_tag "fork15.png", size: "65x65", alt: '1.5 fork dish', class: "forks-show" %>
+    <%when 2%>
+      <%= image_tag "fork2.png", size: "65x65", alt: '2 fork dish', class: "forks-show" %>
+      <%when 2.5%>
+        <%= image_tag "fork25.png", size: "65x65", alt: '2.5 fork dish', class: "forks-show" %>
+    <%when 3%>
+      <%= image_tag "fork3.png", size: "65x65", alt: '3 fork dish', class: "forks-show" %>
+      <%when 3.5%>
+        <%= image_tag "fork35.png", size: "65x65", alt: '3.5 fork dish', class: "forks-show" %>
+    <%when 4%>
+      <%= image_tag "fork4.png", size: "65x65", alt: '4 fork dish', class: "forks-show" %>
+      <%when 4.5%>
+        <%= image_tag "fork45.png", size: "65x65", alt: '4.5 fork dish', class: "forks-show" %>
+    <%when 5%>
+      <%= image_tag "fork5.png", size: "65x65", alt: '5 fork dish', class: "forks-show" %>
+    <%else%>
+      <p>No reviews</p>
+  <% end %>
   <section id="info">
       <% if dish.discounts.active.size > 0 %>
       <p class="crossed"> $ <%= dish.price %></p>

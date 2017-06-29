@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# USER CREATION
 admin1 = User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
 admin2 = User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
 User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
@@ -18,6 +19,8 @@ User.create(first_name: 'Client5', last_name: 'Tneilc', email: 'client5@eats.cl'
 User.create(first_name: 'Client6', last_name: 'Tneilc', email: 'client6@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 2.weeks.ago)
 User.create(first_name: 'Client7', last_name: 'Tneilc', email: 'client7@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true)
 User.create(first_name: 'Client8', last_name: 'Tneilc', email: 'client8@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true)
+
+# DISH CREATION
 # 1
 Dish.create(name: 'Pizza', price: 10000, description: 'Pepperoni pizza', times_buyed: 8, created_at: DateTime.now, user_id: 3, active: true)
 # 2
@@ -61,6 +64,7 @@ Dish.create(name: 'Gong Bao Chicken', price: 3000, description: 'This is a famou
 # 21
 Dish.create(name: 'Gulab jaamun', price: 1200, description: 'Small balls of dried milk, slow cooked and boiled in a sugar syrup.', times_buyed: 48, created_at: DateTime.now, user_id: 4, active: true)
 
+# DISCOUNT CREATION
 # 1
 Discount.create(from_date: DateTime.now, to_date: DateTime.now + 1.month, discount_percent: 20, dish_id: 1, created_at: DateTime.now)
 # 2
@@ -70,11 +74,15 @@ Discount.create(from_date: DateTime.now, to_date: DateTime.now + 2.month, discou
 # 4
 Discount.create(from_date: DateTime.now, to_date: DateTime.now.next_week, discount_percent: 15, dish_id: 18, created_at: DateTime.now)
 
+# TAG CREATION
 Tag.create(name: 'Sushi')               # 1
 Tag.create(name: 'JunkFood')            # 2
 Tag.create(name: 'Alcohol')             # 3
 Tag.create(name: 'Sauce')               # 4
+Tag.create(name: 'Vegan')               # 5
+Tag.create(name: 'Sugar-Free')          # 6
 
+# DISH-TAG ASSOCIATION
 Tagging.create(tag_id: 2, dish_id: 1)
 Tagging.create(tag_id: 2, dish_id: 2)
 Tagging.create(tag_id: 3, dish_id: 3)
@@ -83,6 +91,7 @@ Tagging.create(tag_id: 2, dish_id: 5)
 Tagging.create(tag_id: 4, dish_id: 5)
 Tagging.create(tag_id: 3, dish_id: 6)
 
+# CATEGORY GENERATION
 Category.create(name: 'Wine')           # 1
 Category.create(name: 'Mexican Food')   # 2
 Category.create(name: 'Vegan')          # 3
@@ -94,8 +103,9 @@ Category.create(name: 'French Food')    # 8
 Category.create(name: 'Italian Food')   # 9
 Category.create(name: 'Chilean Food')  # 10
 Category.create(name: 'Chinese Food')  # 11
+Category.create(name: 'Dessert')       # 12
 
-
+# DISH-CATEGORY ASSOCIATION
 Categorizing.create(category_id: 1, dish_id: 6)
 Categorizing.create(category_id: 6, dish_id: 1)
 Categorizing.create(category_id: 6, dish_id: 2)
@@ -117,5 +127,6 @@ Categorizing.create(category_id: 11, dish_id: 21)
 Categorizing.create(category_id: 11, dish_id: 18)
 Categorizing.create(category_id: 11, dish_id: 20)
 
+# TOKEN GENERATION
 admin1.generate_api_token_and_save
 admin2.generate_api_token_and_save

@@ -1,7 +1,7 @@
 json.dish do
 
   json.id @dish.id
-  json.href api_v1_tweet_url(@dish)
+  json.href api_v1_dish_url(@dish)
   json.name @dish.name
   json.price @dish.price
   json.private @dish.private

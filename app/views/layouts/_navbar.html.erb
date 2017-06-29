@@ -78,7 +78,11 @@
 
         </div>
       </li>
-      <li id="navbar" class="right"><%= image_tag(current_user.avatar.url, alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
+      <% if current_user.avatar.url.present? %>
+          <li id="navbar" class="right"><%= image_tag(current_user.avatar.url, alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
+      <% else %>
+        <li id="navbar" class="right"><%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", alt: "User Navbar Image", size:"45x45", class: "user-nav")%></li>
+      <% end %>
       <li id="navbar" class="right"><%= link_to '', cart_path(current_cart), class: "fa fa-shopping-cart", id: "navbar-icon" %></li>
     <% else %>
       <%@cart = current_cart %>

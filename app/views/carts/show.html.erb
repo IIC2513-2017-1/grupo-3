@@ -27,12 +27,13 @@
     </tr>
   </table>
 
-  <p>
+  <div class="checkout" align="center">
     <% if current_user %>
-      <%= link_to "Checkout", checkout_order_path %>
+      <%= button_to "Checkout", checkout_order_path, class: "action-button", :method => :get %>
     <% else %>
-      <%= link_to "Checkout", login_path %>
+      <%= button_to "Checkout", login_path, class: "action-button", :method => :get %>
     <% end %>
+  </div>
 
-  </p>
+
 </div>

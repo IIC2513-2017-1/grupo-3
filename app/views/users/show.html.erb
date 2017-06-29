@@ -1,7 +1,7 @@
 <h1 class="title"><span>Eats</span> User Profile</h1>
 <div class="user-container">
   <div class="user-card">
-    <% if @user.avatar.present? %>
+    <% if @user.avatar.url.present? %>
         <%= image_tag(@user.avatar.url, :class => "avatar border-white", :alt => "User profile picture", :size => '300x300') %>
     <% else %>
     <%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "avatar border-white", :alt => "User profile picture") %>
@@ -58,7 +58,9 @@
         <p><strong>Account number:</strong> <%= @user.bank_account.account %></p>
         <p><strong>Bank:</strong> <%= @user.bank_account.bank %></p>
       <% else %>
-        <%= link_to 'Update Bank Account', new_user_bank_account_path(@user) %>
+        <div style="margin-top: 50px;">
+          <%= button_to "Update Bank Account", new_user_bank_account_path(@user), class: "action-button", :method => :get %>
+        </div>
       <% end %>
     </div>
     <% if @user.address.present? && (@user.is_cook? || @user.is_admin?) %>

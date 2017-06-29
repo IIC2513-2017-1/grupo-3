@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Discounts</h1>
+<h1 class="view-subtitle" align="center">Discounts</h1>
 
-<% @discounts.each do |discount| %>
-  <% if discount.active? %>
-    <% @dish = Dish.find(discount.dish_id) %>
-    <%= render 'layouts/dish_item.html', dish: @dish%>
+<div align="center">
+  <% @discounts.each do |discount| %>
+    <% if discount.active? %>
+      <% @dish = Dish.find(discount.dish_id) %>
+      <%= render 'layouts/dish_item.html', dish: @dish%>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -2,11 +2,11 @@
 
 json.user do
 
-  json.id @dish.id
+  json.id @dish.user.id
   json.href api_v1_user_url(@dish)
-  json.email @dish.email
-  json.first_name @dish.first_name
-  json.last_name @dish.last_name
+  json.email @dish.user.email
+  json.first_name @dish.user.first_name
+  json.last_name @dish.user.last_name
   json.dishes do
 
     json.array! @user.dishes do |dish|
@@ -15,6 +15,7 @@ json.user do
       json.href api_v1_dish_url(dish)
       json.name dish.name
       json.price dish.price
+      json.description dish.description
       json.private dish.private
 
     end

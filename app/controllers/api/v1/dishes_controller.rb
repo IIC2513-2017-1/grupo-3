@@ -1,5 +1,5 @@
 module Api::V1
-  class DishessController < ApiController
+  class DishesController < ApiController
     before_action :authenticate
 
     def index

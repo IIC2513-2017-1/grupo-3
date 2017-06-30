@@ -7,7 +7,7 @@ json.user do
   json.email @dish.email
   json.first_name @dish.first_name
   json.last_name @dish.last_name
-  json.tweets do
+  json.dishes do
 
     json.array! @user.dishes do |dish|
 

@@ -8,7 +8,7 @@
     <div class="fotorama">
       <% if dish.pictures.first %>
         <% dish.pictures.each do |picture|%>
-          <%= link_to image_tag(picture.image.url, :size => '200x200'), dish_path(dish), :class => "dish-avatar" %>
+          <%= link_to image_tag(picture.image.url, :size => '250x200'), dish_path(dish), :class => "dish-avatar" %>
         <% end %>
       <% else %>
       <%= link_to image_tag("dish-default.jpg", :size => '200x200'), dish_path(dish), :class => "dish-avatar", :alt => "Dish picture" %>
@@ -19,7 +19,7 @@
     <% if dish.user.avatar.present? %>
         <%= link_to image_tag(dish.user.avatar.url, :class => "dish-cook", :alt => "Dish Cook", :size => '75x75'), user_path(dish.user) %>
     <% else %>
-    <%= link_to image_tag("default.jpg", :class => "dish-cook", :alt => "Dish Cook",:size => '100x100'), user_path(dish.user) %>
+    <%= link_to image_tag("default.jpg", :class => "dish-cook", :alt => "Dish Cook",:size => '75x75'), user_path(dish.user) %>
     <% end %>
   </div>
   <div class="dish-subheader">
@@ -27,7 +27,7 @@
       <% if dish.tags.size > 0 %>
       <%= raw dish.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
       <% else %>
-      Perfecta para compartir
+      Perfect for sharing
       <% end %>
     </h4>
   </div>

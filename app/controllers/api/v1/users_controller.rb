@@ -5,7 +5,5 @@ module Api::V1
     def show
       @user = User.includes(:dishes).find(params[:id])
     end
-
   end
-
 end

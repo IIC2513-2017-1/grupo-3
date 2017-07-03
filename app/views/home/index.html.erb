@@ -112,9 +112,3 @@
 <div class="logo" align="center">
   <%= image_tag("logo_no_name.png", :size => "300x330") %>
 </div>
-
-<% if current_user&.id == @user.id %>
-  <div class="links">
-    TOKEN: <%= @user.api_token if @user == current_user %>
-  </div>
-<% end %>

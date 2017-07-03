@@ -1,5 +1,7 @@
 <%if current_user && admin?%>
 
+  TOKEN: <%= current_user.api_token %>
+
   <h1 class="view-subtitle" align="center">Database Info</h1>
 
   <main class="database-tabs">

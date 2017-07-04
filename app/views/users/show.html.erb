@@ -27,6 +27,12 @@
         <span class="entypo-address"> <%= @user.address %></span>
       </li>
    </ul>
+
+   <a id="mouse-over-api-token" onclick="copyToClipboard('#copy-api-token')">API TOKEN</a><br/>
+   <hr/>
+   <div class="default-api-token">Click on "API TOKEN" to copy it!</div>
+   <div class="hover-api-token"><p id="copy-api-token"><%= @user.api_token if @user == current_user %></p></div>
+
   </div>
 
   <div class="user-info">
@@ -72,12 +78,6 @@
   </div>
   <% end %>
 </div>
-
-<% if current_user&.id == @user.id %>
-  <div class="links">
-    <%= @user.api_token if @user == current_user %>
-  </div>
-<% end %>
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');

@@ -470,3 +470,17 @@ body::-webkit-scrollbar-thumb{
 /*   background: linear-gradient(to top, #2193b0, #6dd5ed);  */
 	border-radius:1em;
 }
+
+
+
+.hover-api-token {
+    display: none;
+}
+
+#mouse-over-api-token:hover ~ .hover-api-token {
+    display: block;
+}
+
+#mouse-over-api-token:hover ~ .default-api-token,{
+    display: none;
+}

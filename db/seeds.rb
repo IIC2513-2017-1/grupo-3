@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # USER CREATION
-admin1 = User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
-admin2 = User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago)
-User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
-User.create(first_name: 'Jamie', last_name: 'Oliver', email: 'jamie_oliver@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago)
-User.create(first_name: 'Client1', last_name: 'Tneilc', email: 'client1@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago)
+admin1 = User.create(first_name: 'Federico', last_name: 'Kunze', email: 'fekunze@uc.cl', password: '123123', address: 'Santiago, RM', phone: '922334455', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago) #, avatar_file_name: "guto.png")
+admin2 = User.create(first_name: 'Gustavo', last_name: 'Antunes', email: 'gantunes@uc.cl', password: '123123', address: 'Santiago, RM', phone: '966778899', gender: 'male', role: 'admin', activated: true, created_at: 4.weeks.ago) #, avatar_file_name: "kunze.jpg")
+User.create(first_name: 'Gordon', last_name: 'Ramsay', email: 'gordon_ramsay@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago, avatar_file_name: "ramsay.jpg")
+User.create(first_name: 'Jamie', last_name: 'Oliver', email: 'jamie_oliver@gmail.com', password: '123123', role: 'cook', gender: 'male', activated: true, created_at: 4.weeks.ago, avatar_file_name: "oliver.jpg")
+User.create(first_name: 'Camila', last_name: 'Tneilc', email: 'client1@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago) #, avatar_file_name: "client1.jpg")
 User.create(first_name: 'Client2', last_name: 'Tneilc', email: 'client2@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 3.weeks.ago)
 User.create(first_name: 'Client3', last_name: 'Tneilc', email: 'client3@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'female', activated: true, created_at: 3.weeks.ago)
 User.create(first_name: 'Client4', last_name: 'Tneilc', email: 'client4@eats.cl', password: '123123', role: 'client', address: 'Santiago, RM', phone: '999999999', gender: 'male', activated: true, created_at: 3.weeks.ago)
@@ -133,3 +133,11 @@ Categorizing.create(category_id: 8, dish_id: 19)
 # TOKEN GENERATION
 admin1.generate_api_token_and_save
 admin2.generate_api_token_and_save
+
+# pictures
+# Picture.create(image_file_name: "dishes/cheese_souffle.jpeg", dish_id: 19)
+# Picture.create(image_file_name: "dishes/biryani.jpg", dish_id: 5)
+# Picture.create(image_file_name: "dishes/camembert.jpg", dish_id: 16)
+# Picture.create(image_file_name: "dishes/gulab-jamun.jpg", dish_id: 15)
+# Picture.create(image_file_name: "dishes/humita.jpg", dish_id: 10)
+# Picture.create(image_file_name: "dishes/momos.jpg", dish_id: 6)

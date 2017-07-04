@@ -1,6 +1,7 @@
 class BankAccountsController < ApplicationController
   before_action :set_bank_account, only: [:show, :edit, :update, :destroy]
   before_action :is_admin, only: [:index, :destroy]
+  before_action :bank_owner, only: [:edit, :update, :destroy]
 
   def new
     @bank_account = BankAccount.new
@@ -41,6 +42,11 @@ class BankAccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bank_account
       @bank_account = current_user.bank_account
+    end
+
+    def bank_owner
+      @user = BankAccount.find(params[:id]).user if params[:id]
+      redirect_to(user_path(@current_user)) unless current_user?(@user) || admin?
     end
 
     def is_admin

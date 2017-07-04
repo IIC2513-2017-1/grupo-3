@@ -3,7 +3,7 @@ class Dish < ApplicationRecord
   validates :name, presence: true, length: { maximum: 25 }
   validates :description, presence: true, length: { maximum: 200 }
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :cart_items
   has_many :carts, through: :cart_items
@@ -13,7 +13,7 @@ class Dish < ApplicationRecord
   has_many :reviews
   has_many :discounts, dependent: :destroy
 
-  has_many :categorizings
+  has_many :categorizings, dependent: :destroy
   has_many :categories, through: :categorizings
 
   scope :all_actives, lambda{ where("active = ?", true)}

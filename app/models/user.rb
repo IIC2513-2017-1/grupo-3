@@ -104,8 +104,8 @@ class User < ApplicationRecord
 
   # Activates an account.
   def activate
-    user.update(activated: true,
-                activated_at: Time.zone.now)
+    update(activated: true,
+           activated_at: Time.zone.now)
   end
 
   # Sends activation email.

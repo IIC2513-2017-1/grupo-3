@@ -118,7 +118,7 @@ div.profile-container {
 // HERE NEW PROFILE VIEW
 
 .user-container {
-  margin-top: 25px;
+  margin-top: 50px;
   display: flex;
   width: 100%;
 }
@@ -155,10 +155,12 @@ div.profile-container {
   ul.data {
     text-align: left;
     font-size: 15px;
+    padding: 0px;
   }
 
   li.data {
     list-style: none;
+    min-width: 200px;
   }
 
 }

@@ -12,12 +12,12 @@
         <ul class="dropdown-left">
           <li class="dditem-left">
             <%= link_to dishes_path do %>
-              <i class="fa fa-cutlery"></i>   All Dishes
+              <i class="fa fa-cutlery"></i>   ALL DISHES
             <% end %>
           </li>
           <li class="dditem-left">
             <%= link_to discounts_path do %>
-              <i class="fa fa-usd"></i>   Discounts
+              <i class="fa fa-usd"></i>   PROMOTIONS
             <% end %>
           </li>
         </ul>
@@ -46,41 +46,44 @@
           <ul class="dropdown">
             <li class="dditem">
               <%= link_to current_user do %>
-                <i class="fa fa-user-o"></i>  Profile
+                <i class="fa fa-user-o"></i>  PROFILE
               <% end %>
             </li>
             <% if current_user.is_cook? %>
             <li class="dditem">
               <%= link_to user_dishes_path_url(current_user.id) do %>
-                <i class="fa fa-cutlery"></i>  Dishes
+                <i class="fa fa-cutlery"></i>  DISHES
               <% end %>
             </li>
             <li class="dditem">
               <%= link_to promotions_path do %>
-                <i class="fa fa-usd"></i>  Promotions
+                <i class="fa fa-usd"></i>  PROMOTIONS
               <% end %>
             </li>
+
             <li class="dditem">
-              <%= link_to 'Pending Orders', pending_orders_path%>
+              <%= link_to pending_orders_path do %>
+                <i class="fa fa-pencil-square-o"></i>  PENDING ORDERS
+              <% end %>
             </li>
             <% end %>
             <%@cart = current_cart %>
 
             <li class="dditem">
               <%= link_to user_orders_path(current_user.id) do %>
-                <i class="fa fa-file-text-o"></i>  Shopping History
+                <i class="fa fa-file-text-o"></i>  SHOPPING HISTORY
               <% end %>
             </li>
 
             <li class="dditem">
               <%= link_to edit_user_path(current_user) do %>
-                <i class="fa fa-cogs"></i>  Settings
+                <i class="fa fa-cogs"></i>  SETTINGS
               <% end %>
             </li>
             <li class="dditem">
-              Visible <%= check_box_tag current_user.visible, true, checked = true, :class =>"js-switch", :data => {:remote => true} %>
+              <i class="fa fa-eye"></i>  VISIBLE <%= check_box_tag current_user.visible, true, checked = true, :class =>"js-switch", :data => {:remote => true} %>
             </li>
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <li><%= link_to "LOG OUT", logout_path, method: "delete" %></li>
           </ul>
 
         </div>

@@ -77,6 +77,13 @@ Tag.create(name: 'JunkFood')            # 2
 Tag.create(name: 'Sauce')               # 3
 Tag.create(name: 'Vegan')               # 4
 Tag.create(name: 'Sugar-Free')          # 5
+Tag.create(name: 'Sweet')               # 6
+Tag.create(name: 'Light')               # 7
+Tag.create(name: 'Diet')                # 8
+Tag.create(name: 'Organic')             # 9
+Tag.create(name: 'Frut')                # 10
+Tag.create(name: 'Cheese')              # 11
+Tag.create(name: 'Sushi')              # 11
 
 # DISH-TAG ASSOCIATION
 Tagging.create(tag_id: 2, dish_id: 1)
@@ -84,6 +91,9 @@ Tagging.create(tag_id: 2, dish_id: 2)
 Tagging.create(tag_id: 2, dish_id: 3)
 Tagging.create(tag_id: 2, dish_id: 4)
 Tagging.create(tag_id: 3, dish_id: 4)
+
+Tagging.create(tag_id: 11, dish_id: 19)
+
 
 # CATEGORY GENERATION
 Category.create(name: 'Wine')           # 1

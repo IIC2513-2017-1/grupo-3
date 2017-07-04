@@ -1,4 +1,4 @@
-<h1 class="title"><span>Eats</span> User Profile</h1>
+<h1 class="view-subtitle" align="center"><%= @user.name %></h1>
 <div class="user-container">
   <div class="user-card">
     <% if @user.avatar.url.present? %>
@@ -6,12 +6,15 @@
     <% else %>
     <%= image_tag("http://www.argcapnet.org.ar/wp-content/uploads/2017/01/man.png", :class => "avatar border-white", :alt => "User profile picture") %>
     <% end %>
-        <h1 class="profile-title"><%= @user.name %></h2>
         <h2 class="role"><%= @user.role %></h2>
         <% if !@user.avg_stars.nan? %>
-          <h4><%= '%.2f' % @user.avg_stars %> Stars</h4>
+          <h4><%= '%.2f' % @user.avg_stars %> Forks</h4>
         <% else %>
-          <h4> Stars: no dish reviewed</h4>
+          <h4>
+            Forks
+            <br>
+            No dish reviewed
+          </h4>
         <% end %>
     <ul class="data">
       <li class="data">
@@ -31,6 +34,12 @@
     <div class="fav">
       <h1 class="profile-title">Favorite Dishes</h1>
 
+      <% if @user.dishes.size >0 %>
+        <div class="user-dishes">
+          <h4 class="profile-title" style="color:rgb(154,6,6)"><%= link_to "#{@user.name}'s Dishes'", user_dishes_path(@user) %></h4>
+        </div>
+      <% end %>
+
         <% @dishes.each do |dish| %>
           <%- unless @user.favorite_dishes.exists?(id: dish.id) -%>
 
@@ -40,14 +49,6 @@
         <% end %>
     </div>
 
-
-
-
-    <% if @user.dishes.size >0 %>
-      <div class="user-dishes">
-        <h1 class="profile-title" style="color:rgb(154,6,6)"><%= link_to "#{@user.name}'s Dishes'", user_dishes_path(@user) %></h1>
-      </div>
-    <% end %>
   <br />
   <% if current_user&.id == @user.id %>
     <div class"bank_account">

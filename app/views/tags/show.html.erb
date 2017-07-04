@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class="view-subtitle" align="center">Tag</h2>
 <h1 class="view-title" align="center"><%= @tag.name %></h1>
 
-    <% @tag.dishes.each do |dish| %>
-      <%= render 'layouts/dish_item.html', dish: dish%>
-    <% end %>
+<div align="center">
+  <% @tag.dishes.each do |dish| %>
+    <%= render 'layouts/dish_item.html', dish: dish%>
+  <% end %>
 
-<%= link_to 'Back', dishes_path %>
+  <%= button_to 'Back', dishes_path, :method => :get, :class => "action-button" %>
+</div>
